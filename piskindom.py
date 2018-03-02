@@ -1,5 +1,3 @@
-import time
-import os
-
-print(time.strftime('%d %m %Y'))
-print(os.utime())
+import pyperclip
+pyperclip.copy('')
+spam = pyperclip.paste()
