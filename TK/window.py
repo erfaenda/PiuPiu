@@ -5,13 +5,16 @@ clicks = 0
 def click_button():
     global clicks
     clicks += 1
-    root.title("Clicks {}".format(clicks))
+    buttonText.set("Clicks {}".format(clicks))
 
 root = Tk() #создал окно
 root.title("Единый я хочу написать полезные программы на Python") # Задал заголовок главного окна
 root.geometry("400x300+300+250") # размер окна и позиционирование на экране
 
-btn = Button(text="Click me!",     # Текст кнопки
+buttonText = StringVar()
+buttonText.set("Clicks {}".format(clicks))
+
+btn = Button(textvariable=buttonText,     # Текст кнопки
              background="#555", # Фоновый цвет кнопки
              foreground="#ccc", # Цвет текста
              activebackground="#D3D3D3",# Цвет фона когда кнопка нажата или наведен курсор
