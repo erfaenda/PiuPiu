@@ -1,13 +1,14 @@
 class vectorClass:
-    def __init__(self):
-        self.x = 0
-        self.y = 0
-        self.z = 0
+    def __init__(self, x=0, y=0, z=0):
+        self.x = x
+        self.y = y
+        self.z = z
 
     def __mul__(self, other):
-        self.x = self.x * other.x
-        self.y = self.y * other.y
-        self.z = self.z * other.z
+        return vectorClass(
+                self.x * other.x,
+                self.y * other.y,
+                self.z * other.z)
 
 v1 = vectorClass()
 v2 = vectorClass()
