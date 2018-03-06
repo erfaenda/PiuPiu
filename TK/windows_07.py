@@ -27,7 +27,7 @@ class child:
     self.slave.wait_window()
 
 # создание окна
-root = Tk()ls
+root = Tk()
 
 # запуск окна
 main(root)
