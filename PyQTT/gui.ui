@@ -39,14 +39,14 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>10</x>
      <y>140</y>
-     <width>59</width>
+     <width>331</width>
      <height>18</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>Длинна вашего текста</string>
    </property>
   </widget>
  </widget>

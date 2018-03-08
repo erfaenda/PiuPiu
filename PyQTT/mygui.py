@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -37,6 +38,10 @@ class Ui_Form(object):
         self.lenght = len(self.text)
         self.label.setText("Длинна текста {}, символов(а)".format(self.lenght))
 
+    def keyPressEvent(self, e):
+        if e.key() == Qt.Key_F6:
+            self.close()
+
 
 if __name__ == "__main__":
     import sys
@@ -46,4 +51,3 @@ if __name__ == "__main__":
     ui.setupUi(Form)
     Form.show()
     sys.exit(app.exec_())
-
