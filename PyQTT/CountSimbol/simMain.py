@@ -11,11 +11,16 @@ class MyWin(QtWidgets.QMainWindow):
 
         # Здесь прописываем событие нажатия на кнопку
         self.ui.pushButton.clicked.connect(self.myfunction)
+        self.ui.lineEdit.returnPressed.connect(self.myfunction) # какая то хуйня с перехватом надо прочитать что это вообще такое
 
-    # Пока пустая функция которая выполняется
     # при нажатии на кнопку
     def myfunction(self):
         self.ui.label.setText("Длинна вашего текста {} символов(а)".format(len(self.ui.lineEdit.text())))
+
+    # отслеживаю нажатие  ентера и выполняю функцию
+    def keyPressEvent(self, e):
+        if e.key() == QtCore.Qt.Key_Enter:
+            self.myfunction()
 
 
 if __name__ == "__main__":
