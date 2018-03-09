@@ -27,6 +27,7 @@ class Ui_Form(object):
         QtCore.QMetaObject.connectSlotsByName(Form)
         self.pushButton.clicked.connect(self.myFunction)
 
+
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Главное окно"))
