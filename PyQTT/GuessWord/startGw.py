@@ -1,4 +1,4 @@
-import sys
+import sys, time
 # Импортируем наш интерфейс из файла
 from PyQTT.GuessWord.gwGui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -23,7 +23,33 @@ class MyWin(QtWidgets.QMainWindow):
             self.wordFive(self.ui.lineEdit.text())
 
     def wordFour(self, letters):
-        self.t1
+        self.t1 = time.time()
+        self.c = 0
+        self.resArr = []
+        self.initW = letters
+        self.res = ["", "", "", ""]
+        self.r = open("dict.txt", 'r', encoding='utf-8')
+        self.fileRead = self.r.read()
+        self.fileSplit = self.fileRead.split()
+        self.r.close()
+        for self.i in range(0, len(self.initW)):
+            self.res[0] = self.initW[self.i]
+            for self.q in range(0, len(self.initW)):
+                if (self.q != self.i):
+                    self.res[1] = self.initW[self.q]
+                    for self.p in range(0, len(self.initW)):
+                        if (self.p != self.i) and (self.p != self.q):
+                            self.res[2] = self.initW[self.p]
+                            for self.pp in range(0, len(self.initW)):
+                                if (self.pp != self.i) and (self.pp != self.q) and (self.pp != self.p):
+                                    self.res[3] = self.initW[self.pp]
+                                    self.wordFor = self.res[0] + self.res[1] + self.res[2] + self.res[3]
+                                    if self.wordFor in self.fileSplit:
+                                        if self.wordFor not in self.resArr:
+                                            self.resArr.append(self.wordFor)
+                                            self.c += 1
+                                            self.str = "Найдено совпадений: " + str(len(self.resArr)) + "\n" + self.arrOutput(self.resArr) + "\n" + str(self.c) + " комбинаций проверено\nВремя исполнения: " + str(time.time() - self.t1) + "с."
+                                            self.ui.plainTextEdit.appendPlainText(self.str)
 
 
     def wordFive(self):
