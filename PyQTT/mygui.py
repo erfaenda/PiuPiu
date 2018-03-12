@@ -1,54 +1,33 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'gui.ui'
-#
-# Created by: PyQt5 UI code generator 5.10.1
-#
-# WARNING! All changes made in this file will be lost!
-
+import sys
+# Импортируем наш интерфейс из файла
+from PyQTT.gui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(350, 280)
-        self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(10, 70, 330, 30))
-        self.pushButton.setObjectName("pushButton")
-        self.lineEdit = QtWidgets.QLineEdit(Form)
-        self.lineEdit.setGeometry(QtCore.QRect(10, 20, 330, 30))
-        self.lineEdit.setObjectName("lineEdit")
-        self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(10, 140, 330, 18))
-        self.label.setObjectName("label")
+class MyWin(QtWidgets.QMainWindow):
+    def __init__(self, parent=None):
+        QtWidgets.QWidget.__init__(self, parent)
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
-        self.pushButton.clicked.connect(self.myFunction)
+        # Здесь прописываем событие нажатия на кнопку
+        #self.ui.pushButton.clicked.connect(self.MyFunction)
+        #self.widget.keyPressEvent2.connect(self.MyFunction)
 
+    # Пока пустая функция которая выполняется
+    # при нажатии на кнопку
 
-    def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Главное окно"))
-        self.pushButton.setText(_translate("Form", "Считай!"))
-        self.label.setText(_translate("Form", "TextLabel"))
-
-    def myFunction(self):
-        self.text = self.lineEdit.text()
-        self.lenght = len(self.text)
-        self.label.setText("Длинна текста {}, символов(а)".format(self.lenght))
 
     def keyPressEvent(self, e):
-        if e.key() == Qt.Key_F6:
+        if e.key() == Qt.Key_F5:
             self.close()
 
+    def keyPressEvent2(self, e):
+        if e.key() == Qt.Key_F6:
+            self.MyFunction()
 
-if __name__ == "__main__":
-    import sys
+if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
+    myapp = MyWin()
+    myapp.show()
     sys.exit(app.exec_())

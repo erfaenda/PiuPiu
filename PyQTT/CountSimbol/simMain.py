@@ -1,12 +1,12 @@
 import sys
 # Импортируем наш интерфейс из файла
-from PyQTT.CountSimbol.simGuii import *
+from PyQTT.CountSimbol.simGui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class MyWin(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
-        self.ui = Ui_Form()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
         # Здесь прописываем событие нажатия на кнопку

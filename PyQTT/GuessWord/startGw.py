@@ -14,6 +14,7 @@ class MyWin(QtWidgets.QMainWindow):
 
         # Здесь прописываем событие нажатия на кнопку
         self.ui.pushButton.clicked.connect(self.start1)
+        self.ui.pushButton_2.clicked.connect(self.clearText)
 
     # мои функции
     def start1(self):
@@ -23,17 +24,26 @@ class MyWin(QtWidgets.QMainWindow):
             self.wordFive(self.ui.lineEdit.text())
 
     def wordFour(self, letters):
+        self.canceled = False
         self.t1 = time.time()
         self.c = 0
         self.resArr = []
         self.initW = letters
         self.res = ["", "", "", ""]
-        self.r = open("dict.txt", 'r', encoding='utf-8')
+        self.r = open("word_rus.txt", 'r', encoding='utf-8')
         self.fileRead = self.r.read()
         self.fileSplit = self.fileRead.split()
         self.r.close()
+        self.progress = QtWidgets.QProgressDialog('Поиск....', 'Стоп', 0, len(self.initW), self.ui.lineEdit)
+        self.progress.setWindowModality(QtCore.Qt.WindowModal)
+        self.progress.setMinimumDuration(100)
         for self.i in range(0, len(self.initW)):
             self.res[0] = self.initW[self.i]
+            #индикатор
+            self.progress.setValue(self.i)
+            if self.progress.wasCanceled():
+                self.canceled = True
+                return
             for self.q in range(0, len(self.initW)):
                 if (self.q != self.i):
                     self.res[1] = self.initW[self.q]
@@ -50,11 +60,25 @@ class MyWin(QtWidgets.QMainWindow):
                                             self.c += 1
                                             self.str = "Найдено совпадений: " + str(len(self.resArr)) + "\n" + self.arrOutput(self.resArr) + "\n" + str(self.c) + " комбинаций проверено\nВремя исполнения: " + str(time.time() - self.t1) + "с."
                                             self.ui.plainTextEdit.appendPlainText(self.str)
+        #удаление индикатора после его работы
+        self.progress.deleteLater()
 
 
     def wordFive(self):
         pass
 
+    def arrOutput(self, arr):
+        arr.sort()
+        self.str = ''
+        for i in range(0, len(arr)):
+            if i != len(arr) - 1:
+                self.str += arr[i] + ', '
+            else:
+                self.str += arr[i] + '.'
+        return self.str
+
+    def clearText(self):
+        self.ui.plainTextEdit.clear()
 
 
 if __name__ == "__main__":
