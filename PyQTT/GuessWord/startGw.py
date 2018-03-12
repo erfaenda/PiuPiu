@@ -15,6 +15,7 @@ class MyWin(QtWidgets.QMainWindow):
         # Здесь прописываем событие нажатия на кнопку
         self.ui.pushButton.clicked.connect(self.start1)
         self.ui.pushButton_2.clicked.connect(self.clearText)
+        self.ui.lineEdit.returnPressed.connect(self.start1)
 
     # мои функции
     def start1(self):
@@ -32,7 +33,14 @@ class MyWin(QtWidgets.QMainWindow):
         self.res = ["", "", "", ""]
         self.r = open("word_rus.txt", 'r', encoding='utf-8')
         self.fileRead = self.r.read()
-        self.fileSplit = self.fileRead.split()
+        #self.fileSplit = self.fileRead.split()
+        # улучшеная версия, ищщет только среди слов в 4 символа
+        self.fileSplit0 = self.fileRead.split()
+        self.fileSplit = []
+        for word in self.fileSplit0:
+            if len(word) == 4:
+                self.fileSplit.append(word)
+
         self.r.close()
         self.progress = QtWidgets.QProgressDialog('Поиск....', 'Стоп', 0, len(self.initW), self.ui.lineEdit)
         self.progress.setWindowModality(QtCore.Qt.WindowModal)
@@ -79,6 +87,10 @@ class MyWin(QtWidgets.QMainWindow):
 
     def clearText(self):
         self.ui.plainTextEdit.clear()
+
+    def keyPressEvent(self, e):
+        if e.key() == QtCore.Qt.Key_Enter:
+            self.start1()
 
 
 if __name__ == "__main__":
