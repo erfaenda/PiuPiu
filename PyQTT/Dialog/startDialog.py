@@ -12,6 +12,15 @@ class MyWin(QtWidgets.QMainWindow):
         # Здесь прописываем событие нажатия на кнопку
         self.ui.actionExit.triggered.connect(self.close)
 
+    def closeEvent(self, e):
+        result = QtWidgets.QMessageBox.question(self, "Подтверждение", "Хотите выйти?",
+                                            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
+                                            QtWidgets.QMessageBox.No)
+        if result == QtWidgets.QMessageBox.Yes:
+            e.accept()
+        else:
+            e.ignore()
+
 
     # при нажатии на кнопку
     def myfunction(self):
