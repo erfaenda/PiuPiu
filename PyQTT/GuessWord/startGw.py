@@ -60,7 +60,7 @@ class MyWin(QtWidgets.QMainWindow):
                                             self.c += 1
                                             self.str = "Найдено совпадений: " + str(len(self.resArr)) + "\n" + self.arrOutput(self.resArr) + "\n" + str(self.c) + " комбинаций проверено\nВремя исполнения: " + str(time.time() - self.t1) + "с."
                                             self.ui.plainTextEdit.appendPlainText(self.str)
-        #удаление индикатора после его работы
+        #удаление индикатора после его работыtyu
         self.progress.deleteLater()
 
 
