@@ -16,6 +16,16 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton.clicked.connect(self.start1)
         self.ui.pushButton_2.clicked.connect(self.clearText)
         self.ui.lineEdit.returnPressed.connect(self.start1)
+        self.ui.action_2.triggered.connect(self.close)
+
+    def closeEvent(self, e):
+        result = QtWidgets.QMessageBox.question(self, "Подтверждение", "Хотите выйти?",
+                                                    QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
+                                                    QtWidgets.QMessageBox.No)
+        if result == QtWidgets.QMessageBox.Yes:
+          e.accept()
+        else:
+          e.ignore()
 
     # мои функции
     def start1(self):

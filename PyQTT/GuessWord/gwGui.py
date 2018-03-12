@@ -33,7 +33,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.pushButton_2, 2, 1, 1, 2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 613, 30))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 613, 21))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")
@@ -45,7 +45,6 @@ class Ui_MainWindow(object):
         self.action.setObjectName("action")
         self.action_2 = QtWidgets.QAction(MainWindow)
         self.action_2.setObjectName("action_2")
-        self.menu.addAction(self.action)
         self.menu.addAction(self.action_2)
         self.menubar.addAction(self.menu.menuAction())
 
@@ -54,7 +53,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Главное окно"))
         self.pushButton.setText(_translate("MainWindow", "Поиск"))
         self.pushButton_2.setText(_translate("MainWindow", "Очистка"))
         self.menu.setTitle(_translate("MainWindow", "Меню"))
