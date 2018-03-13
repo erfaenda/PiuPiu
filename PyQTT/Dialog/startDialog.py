@@ -12,11 +12,12 @@ class MyWin(QtWidgets.QMainWindow):
         # Здесь прописываем событие нажатия на кнопку
         self.ui.actionExit.triggered.connect(self.close)
         self.ui.actionSave.triggered.connect(self.saveToFile)
+        self.ui.actionOpen.triggered.connect(self.openFile)
     # Стандарный  вызов диалога
     def closeEvent(self, e):
         result = QtWidgets.QMessageBox.question(self, "Подтверждение", "Хотите выйти?",
-                                            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
-                                            QtWidgets.QMessageBox.No)
+                                            QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No |
+                                            QtWidgets.QMessageBox.Cancel)
         if result == QtWidgets.QMessageBox.Yes:
             e.accept()
         else:
@@ -35,6 +36,15 @@ class MyWin(QtWidgets.QMainWindow):
             self.writeFile.write(self.ui.plainTextEdit.toHtml())
             self.writeFile.close()
             self.ui.statusbar.showMessage('Сохранено в... {}'.format(self.fileName))
+
+    def openFile(self):
+        options = QtWidgets.QFileDialog.Options()
+        self.fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Open File", '', 'HTML Files (*.html)', options=options)
+        if self.fileName:
+            self.openF = open(self.fileName, 'r', encoding='utf-8')
+            self.ui.plainTextEdit.insertPlainText(self.openF.read())
+            self.openF.close()
+            self.ui.statusbar.showMessage('{} открыт'.format(self.fileName))
 
 # при нажатии на кнопку
     def myfunction(self):

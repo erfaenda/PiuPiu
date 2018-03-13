@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(600, 480)
+        MainWindow.resize(432, 340)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -33,6 +33,9 @@ class Ui_MainWindow(object):
         self.actionSave.setObjectName("actionSave")
         self.actionExit = QtWidgets.QAction(MainWindow)
         self.actionExit.setObjectName("actionExit")
+        self.actionOpen = QtWidgets.QAction(MainWindow)
+        self.actionOpen.setObjectName("actionOpen")
+        self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionExit)
@@ -45,6 +48,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.menuFile.setTitle(_translate("MainWindow", "Fi&le"))
-        self.actionSave.setText(_translate("MainWindow", "Save    "))
-        self.actionExit.setText(_translate("MainWindow", "Exit"))
+        self.actionSave.setText(_translate("MainWindow", "&Save    "))
+        self.actionExit.setText(_translate("MainWindow", "&Exit"))
+        self.actionOpen.setText(_translate("MainWindow", "Open"))
 
