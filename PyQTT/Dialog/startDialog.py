@@ -11,41 +11,32 @@ class MyWin(QtWidgets.QMainWindow):
 
         # Здесь прописываем событие нажатия на кнопку
         self.ui.actionExit.triggered.connect(self.close)
+        self.ui.actionSave.triggered.connect(self.saveToFile)
     # Стандарный  вызов диалога
-    '''def closeEvent(self, e):
+    def closeEvent(self, e):
         result = QtWidgets.QMessageBox.question(self, "Подтверждение", "Хотите выйти?",
                                             QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
                                             QtWidgets.QMessageBox.No)
         if result == QtWidgets.QMessageBox.Yes:
             e.accept()
         else:
-            e.ignore()'''
-    # Кастомное окно диалога, можно переназначать текст кнопок и названия
-    def closeEvent(self, event):
-        def closed():
-            self.reply.close()
-            event.ignore()
+            e.ignore()
+        # простое сохранение в уготованный файл
+    '''def saveToFile(self):
+        self.writeFile = open("text.txt", 'w', encoding='utf-8')
+        self.writeFile.write(self.ui.plainTextEdit.toPlainText())
+        self.writeFile.close()'''
+    # запись в файл по выбору с выбором имени
+    def saveToFile(self):
+        options = QtWidgets.QFileDialog.Options()
+        self.fileName, _ = QtWidgets.QFileDialog.getSaveFileName(self, "Сохранить в ", "", "HTML Files (*.html)", options=options)
+        if self.fileName:
+            self.writeFile = open(self.fileName, 'w', encoding='utf-8')
+            self.writeFile.write(self.ui.plainTextEdit.toHtml())
+            self.writeFile.close()
+            self.ui.statusbar.showMessage('Сохранено в... {}'.format(self.fileName))
 
-        self.reply = QDialog()
-        vbox = QVBoxLayout()
-        label_dialog = QLabel()
-        label_dialog.setText('Вы действительно хотите выйти?')
-        button_yes = QPushButton(self.reply)
-        button_yes.setText("Да")
-        button_yes.clicked.connect(lambda: self.reply.close())
-        button_no = QPushButton(self.reply)
-        button_no.setText('Нет')
-        button_no.clicked.connect(closed)
-        layout = QHBoxLayout()
-        layout.addWidget(button_yes)
-        layout.addWidget(button_no)
-        vbox.addWidget(label_dialog)
-        vbox.addSpacing(20)
-        vbox.addLayout(layout)
-        self.reply.setLayout(vbox)
-        self.reply.exec()
-
-    # при нажатии на кнопку
+# при нажатии на кнопку
     def myfunction(self):
         self.ui.label.setText("Длинна вашего текста {} символов(а)".format(len(self.ui.lineEdit.text())))
 

@@ -11,12 +11,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(432, 340)
+        MainWindow.resize(600, 480)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
+        self.plainTextEdit = QtWidgets.QTextEdit(self.centralwidget)
         self.plainTextEdit.setObjectName("plainTextEdit")
         self.gridLayout.addWidget(self.plainTextEdit, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
