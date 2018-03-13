@@ -30,16 +30,22 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.textEdit = QtWidgets.QTextEdit(self.scrollAreaWidgetContents)
-        self.textEdit.setObjectName("textEdit")
-        self.verticalLayout_3.addWidget(self.textEdit)
         self.frame = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.frame)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.textEdit = QtWidgets.QTextEdit(self.frame)
+        self.textEdit.setObjectName("textEdit")
+        self.verticalLayout_4.addWidget(self.textEdit)
         self.label = QtWidgets.QLabel(self.frame)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setStyleSheet("")
         self.label.setObjectName("label")
         self.verticalLayout_4.addWidget(self.label)
         self.radioButton = QtWidgets.QRadioButton(self.frame)
@@ -82,6 +88,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.frame_2)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.label_2 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.verticalLayout_7.addWidget(self.label_2)
         self.radioButton_4 = QtWidgets.QRadioButton(self.frame_2)
@@ -124,6 +135,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.frame_3)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
         self.label_3 = QtWidgets.QLabel(self.frame_3)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_10.addWidget(self.label_3)
         self.radioButton_7 = QtWidgets.QRadioButton(self.frame_3)
@@ -161,7 +177,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.Tab3.setCurrentIndex(0)
+        self.Tab3.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -171,23 +187,35 @@ class Ui_MainWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Все детишки знают <span style=\" font-weight:600;\">что?</span></p></body></html>"))
-        self.label.setText(_translate("MainWindow", "TextLabel"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Математика царица всех наук 1+1+1+1 = 4</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Путин царь и бог, без него мы все пропадем!</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Трава это плохо! А дрова необходимы для отапливания бункера</p></body></html>"))
+        self.label.setText(_translate("MainWindow", "Что из предложенного явлется истенной"))
         self.radioButton.setText(_translate("MainWindow", "2 + 2 = &4"))
         self.radioButton_2.setText(_translate("MainWindow", "На траве дрова"))
         self.radioButton_3.setText(_translate("MainWindow", "Путин 2&018"))
-        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_1), _translate("MainWindow", "Tab 1"))
-        self.label_2.setText(_translate("MainWindow", "TextLabel"))
-        self.radioButton_4.setText(_translate("MainWindow", "RadioB&utton"))
-        self.radioButton_5.setText(_translate("MainWindow", "RadioButton"))
-        self.radioButton_6.setText(_translate("MainWindow", "RadioButton"))
-        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
+        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_1), _translate("MainWindow", "Вопрос 1"))
+        self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Какую форму имеет земля?</p></body></html>"))
+        self.label_2.setText(_translate("MainWindow", "Какую форму имеет земля?"))
+        self.radioButton_4.setText(_translate("MainWindow", "Шар"))
+        self.radioButton_5.setText(_translate("MainWindow", "Квадрат"))
+        self.radioButton_6.setText(_translate("MainWindow", "Плоская Земля! Ну вы че епта! Ну плоская же она!"))
+        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_2), _translate("MainWindow", "Вопрос 2"))
         self.tab_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Подзсказка</p></body></html>"))
-        self.label_3.setText(_translate("MainWindow", "TextLabel"))
-        self.radioButton_7.setText(_translate("MainWindow", "RadioB&utton"))
-        self.radioButton_8.setText(_translate("MainWindow", "RadioButton"))
-        self.radioButton_9.setText(_translate("MainWindow", "RadioButton"))
-        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_3), _translate("MainWindow", "Page"))
+        self.textEdit_3.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Noto Sans\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Сегодня не все могут в завтрашний день смотреть!</p></body></html>"))
+        self.label_3.setText(_translate("MainWindow", "Что из предложенного бреда вам кажеться истенной?"))
+        self.radioButton_7.setText(_translate("MainWindow", "Вернее не только лишь все, мало кто может это делать"))
+        self.radioButton_8.setText(_translate("MainWindow", "Кличко ты ли это?"))
+        self.radioButton_9.setText(_translate("MainWindow", "Украина це Европа!"))
+        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_3), _translate("MainWindow", "Вопрос 3"))
         self.menuFile.setTitle(_translate("MainWindow", "Fi&le"))
-        self.actionExir.setText(_translate("MainWindow", "Exit"))
+        self.actionExir.setText(_translate("MainWindow", "&Exit"))
 

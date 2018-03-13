@@ -14,6 +14,8 @@ class MyWin(QtWidgets.QMainWindow):
 
         # Здесь прописываем событие нажатия на кнопку
         self.ui.radioButton.clicked.connect(self.correctAns1)
+        self.ui.radioButton_6.clicked.connect(self.correctAns2)
+        self.ui.radioButton_7.clicked.connect(self.correctAns3)
         #self.ui.pushButton.clicked.connect(self.MyFunction)
         #self.widget.keyPressEvent2.connect(self.MyFunction)
 
@@ -25,6 +27,17 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.statusbar.showMessage("Ответ верный, вторая вкладка таблицы разблокирована!", 5000)
         self.ui.tab_1.setEnabled(False)
         self.ui.Tab3.setTabEnabled(1, True)
+
+    def correctAns2(self):
+        self.ui.statusbar.showMessage("Ответ верный, вторая вкладка таблицы разблокирована!", 5000)
+        self.ui.tab_2.setEnabled(False)
+        self.ui.Tab3.setTabEnabled(2, True)
+
+    def correctAns3(self):
+        self.ui.statusbar.showMessage("Ответ верный, вторая вкладка таблицы разблокирована!", 5000)
+        self.ui.tab_3.setEnabled(False)
+        #self.ui.Tab3.setTabEnabled(1, True)
+
 
 
 
