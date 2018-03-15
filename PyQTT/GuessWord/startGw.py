@@ -82,8 +82,58 @@ class MyWin(QtWidgets.QMainWindow):
         self.progress.deleteLater()
 
 
-    def wordFive(self):
-        pass
+    def wordFive(self, letters):
+        self.canceled = False
+        self.t1 = time.time()
+        self.c = 0
+        self.resArr = []
+        self.initW = letters
+        self.res = ["", "", "", "", ""]
+        self.r = open("word_rus.txt", 'r', encoding='utf-8')
+        self.fileRead = self.r.read()
+        # self.fileSplit = self.fileRead.split()
+        # улучшеная версия, ищщет только среди слов в 5 символа
+        self.fileSplit0 = self.fileRead.split()
+        self.fileSplit = []
+        for word in self.fileSplit0:
+            if len(word) == 5:
+                self.fileSplit.append(word)
+
+        self.r.close()
+        self.progress = QtWidgets.QProgressDialog('Поиск....', 'Стоп', 0, len(self.initW), self.ui.lineEdit)
+        self.progress.setWindowModality(QtCore.Qt.WindowModal)
+        self.progress.setMinimumDuration(100)
+        for self.i in range(0, len(self.initW)):
+            self.res[0] = self.initW[self.i]
+            # индикатор
+            self.progress.setValue(self.i)
+            if self.progress.wasCanceled():
+                self.canceled = True
+                return
+            for self.q in range(0, len(self.initW)):
+                if (self.q != self.i):
+                    self.res[1] = self.initW[self.q]
+                    for self.p in range(0, len(self.initW)):
+                        if (self.p != self.i) and (self.p != self.q):
+                            self.res[2] = self.initW[self.p]
+                            for self.pp in range(0, len(self.initW)):
+                                if (self.pp != self.i) and (self.pp != self.q) and (self.pp != self.p):
+                                    self.res[3] = self.initW[self.pp]
+                                    for self.ppp in range(0, len(self.initW)):
+                                        if (self.ppp != self.i) and (self.ppp != self.q) and (self.ppp != self.p) and (self.ppp != self.pp):
+                                            self.res[4] = self.initW[self.ppp]
+                                            self.wordFor = self.res[0] + self.res[1] + self.res[2] + self.res[3] + self.res[4]
+                                            if self.wordFor in self.fileSplit:
+                                                if self.wordFor not in self.resArr:
+                                                    self.resArr.append(self.wordFor)
+                                                    self.c += 1
+                                                    self.str = "Найдено совпадений: " + str(
+                                                        len(self.resArr)) + "\n" + self.arrOutput(self.resArr) + "\n" + str(
+                                                        self.c) + " комбинаций проверено\nВремя исполнения: " + str(
+                                                        time.time() - self.t1) + "с."
+                                                    self.ui.plainTextEdit.appendPlainText(self.str)
+        # удаление индикатора после его работыtyu
+        self.progress.deleteLater()
 
     def arrOutput(self, arr):
         arr.sort()
