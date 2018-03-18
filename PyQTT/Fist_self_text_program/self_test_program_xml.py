@@ -20,6 +20,10 @@ class MyWin(QtWidgets.QMainWindow):
         self.dom = xml.dom.minidom.parse('base.xml')
         self.collection = self.dom.documentElement
         self.linesArr = self.collection.getElementsByTagName("text")
+        # Инициализирую  размер шрифта в текстовых полях
+        self.ui.textEdit.setFontPointSize(12)
+        self.ui.textEdit_2.setFontPointSize(14)
+        self.ui.textEdit_3.setFontPointSize(16)
 
         for line in self.linesArr:
             self.text.append(line.childNodes[0].data)
