@@ -37,9 +37,9 @@ class MyWin(QtWidgets.QMainWindow):
         random.shuffle(self.variants[2])
 
         # Возможно это позиционирование текста который надо изучить
-        self.ui.textEdit.setText(self.text[0])
-        self.ui.textEdit_2.setText(self.text[1])
-        self.ui.textEdit_3.setText(self.text[2])
+        self.ui.textEdit.setHtml(self.text[0])
+        self.ui.textEdit_2.setHtml(self.text[1])
+        self.ui.textEdit_3.setHtml(self.text[2])
         # Позиционирование вопроса
         self.ui.label.setText(self.questions[0])
         self.ui.label_2.setText(self.questions[1])
