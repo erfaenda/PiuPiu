@@ -13,10 +13,16 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background: rgba(47, 47, 47, 194)</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QScrollArea" name="scrollArea">
+      <property name="styleSheet">
+       <string notr="true">background:rgb(239, 255, 234)</string>
+      </property>
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
@@ -25,11 +31,10 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>627</width>
-         <height>431</height>
+         <width>631</width>
+         <height>418</height>
         </rect>
        </property>
-       <zorder>pushButton</zorder>
       </widget>
      </widget>
     </item>
@@ -38,6 +43,9 @@
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QPushButton" name="pushButton">
+         <property name="styleSheet">
+          <string notr="true">background:rgb(107, 107, 107)</string>
+         </property>
          <property name="text">
           <string>Проверить</string>
          </property>
@@ -47,9 +55,6 @@
      </widget>
     </item>
    </layout>
-   <zorder>scrollArea</zorder>
-   <zorder>widget</zorder>
-   <zorder>pushButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -57,7 +62,7 @@
      <x>0</x>
      <y>0</y>
      <width>647</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
   </widget>

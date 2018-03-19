@@ -88,7 +88,7 @@ class MyWin(QtWidgets.QMainWindow):
                     if rb.text() == self.correct[group]:
                         counter += 1
         # And this is the result! Rounded to 2 decimal points
-        message = "Your result is " + "%.2f" % float(counter / len(self.bgrs) * 100) + "%"
+        message = "Ваш результат! " + "%.2f" % float(counter / len(self.bgrs) * 100) + "%"
         self.ui.statusbar.setStyleSheet('color: navy; font-weight: bold;')
         self.ui.statusbar.showMessage(message)
 
