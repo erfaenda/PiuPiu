@@ -194,7 +194,7 @@ class Ui_MainWindow(object):
         self.radioButton.setText(_translate("MainWindow", "2 + 2 = &4"))
         self.radioButton_2.setText(_translate("MainWindow", "На траве дрова"))
         self.radioButton_3.setText(_translate("MainWindow", "Путин 2&018"))
-        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_1), _translate("MainWindow", "Tab 1"))
+        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_1), _translate("MainWindow", "1 вопрос"))
         self.textEdit_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -204,7 +204,7 @@ class Ui_MainWindow(object):
         self.radioButton_4.setText(_translate("MainWindow", "Шар"))
         self.radioButton_5.setText(_translate("MainWindow", "Квадрат"))
         self.radioButton_6.setText(_translate("MainWindow", "Плоская Земля! Ну вы че епта! Ну плоская же она!"))
-        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_2), _translate("MainWindow", "Tab 2"))
+        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_2), _translate("MainWindow", "2 вопрос"))
         self.tab_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>Подзсказка</p></body></html>"))
         self.textEdit_3.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -215,7 +215,7 @@ class Ui_MainWindow(object):
         self.radioButton_7.setText(_translate("MainWindow", "Вернее не только лишь все, мало кто может это делать"))
         self.radioButton_8.setText(_translate("MainWindow", "Кличко ты ли это?"))
         self.radioButton_9.setText(_translate("MainWindow", "Украина це Европа!"))
-        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_3), _translate("MainWindow", "Page"))
+        self.Tab3.setTabText(self.Tab3.indexOf(self.tab_3), _translate("MainWindow", "3 вопрос"))
         self.menuFile.setTitle(_translate("MainWindow", "Fi&le"))
         self.actionExir.setText(_translate("MainWindow", "&Exit"))
 
