@@ -27,6 +27,8 @@ class MyWin(QtWidgets.QMainWindow):
         self.verticalLayout.setObjectName("verticalLayout")
         # adding widgets to the scrollarea
         self.addWidgetsToInterface()
+        # Подсказка
+        self.ui.pushButton.setToolTip('Нажмите кнопку что бы совершить проверку')
 
         self.ui.pushButton.clicked.connect(self.check)
 
@@ -91,6 +93,8 @@ class MyWin(QtWidgets.QMainWindow):
         message = "Ваш результат! " + "%.2f" % float(counter / len(self.bgrs) * 100) + "%"
         self.ui.statusbar.setStyleSheet('color: navy; font-weight: bold;')
         self.ui.statusbar.showMessage(message)
+
+
 
 
 if __name__ == "__main__":
