@@ -13,18 +13,25 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
 
         # Здесь прописываем событие нажатия на кнопку
-        self.ui.pushButton_2.clicked.connect(self.getSid)
-        self.ui.lineEdit_2.returnPressed.connect(self.getSid)
+        self.ui.pushButton_2.clicked.connect(self.getDcSid)
+        self.ui.lineEdit_2.returnPressed.connect(self.getDcSid)
 
-    def getSid(self):
+    # поиск локальных пользователей на пк
+    def getLocalSid(self):
         user = self.ui.lineEdit_2.text()
-        proc = subprocess.Popen(
-            ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount(\"' + user + '\"); '
-                                                                                                   '$strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'],
-            shell=True, stdout=subprocess.PIPE)
+        cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}"); $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'.format(user)]
+        proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
         out = proc.communicate()
         finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
         print(finalSid)
+        proc.wait()
+        self.ui.plainTextEdit.appendPlainText(finalSid)
+
+    def getDcSid(self):
+        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "a.silantev"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value']
+        proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
+        out = proc.communicate()
+        finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
         proc.wait()
         self.ui.plainTextEdit.appendPlainText(finalSid)
 
