@@ -41,9 +41,9 @@ class MyWin(QtWidgets.QMainWindow):
             if e.key() == QtCore.Qt.Key_Enter:
                 self.getSid()
 
-    def setAllChekcboxCheck(self):
-        for chekboxes in self.ui.buttonGroup:
-            print(self.ui.buttonGroup[0])
+    def setAllChekcboxCheck(self, checked=0):
+        for chekboxes in self.ui.buttonGroup.buttons():
+            chekboxes.setChecked(checked)
 
     '''def setAllChekcboxCheck(self, checked=True):
         for chekboxes in self.ui.buttonGroup:
