@@ -15,6 +15,7 @@ class MyWin(QtWidgets.QMainWindow):
         # Здесь прописываем событие нажатия на кнопку
         self.ui.pushButton_2.clicked.connect(self.getDcSid)
         self.ui.lineEdit_2.returnPressed.connect(self.getDcSid)
+        self.ui.pushButton_4.clicked.connect(self.setAllChekcboxCheck)
 
     # поиск локальных пользователей на пк
     def getLocalSid(self):
@@ -40,6 +41,21 @@ class MyWin(QtWidgets.QMainWindow):
             if e.key() == QtCore.Qt.Key_Enter:
                 self.getSid()
 
+    def setAllChekcboxCheck(self):
+        for chekboxes in self.ui.buttonGroup:
+            print(self.ui.buttonGroup[0])
+
+    '''def setAllChekcboxCheck(self, checked=True):
+        for chekboxes in self.ui.buttonGroup:
+            chekboxes.setChecked(checked)
+
+    def setAllButtonsChecked(self, checked=True):
+        for button in self.group.buttons():
+            button.setChecked(checked)
+            
+    def ClearAll(self):
+        chekboxes = [self.ui.checkBox.]
+        for i in'''
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)

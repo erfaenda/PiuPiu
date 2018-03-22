@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>974</width>
+    <width>1027</width>
     <height>814</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>iCacls Shell alpha</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_5">
@@ -190,7 +190,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>40</height>
+           <height>15</height>
           </size>
          </property>
         </spacer>
@@ -295,53 +295,94 @@
        <string>Последовательность простых прав:</string>
       </property>
       <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="0">
-        <widget class="QRadioButton" name="radioButton">
+       <item row="8" column="0">
+        <widget class="QPushButton" name="pushButton_4">
          <property name="text">
-          <string>N - Доступ отсутствует</string>
+          <string>Очистить</string>
          </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="checkBox">
+         <property name="text">
+          <string>&amp;N - Доступ отсутствует</string>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QRadioButton" name="radioButton_2">
+        <widget class="QCheckBox" name="checkBox_2">
          <property name="text">
           <string>F - Полный доступ</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QRadioButton" name="radioButton_3">
+        <widget class="QCheckBox" name="checkBox_3">
          <property name="text">
           <string>M - доступ на изменение</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QRadioButton" name="radioButton_4">
+        <widget class="QCheckBox" name="checkBox_4">
          <property name="text">
           <string>R&amp;X - Доступ на чтение и выполнение</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QRadioButton" name="radioButton_5">
+        <widget class="QCheckBox" name="checkBox_5">
          <property name="text">
           <string>R - Доступ только на чтение</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="5" column="0">
-        <widget class="QRadioButton" name="radioButton_6">
+        <widget class="QCheckBox" name="checkBox_6">
          <property name="text">
           <string>W - Доступ только на запись</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="6" column="0">
-        <widget class="QRadioButton" name="radioButton_7">
+        <widget class="QCheckBox" name="checkBox_7">
          <property name="text">
           <string>&amp;D - доступ на удаление</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
       </layout>
@@ -394,7 +435,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>974</width>
+     <width>1027</width>
      <height>30</height>
     </rect>
    </property>
@@ -415,4 +456,7 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>
