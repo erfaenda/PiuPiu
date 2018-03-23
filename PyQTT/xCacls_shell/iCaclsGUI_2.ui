@@ -316,73 +316,52 @@
         </spacer>
        </item>
        <item row="0" column="0">
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="checkBox_26">
          <property name="text">
           <string>&amp;N - Доступ отсутствует</string>
          </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QCheckBox" name="checkBox_2">
+        <widget class="QCheckBox" name="checkBox_27">
          <property name="text">
           <string>F - Полный доступ</string>
          </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QCheckBox" name="checkBox_3">
+        <widget class="QCheckBox" name="checkBox_28">
          <property name="text">
           <string>M - доступ на изменение</string>
          </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QCheckBox" name="checkBox_4">
+        <widget class="QCheckBox" name="checkBox_29">
          <property name="text">
           <string>R&amp;X - Доступ на чтение и выполнение</string>
          </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QCheckBox" name="checkBox_5">
+        <widget class="QCheckBox" name="checkBox_31">
          <property name="text">
           <string>R - Доступ только на чтение</string>
          </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
         </widget>
        </item>
        <item row="5" column="0">
-        <widget class="QCheckBox" name="checkBox_6">
+        <widget class="QCheckBox" name="checkBox_32">
          <property name="text">
           <string>W - Доступ только на запись</string>
          </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
         </widget>
        </item>
        <item row="6" column="0">
-        <widget class="QCheckBox" name="checkBox_7">
+        <widget class="QCheckBox" name="checkBox_30">
          <property name="text">
           <string>&amp;D - доступ на удаление</string>
          </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup</string>
-         </attribute>
         </widget>
        </item>
       </layout>
@@ -456,7 +435,4 @@
  </widget>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
- </buttongroups>
 </ui>

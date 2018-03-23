@@ -15,9 +15,10 @@ class MyWin(QtWidgets.QMainWindow):
         # Здесь прописываем событие нажатия на кнопку
         self.ui.pushButton_2.clicked.connect(self.getDcSid)
         self.ui.lineEdit_2.returnPressed.connect(self.getDcSid)
-        self.ui.pushButton_4.clicked.connect(self.setAllChekcboxCheck)
+        self.ui.pushButton_4.clicked.connect(self.clearCheckbox)
 
-    # поиск локальных пользователей на пк
+
+        # поиск локальных пользователей на пк
     def getLocalSid(self):
         user = self.ui.lineEdit_2.text()
         cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}"); $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'.format(user)]
@@ -41,9 +42,17 @@ class MyWin(QtWidgets.QMainWindow):
             if e.key() == QtCore.Qt.Key_Enter:
                 self.getSid()
 
-    def setAllChekcboxCheck(self, checked=0):
-        for chekboxes in self.ui.buttonGroup.buttons():
-            chekboxes.setChecked(checked)
+    def clearCheckbox(self):
+        list_checkboxes = [self.ui.checkBox, self.ui.checkBox_2, self.ui.checkBox_3, self.ui.checkBox_4, self.ui.checkBox_5, \
+                           self.ui.checkBox_6, self.ui.checkBox_8, self.ui.checkBox_9, self.ui.checkBox_10, self.ui.checkBox_11, \
+                           self.ui.checkBox_12, self.ui.checkBox_13, self.ui.checkBox_14, self.ui.checkBox_15, self.ui.checkBox_16, \
+                           self.ui.checkBox_17, self.ui.checkBox_18, self.ui.checkBox_19, self.ui.checkBox_20, self.ui.checkBox_21, \
+                           self.ui.checkBox_22, self.ui.checkBox_23, self.ui.checkBox_24, self.ui.checkBox_25, self.ui.checkBox_26, \
+                           self.ui.checkBox_27, self.ui.checkBox_28, self.ui.checkBox_29, self.ui.checkBox_30]
+
+        for cheboxes in list_checkboxes:
+            cheboxes.setChecked(False)
+
 
     '''def setAllChekcboxCheck(self, checked=True):
         for chekboxes in self.ui.buttonGroup:
