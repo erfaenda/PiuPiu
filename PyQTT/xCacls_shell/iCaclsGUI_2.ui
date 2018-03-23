@@ -34,6 +34,9 @@
          <property name="text">
           <string>MA - Максимально возможный</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="4" column="2">
@@ -41,6 +44,9 @@
          <property name="text">
           <string>REA - Чтение дополнительных атрибутов</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="8" column="2">
@@ -48,6 +54,9 @@
          <property name="text">
           <string>RA - чтение атрибутов</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="7" column="0">
@@ -55,6 +64,9 @@
          <property name="text">
           <string>GR - Общее чтение</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="5" column="0">
@@ -62,6 +74,9 @@
          <property name="text">
           <string>AS - Доступ к безопасности системы</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="0">
@@ -69,6 +84,9 @@
          <property name="text">
           <string>DE - Доступ отсутствует</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="9" column="0">
@@ -76,6 +94,9 @@
          <property name="text">
           <string>GE - Общее выполнение</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="5" column="2">
@@ -83,6 +104,9 @@
          <property name="text">
           <string>WEA - Запись дополнительных атрибутов</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="2" column="2">
@@ -90,6 +114,9 @@
          <property name="text">
           <string>WD - Запись данных, добавление файлов</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="8" column="0">
@@ -97,6 +124,9 @@
          <property name="text">
           <string>GW - Общая запись</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="0">
@@ -104,6 +134,9 @@
          <property name="text">
           <string>RC - Чтение</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="4" column="3">
@@ -124,6 +157,9 @@
          <property name="text">
           <string>GA - Все общие</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="6" column="2">
@@ -131,6 +167,9 @@
          <property name="text">
           <string>X - Выполнение файлов и обзор папок</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="2">
@@ -138,6 +177,9 @@
          <property name="text">
           <string>RD - Чтение данных, перечисление содержимого папки</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="2">
@@ -145,6 +187,9 @@
          <property name="text">
           <string>AD - Добавление файлов и вложенных каталогов</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="0">
@@ -152,6 +197,9 @@
          <property name="text">
           <string>WO - Смена владельца</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="7" column="2">
@@ -159,6 +207,9 @@
          <property name="text">
           <string>DC - Удаление вложенных объектов</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="9" column="2">
@@ -166,6 +217,9 @@
          <property name="text">
           <string>WA - Запись атрибутов</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="4" column="0">
@@ -173,6 +227,9 @@
          <property name="text">
           <string>S - Синхронизация</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="2" column="0">
@@ -180,6 +237,9 @@
          <property name="text">
           <string>WDAC - запись DAC</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_3</string>
+         </attribute>
         </widget>
        </item>
        <item row="10" column="0">
@@ -222,6 +282,9 @@
          <property name="text">
           <string>OI - Наследование объектами</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="1">
@@ -229,6 +292,9 @@
          <property name="text">
           <string>IO - Только наследование</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="0">
@@ -236,6 +302,9 @@
          <property name="text">
           <string>CI - Наследование контейнерами</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="1">
@@ -243,6 +312,9 @@
          <property name="text">
           <string>NP - Запрет на распространение наследования</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="3">
@@ -281,6 +353,9 @@
          <property name="text">
           <string>I - Наследование разрешений от родительского контейнера</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
         </widget>
        </item>
       </layout>
@@ -320,6 +395,9 @@
          <property name="text">
           <string>&amp;N - Доступ отсутствует</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="1" column="0">
@@ -327,6 +405,9 @@
          <property name="text">
           <string>F - Полный доступ</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="2" column="0">
@@ -334,6 +415,9 @@
          <property name="text">
           <string>M - доступ на изменение</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="0">
@@ -341,6 +425,9 @@
          <property name="text">
           <string>R&amp;X - Доступ на чтение и выполнение</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="4" column="0">
@@ -348,6 +435,9 @@
          <property name="text">
           <string>R - Доступ только на чтение</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="5" column="0">
@@ -355,6 +445,9 @@
          <property name="text">
           <string>W - Доступ только на запись</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
        <item row="6" column="0">
@@ -362,6 +455,9 @@
          <property name="text">
           <string>&amp;D - доступ на удаление</string>
          </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup</string>
+         </attribute>
         </widget>
        </item>
       </layout>
@@ -435,4 +531,9 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_3"/>
+ </buttongroups>
 </ui>
