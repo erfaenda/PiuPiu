@@ -20,6 +20,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_4.clicked.connect(self.clearAllCheckboxes)
         self.ui.buttonGroup_3.buttonClicked.connect(self.clear1Checkboxes)
         self.ui.buttonGroup.buttonClicked.connect(self.clear2Checkboxes)
+        self.ui.pushButton.clicked.connect(self.openFile)
 
         # поиск локальных пользователей на пк
     def getLocalSid(self):
@@ -102,6 +103,14 @@ class MyWin(QtWidgets.QMainWindow):
 
         for button in groups:
             button.setChecked(False)
+
+    # диалог выбора файла или папки
+    def openFile(self):
+        options = QtWidgets.QFileDialog.Options()
+        dlg = QtWidgets.QFileDialog()
+        self.fileName, _ = dlg.setFileMode()
+        if self.fileName:
+            self.ui.statusbar.showMessage('{} открыт'.format(self.fileName))
 
     # лишняя проверка ненужна если есть слоты
     '''def uncheckRadio(self):
