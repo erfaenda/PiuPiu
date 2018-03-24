@@ -3,6 +3,7 @@ import subprocess
 # Импортируем наш интерфейс из файла
 from PyQTT.xCacls_shell.iCaclsGUI_2 import *
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import Qt
 
 class MyWin(QtWidgets.QMainWindow):
@@ -20,9 +21,10 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_4.clicked.connect(self.clearAllCheckboxes)
         self.ui.buttonGroup_3.buttonClicked.connect(self.clear1Checkboxes)
         self.ui.buttonGroup.buttonClicked.connect(self.clear2Checkboxes)
-        self.ui.pushButton.clicked.connect(self.openFile)
+        self.ui.pushButton.clicked.connect(self.choose_directory)
+        self.ui.pushButton_3.clicked.connect(self.check_accsess)
 
-        # поиск локальных пользователей на пк
+    # поиск локальных пользователей на пк
     def getLocalSid(self):
         user = self.ui.lineEdit_2.text()
         cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}"); $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'.format(user)]
@@ -32,7 +34,7 @@ class MyWin(QtWidgets.QMainWindow):
         print(finalSid)
         proc.wait()
         self.ui.plainTextEdit.appendPlainText(finalSid)
-
+    # поиск доменного пользовател
     def getDcSid(self):
         cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "a.silantev"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value']
         proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
@@ -74,43 +76,43 @@ class MyWin(QtWidgets.QMainWindow):
             i.setCheckable(False)
             i.setCheckable(True)'''
 
-    # снятие всех чекбоксов
+    # снятие чекбоксов во всехблоках
     def clearAllCheckboxes(self):
         groups = self.ui.buttonGroup.buttons() + self.ui.buttonGroup_2.buttons() + self.ui.buttonGroup_3.buttons()
         self.ui.buttonGroup.setExclusive(False)
         self.ui.buttonGroup_2.setExclusive(False)
         self.ui.buttonGroup_3.setExclusive(False)
-
         for button in groups:
             button.setChecked(False)
 
         self.ui.buttonGroup.setExclusive(True)
         self.ui.buttonGroup_2.setExclusive(True)
-        self.ui.buttonGroup_3.setExclusive(True)
-
+    # очистка первого блока с чекбоксами
     def clear1Checkboxes(self):
         groups = self.ui.buttonGroup.buttons()
         self.ui.buttonGroup.setExclusive(False)
-
         for button in groups:
             button.setChecked(False)
 
         self.ui.buttonGroup.setExclusive(True)
-
+    # отчистка второго блока с чекбоксами
     def clear2Checkboxes(self):
         groups = self.ui.buttonGroup_3.buttons()
         self.ui.buttonGroup_3.setExclusive(False)
-
         for button in groups:
             button.setChecked(False)
 
     # диалог выбора файла или папки
-    def openFile(self):
-        options = QtWidgets.QFileDialog.Options()
-        dlg = QtWidgets.QFileDialog()
-        self.fileName, _ = dlg.setFileMode()
-        if self.fileName:
-            self.ui.statusbar.showMessage('{} открыт'.format(self.fileName))
+    def choose_directory(self):
+        input_dir = QFileDialog.getExistingDirectory(None, 'Выберете директорию: ')
+        self.ui.lineEdit.setText(input_dir)
+        self.check_accsess()
+
+    def check_accsess(self):
+        input_dir = self.ui.lineEdit.text()
+        proc = subprocess.check_output(['icacls.exe', input_dir], stderr=subprocess.STDOUT)
+        print(proc.decode('cp866'))
+        self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
 
     # лишняя проверка ненужна если есть слоты
     '''def uncheckRadio(self):

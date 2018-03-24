@@ -1,9 +1,16 @@
 import sys
 import subprocess
-def getSid(self):
-    proc = subprocess.Popen(
-        ['icacls', '$objUser = New-Object System.Security.Principal.NTAccount(\"' + user + '\"); '
-                                                                                               '$strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'],
-        shell=True, stdout=subprocess.PIPE)
+'''def getSid():
+    proc = subprocess.Popen(['icacls.exe', 'C:\\'], shell=False, stdout=subprocess.PIPE)
     out = proc.communicate()
+    print(out)
     proc.wait()
+
+getSid()'''
+
+
+def check_accsess():
+    proc = subprocess.check_output(['icacls.exe', r'C:\\'], stderr=subprocess.STDOUT)
+    print(proc)
+
+check_accsess()
