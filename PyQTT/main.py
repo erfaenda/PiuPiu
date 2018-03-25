@@ -27,7 +27,7 @@ class MyWin(QtWidgets.QMainWindow):
         print(stroka)
         return stroka
 
-    def stroka_line(self):
+    def dop_prava(self):
         stroka = ''
         if self.ui.checkBox.isChecked():
             stroka = stroka + '(F),'

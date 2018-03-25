@@ -129,20 +129,98 @@ class MyWin(QtWidgets.QMainWindow):
         print(proc.decode('cp866'))
         self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
 
-    def list_line(self):
+    # формирование строки для дополнительных прав, вида: RC,WA,WEA итд
+    def dop_prava(self):
+        stroka = ''
+        if self.ui.checkBox.isChecked():
+            stroka = stroka + 'DE,'
+        if self.ui.checkBox_2.isChecked():
+            stroka = stroka + 'RC,'
+        if self.ui.checkBox_3.isChecked():
+            stroka = stroka + 'WDAC,'
+        if self.ui.checkBox_4.isChecked():
+            stroka = stroka + 'WO,'
+        if self.ui.checkBox_5.isChecked():
+            stroka = stroka + 'S,'
+        if self.ui.checkBox_6.isChecked():
+            stroka = stroka + 'AS,'
+        if self.ui.checkBox_7.isChecked():
+            stroka = stroka + 'MA,'
+        if self.ui.checkBox_8.isChecked():
+            stroka = stroka + 'GR,'
+        if self.ui.checkBox_9.isChecked():
+            stroka = stroka + 'GW,'
+        if self.ui.checkBox_10.isChecked():
+            stroka = stroka + 'GE,'
+        if self.ui.checkBox_19.isChecked():
+            stroka = stroka + 'GA,'
+        if self.ui.checkBox_15.isChecked():
+            stroka = stroka + 'RD,'
+        if self.ui.checkBox_18.isChecked():
+            stroka = stroka + 'WD,'
+        if self.ui.checkBox_13.isChecked():
+            stroka = stroka + 'AD,'
+        if self.ui.checkBox_16.isChecked():
+            stroka = stroka + 'REA,'
+        if self.ui.checkBox_17.isChecked():
+            stroka = stroka + 'WEA,'
+        if self.ui.checkBox_14.isChecked():
+            stroka = stroka + 'X,'
+        if self.ui.checkBox_12.isChecked():
+            stroka = stroka + 'DC,'
+        if self.ui.checkBox_20.isChecked():
+            stroka = stroka + 'RA,'
+        if self.ui.checkBox_11.isChecked():
+            stroka = stroka + 'WA,'
+
+        print(stroka[0:-1])
+        return stroka
+    # формирование строки наследований
+    def stroka_nasledovanya(self):
         list = []
-        if self.ui.checkBox_27.sta():
-            list.append('(F)')
         if self.ui.checkBox_21.isChecked():
             list.append('(OI)')
         if self.ui.checkBox_22.isChecked():
             list.append('(CI)')
-        return str(list)
+        if self.ui.checkBox_23.isChecked():
+            list.append('(IO)')
+        if self.ui.checkBox_24.isChecked():
+            list.append('(NP)')
+        if self.ui.checkBox_25.isChecked():
+            list.append('(I)')
+        stroka = str(list)
+        stroka = stroka.replace('[\'', '').replace('\']', '').replace('\'', '').replace(',', '').replace(' ', '')
+        print(stroka)
+        return stroka
+
+    # формирование строки основных прав
+    def osnovnie_prava(self):
+        list = []
+        if self.ui.checkBox_26.isChecked():
+            list.append('(N)')
+        if self.ui.checkBox_27.isChecked():
+            list.append('(F)')
+        if self.ui.checkBox_28.isChecked():
+            list.append('(M)')
+        if self.ui.checkBox_29.isChecked():
+            list.append('(RX)')
+        if self.ui.checkBox_31.isChecked():
+            list.append('(R)')
+        if self.ui.checkBox_32.isChecked():
+            list.append('(W)')
+        if self.ui.checkBox_30.isChecked():
+            list.append('(D)')
+
+        stroka = str(list)
+        stroka = stroka.replace('[\'', '').replace('\']', '').replace('\'', '').replace(',', '').replace(' ', '')
+        print(stroka)
+        return stroka
 
     def main_function(self):
         input_dir = self.ui.lineEdit.text()
-        cmdline = ['/grant[:r] *{}:{} /T /C'.format(self.returnFinalSid(), self.list_line())]
+        cmdline = ['/grant[:r] *{}:{}{}{} /T /C'.format(self.returnFinalSid(), self.stroka_nasledovanya(), self.osnovnie_prava(), self.dop_prava())]
         proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], stderr=subprocess.STDOUT)
+        print(cmdline)
         print(proc.decode('cp866'))
 
     # лишняя проверка ненужна если есть слоты
