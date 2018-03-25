@@ -11,27 +11,31 @@ class MyWin(QtWidgets.QMainWindow):
 
         # Здесь прописываем событие нажатия на кнопку
         self.ui.pushButton.clicked.connect(self.stroka_line)
+        #self.ui.pushButton.clicked.connect(self.stroka_nasledovanya)
 
-    def list_line(self):
+    def stroka_nasledovanya(self):
         list = []
-        if self.ui.checkBox:
+        if self.ui.checkBox.isChecked():
             list.append('(F)')
         if self.ui.checkBox_2.isChecked():
             list.append('(OI)')
         if self.ui.checkBox_3.isChecked():
             list.append('(CI)')
         print(list)
-        return list
+        stroka = str(list)
+        stroka = stroka.replace('[\'', '').replace('\']', '').replace('\'', '').replace(',', '').replace(' ', '')
+        print(stroka)
+        return stroka
 
     def stroka_line(self):
         stroka = ''
-        if self.ui.checkBox:
-            stroka = stroka + '(F)'
+        if self.ui.checkBox.isChecked():
+            stroka = stroka + '(F),'
         if self.ui.checkBox_2.isChecked():
-            stroka = stroka + '(OI)'
+            stroka = stroka + '(OI),'
         if self.ui.checkBox_3.isChecked():
-            stroka = stroka + '(CI)'
-        print(stroka)
+            stroka = stroka + '(CI),'
+        print(stroka[0:-1])
         return stroka
 
 

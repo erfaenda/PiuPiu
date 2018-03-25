@@ -98,7 +98,7 @@ class MyWin(QtWidgets.QMainWindow):
             button.setChecked(False)
 
         self.ui.buttonGroup.setExclusive(True)
-        self.ui.buttonGroup_2.setExclusive(True)
+
 
     # очистка первого блока с чекбоксами
     def clear1Checkboxes(self):
