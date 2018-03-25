@@ -7,22 +7,23 @@ from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import Qt
 
 class MyWin(QtWidgets.QMainWindow):
-
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.buttonGroup_3.setExclusive(False) # большая группа чекбоксов должна иметь множественный выбор
-
+        # большая группа чекбоксов должна иметь множественный выбор
+        self.ui.buttonGroup_3.setExclusive(False)
+        self.ui.buttonGroup_2.setExclusive(False)
 
         # Здесь прописываем событие нажатия на кнопку
-        self.ui.pushButton_2.clicked.connect(self.getDcSid)
-        self.ui.lineEdit_2.returnPressed.connect(self.getDcSid)
+        self.ui.pushButton_2.clicked.connect(self.getLocalSid)
+        self.ui.lineEdit_2.returnPressed.connect(self.getLocalSid)
         self.ui.pushButton_4.clicked.connect(self.clearAllCheckboxes)
         self.ui.buttonGroup_3.buttonClicked.connect(self.clear1Checkboxes)
         self.ui.buttonGroup.buttonClicked.connect(self.clear2Checkboxes)
         self.ui.pushButton.clicked.connect(self.choose_directory)
-        self.ui.pushButton_3.clicked.connect(self.check_accsess)
+        self.ui.pushButton_3.clicked.connect(self.main_function)
+
 
     # поиск локальных пользователей на пк
     def getLocalSid(self):
@@ -34,6 +35,17 @@ class MyWin(QtWidgets.QMainWindow):
         print(finalSid)
         proc.wait()
         self.ui.plainTextEdit.appendPlainText(finalSid)
+        self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
+
+    def returnFinalSid(self):
+        user = self.ui.lineEdit_2.text()
+        cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}"); $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'.format(user)]
+        proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
+        out = proc.communicate()
+        finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
+        proc.wait()
+        return finalSid
+
     # поиск доменного пользовател
     def getDcSid(self):
         cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "a.silantev"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value']
@@ -79,7 +91,7 @@ class MyWin(QtWidgets.QMainWindow):
     # снятие чекбоксов во всехблоках
     def clearAllCheckboxes(self):
         groups = self.ui.buttonGroup.buttons() + self.ui.buttonGroup_2.buttons() + self.ui.buttonGroup_3.buttons()
-        self.ui.buttonGroup.setExclusive(False)
+        self.ui.buttonGroup.setExclusive(False) #снимает эффект радиобатона, в этот момент можно работать как с обычным чекбоксом
         self.ui.buttonGroup_2.setExclusive(False)
         self.ui.buttonGroup_3.setExclusive(False)
         for button in groups:
@@ -87,6 +99,7 @@ class MyWin(QtWidgets.QMainWindow):
 
         self.ui.buttonGroup.setExclusive(True)
         self.ui.buttonGroup_2.setExclusive(True)
+
     # очистка первого блока с чекбоксами
     def clear1Checkboxes(self):
         groups = self.ui.buttonGroup.buttons()
@@ -95,6 +108,7 @@ class MyWin(QtWidgets.QMainWindow):
             button.setChecked(False)
 
         self.ui.buttonGroup.setExclusive(True)
+
     # отчистка второго блока с чекбоксами
     def clear2Checkboxes(self):
         groups = self.ui.buttonGroup_3.buttons()
@@ -108,11 +122,28 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.lineEdit.setText(input_dir)
         self.check_accsess()
 
+    # порверка прав доступа на папку
     def check_accsess(self):
         input_dir = self.ui.lineEdit.text()
         proc = subprocess.check_output(['icacls.exe', input_dir], stderr=subprocess.STDOUT)
         print(proc.decode('cp866'))
         self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
+
+    def list_line(self):
+        list = []
+        if self.ui.checkBox_27.sta():
+            list.append('(F)')
+        if self.ui.checkBox_21.isChecked():
+            list.append('(OI)')
+        if self.ui.checkBox_22.isChecked():
+            list.append('(CI)')
+        return str(list)
+
+    def main_function(self):
+        input_dir = self.ui.lineEdit.text()
+        cmdline = ['/grant[:r] *{}:{} /T /C'.format(self.returnFinalSid(), self.list_line())]
+        proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], stderr=subprocess.STDOUT)
+        print(proc.decode('cp866'))
 
     # лишняя проверка ненужна если есть слоты
     '''def uncheckRadio(self):
