@@ -1,6 +1,6 @@
-import subprocess
+import os
 
-ip = str(input('Ведите ip адресс: '))
-proc = subprocess.Popen("ping -c2 %s" % ip, shell=True, stdout=subprocess.PIPE)
-out = proc.communicate()
-print(out)
+input_dir = 'c:/test'
+print(input_dir)
+dirr = input_dir.replace('/', '\\')
+print(dirr)

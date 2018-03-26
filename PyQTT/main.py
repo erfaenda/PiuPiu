@@ -10,7 +10,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
 
         # Здесь прописываем событие нажатия на кнопку
-        self.ui.pushButton.clicked.connect(self.stroka_line)
+        self.ui.pushButton.clicked.connect(self.dop_prava)
         #self.ui.pushButton.clicked.connect(self.stroka_nasledovanya)
 
     def stroka_nasledovanya(self):

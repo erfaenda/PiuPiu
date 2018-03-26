@@ -23,6 +23,8 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.buttonGroup.buttonClicked.connect(self.clear2Checkboxes)
         self.ui.pushButton.clicked.connect(self.choose_directory)
         self.ui.pushButton_3.clicked.connect(self.main_function)
+        self.ui.pushButton_5.clicked.connect(self.access_deny)
+        self.ui.pushButton_6.clicked.connect(self.takeown)
 
 
     # поиск локальных пользователей на пк
@@ -120,12 +122,12 @@ class MyWin(QtWidgets.QMainWindow):
     def choose_directory(self):
         input_dir = QFileDialog.getExistingDirectory(None, 'Выберете директорию: ')
         self.ui.lineEdit.setText(input_dir)
-        self.check_accsess()
+        #self.check_accsess()
 
     # порверка прав доступа на папку
     def check_accsess(self):
         input_dir = self.ui.lineEdit.text()
-        proc = subprocess.check_output(['icacls.exe', input_dir], stderr=subprocess.STDOUT)
+        proc = subprocess.check_output(['icacls.exe', input_dir], shell=True, stderr=subprocess.STDOUT)
         print(proc.decode('cp866'))
         self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
 
@@ -190,7 +192,6 @@ class MyWin(QtWidgets.QMainWindow):
             list.append('(I)')
         stroka = str(list)
         stroka = stroka.replace('[\'', '').replace('\']', '').replace('\'', '').replace(',', '').replace(' ', '')
-        print(stroka)
         return stroka
 
     # формирование строки основных прав
@@ -213,15 +214,35 @@ class MyWin(QtWidgets.QMainWindow):
 
         stroka = str(list)
         stroka = stroka.replace('[\'', '').replace('\']', '').replace('\'', '').replace(',', '').replace(' ', '')
-        print(stroka)
         return stroka
 
+    # основная функция раздачи прав
     def main_function(self):
         input_dir = self.ui.lineEdit.text()
-        cmdline = ['/grant[:r] *{}:{}{}{} /T /C'.format(self.returnFinalSid(), self.stroka_nasledovanya(), self.osnovnie_prava(), self.dop_prava())]
-        proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], stderr=subprocess.STDOUT)
+        cmdline = ['/grant[:r] *{0}:{1}{2}{3} /T /C'.format(self.returnFinalSid(), self.stroka_nasledovanya(), self.osnovnie_prava(), self.dop_prava())]
+        proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
         print(cmdline)
         print(proc.decode('cp866'))
+        self.check_accsess()
+
+    # забираем права
+    def access_deny(self):
+        input_dir = self.ui.lineEdit.text()
+        cmdline = ['/remove[:g] *{} /T /C'.format(self.returnFinalSid())]
+        proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
+        print(cmdline)
+        print(proc.decode('cp866'))
+        self.check_accsess()
+
+    # стать владельцем
+    def takeown(self):
+        input_dir = self.ui.lineEdit.text()
+        dir = input_dir.replace('/', '\\')
+        cmdline = [' /F "{}" /R'.format(dir)]
+        proc = subprocess.check_output(['takeown.exe', cmdline], shell=True, stderr=subprocess.STDOUT)
+        print(cmdline)
+        print(proc.decode('cp866'))
+        self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
 
     # лишняя проверка ненужна если есть слоты
     '''def uncheckRadio(self):
