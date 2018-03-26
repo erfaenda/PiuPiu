@@ -16,8 +16,8 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.buttonGroup_2.setExclusive(False)
 
         # Здесь прописываем событие нажатия на кнопку
-        self.ui.pushButton_2.clicked.connect(self.getLocalSid)
-        self.ui.lineEdit_2.returnPressed.connect(self.getLocalSid)
+        self.ui.pushButton_2.clicked.connect(self.getDcSid)
+        self.ui.lineEdit_2.returnPressed.connect(self.getDcSid)
         self.ui.pushButton_4.clicked.connect(self.clearAllCheckboxes)
         self.ui.buttonGroup_3.buttonClicked.connect(self.clear1Checkboxes)
         self.ui.buttonGroup.buttonClicked.connect(self.clear2Checkboxes)
@@ -50,12 +50,23 @@ class MyWin(QtWidgets.QMainWindow):
 
     # поиск доменного пользовател
     def getDcSid(self):
-        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "a.silantev"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value']
+        user = self.ui.lineEdit_2.text()
+        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
         proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
         out = proc.communicate()
         finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
         proc.wait()
         self.ui.plainTextEdit.appendPlainText(finalSid)
+        self.check_accsess()
+
+    def returnDcSid(self):
+        user = self.ui.lineEdit_2.text()
+        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
+        proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
+        out = proc.communicate()
+        finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
+        proc.wait()
+        return finalSid
 
     # отслеживаю нажатие  ентера и выполняю функцию
     def keyPressEvent(self, e):
@@ -219,7 +230,7 @@ class MyWin(QtWidgets.QMainWindow):
     # основная функция раздачи прав
     def main_function(self):
         input_dir = self.ui.lineEdit.text()
-        cmdline = ['/grant[:r] *{0}:{1}{2}{3} /T /C'.format(self.returnFinalSid(), self.stroka_nasledovanya(), self.osnovnie_prava(), self.dop_prava())]
+        cmdline = ['/grant[:r] *{0}:{1}{2}{3} /T /C'.format(self.returnDcSid(), self.stroka_nasledovanya(), self.osnovnie_prava(), self.dop_prava())]
         proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
         print(cmdline)
         print(proc.decode('cp866'))
@@ -228,7 +239,7 @@ class MyWin(QtWidgets.QMainWindow):
     # забираем права
     def access_deny(self):
         input_dir = self.ui.lineEdit.text()
-        cmdline = ['/remove[:g] *{} /T /C'.format(self.returnFinalSid())]
+        cmdline = ['/remove[:g] *{} /T /C'.format(self.returnDcSid())]
         proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
         print(cmdline)
         print(proc.decode('cp866'))
