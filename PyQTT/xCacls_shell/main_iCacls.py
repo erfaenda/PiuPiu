@@ -57,6 +57,7 @@ class MyWin(QtWidgets.QMainWindow):
         finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
         proc.wait()
         self.ui.plainTextEdit.appendPlainText(finalSid)
+        self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
         self.check_accsess()
 
     def returnDcSid(self):
@@ -133,7 +134,7 @@ class MyWin(QtWidgets.QMainWindow):
     def choose_directory(self):
         input_dir = QFileDialog.getExistingDirectory(None, 'Выберете директорию: ')
         self.ui.lineEdit.setText(input_dir)
-        #self.check_accsess()
+        self.check_accsess()
 
     # порверка прав доступа на папку
     def check_accsess(self):
@@ -243,6 +244,7 @@ class MyWin(QtWidgets.QMainWindow):
         proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
         print(cmdline)
         print(proc.decode('cp866'))
+        self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
         self.check_accsess()
 
     # стать владельцем
