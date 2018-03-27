@@ -16,6 +16,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.buttonGroup_2.setExclusive(False)
 
         # Здесь прописываем событие нажатия на кнопку
+        self.ui.action.triggered.connect(self.close)
         self.ui.pushButton_2.clicked.connect(self.getDcSid)
         self.ui.lineEdit_2.returnPressed.connect(self.getDcSid)
         self.ui.pushButton_4.clicked.connect(self.clearAllCheckboxes)
@@ -26,6 +27,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_5.clicked.connect(self.access_deny)
         self.ui.pushButton_6.clicked.connect(self.takeown)
         self.ui.pushButton_7.clicked.connect(self.off_nasled)
+        self.ui.pushButton_2.clicked.connect(self.check_checkbox)
 
     # поиск локальных пользователей на пк
     def getLocalSid(self):
@@ -54,20 +56,20 @@ class MyWin(QtWidgets.QMainWindow):
     # поиск доменного пользовател
     def getDcSid(self):
         user = self.ui.lineEdit_2.text()
-        if len(user) > 0:
-            cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
-            proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
-            out = proc.communicate()
-            finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
-            if finalSid == '':
-                QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(user))
-            else:
-                proc.wait()
-                self.ui.plainTextEdit.appendPlainText(finalSid)
-                self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
-                self.check_accsess()
-        else:
-            QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя или группу")
+        if len(user) == 0:
+            QMessageBox.warning(self, "Ошибка", "Пользователь {}, не найден!".format(user))
+            return
+        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
+        proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
+        out = proc.communicate()
+        finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
+        if finalSid == '':
+            QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(user))
+            return
+        proc.wait()
+        self.ui.plainTextEdit.appendPlainText(finalSid)
+        self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
+        self.check_accsess()
 
     def returnDcSid(self):
         user = self.ui.lineEdit_2.text()
@@ -237,21 +239,34 @@ class MyWin(QtWidgets.QMainWindow):
         stroka = stroka.replace('[\'', '').replace('\']', '').replace('\'', '').replace(',', '').replace(' ', '')
         return stroka
 
+    # Проверка чекбоксов
+    def check_checkbox(self):
+        group = self.ui.buttonGroup.buttons() + self.ui.buttonGroup_2.buttons() + self.ui.buttonGroup_3.buttons()
+        for checkbox in group:
+            if checkbox.isChecked():
+                return True
+        return False
+
     # основная функция раздачи прав
     def main_function(self):
         user = self.ui.lineEdit_2.text()
-        if len(user) > 0:
-            input_dir = self.ui.lineEdit.text()
-            cmdline = ['/grant[:r] *{0}:{1}{2}{3} /T /C'.format(self.returnDcSid(), self.stroka_nasledovanya(), self.osnovnie_prava(), self.dop_prava())]
-            if self.returnDcSid() == '':
-                QMessageBox.warning(self, "Ошибка", "Незвестное значение, SID не найден!")
-            else:
-                proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
-                print(cmdline)
-                print(proc.decode('cp866'))
-                self.check_accsess()
-        else:
+        if len(user) == 0:
             QMessageBox.warning(self, "Ошибка", "Пользователь {}, не найден!".format(user))
+            return
+        if self.check_checkbox() == 0:
+            QMessageBox.warning(self, "Ошибка", "Права не выбраны")
+            return
+        finalSid = self.returnDcSid()
+        cmdline = ['/grant[:r] *{0}:{1}{2}{3} /T /C'.format(finalSid, self.stroka_nasledovanya(), self.osnovnie_prava(), self.dop_prava())]
+        if finalSid == '':
+            QMessageBox.warning(self, "Ошибка", "Незвестное значение, SID не найден!")
+            return
+        input_dir = self.ui.lineEdit.text()
+        proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
+        print(cmdline)
+        print(proc.decode('cp866'))
+        self.check_accsess()
+
 
     # забираем права
     def access_deny(self):
