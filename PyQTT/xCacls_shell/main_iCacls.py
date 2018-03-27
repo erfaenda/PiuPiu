@@ -40,11 +40,7 @@ class MyWin(QtWidgets.QMainWindow):
             self.ui.plainTextEdit.appendPlainText(finalSid)
             self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
         else:
-            msg = QMessageBox()
-            msg.setText("This is a message box")
-            msg.setInformativeText("This is additional information")
-            msg.setWindowTitle("MessageBox demo")
-            msg.setDetailedText("The details are as follows:")
+            QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя или группу")
 
     def returnFinalSid(self):
         user = self.ui.lineEdit_2.text()
@@ -63,10 +59,13 @@ class MyWin(QtWidgets.QMainWindow):
             proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
             out = proc.communicate()
             finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
-            proc.wait()
-            self.ui.plainTextEdit.appendPlainText(finalSid)
-            self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
-            self.check_accsess()
+            if finalSid == '':
+                QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(user))
+            else:
+                proc.wait()
+                self.ui.plainTextEdit.appendPlainText(finalSid)
+                self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
+                self.check_accsess()
         else:
             QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя или группу")
 
@@ -240,12 +239,19 @@ class MyWin(QtWidgets.QMainWindow):
 
     # основная функция раздачи прав
     def main_function(self):
-        input_dir = self.ui.lineEdit.text()
-        cmdline = ['/grant[:r] *{0}:{1}{2}{3} /T /C'.format(self.returnDcSid(), self.stroka_nasledovanya(), self.osnovnie_prava(), self.dop_prava())]
-        proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
-        print(cmdline)
-        print(proc.decode('cp866'))
-        self.check_accsess()
+        user = self.ui.lineEdit_2.text()
+        if len(user) > 0:
+            input_dir = self.ui.lineEdit.text()
+            cmdline = ['/grant[:r] *{0}:{1}{2}{3} /T /C'.format(self.returnDcSid(), self.stroka_nasledovanya(), self.osnovnie_prava(), self.dop_prava())]
+            if self.returnDcSid() == '':
+                QMessageBox.warning(self, "Ошибка", "Незвестное значение, SID не найден!")
+            else:
+                proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
+                print(cmdline)
+                print(proc.decode('cp866'))
+                self.check_accsess()
+        else:
+            QMessageBox.warning(self, "Ошибка", "Пользователь {}, не найден!".format(user))
 
     # забираем права
     def access_deny(self):
