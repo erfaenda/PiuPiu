@@ -3,7 +3,7 @@ import subprocess
 # Импортируем наш интерфейс из файла
 from PyQTT.xCacls_shell.iCaclsGUI_2 import *
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtWidgets import QFileDialog, QMessageBox
 from PyQt5.QtCore import Qt
 
 class MyWin(QtWidgets.QMainWindow):
@@ -25,19 +25,26 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_3.clicked.connect(self.main_function)
         self.ui.pushButton_5.clicked.connect(self.access_deny)
         self.ui.pushButton_6.clicked.connect(self.takeown)
-
+        self.ui.pushButton_7.clicked.connect(self.off_nasled)
 
     # поиск локальных пользователей на пк
     def getLocalSid(self):
         user = self.ui.lineEdit_2.text()
-        cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}"); $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'.format(user)]
-        proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
-        out = proc.communicate()
-        finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
-        print(finalSid)
-        proc.wait()
-        self.ui.plainTextEdit.appendPlainText(finalSid)
-        self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
+        if len(user) > 0:
+            cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}"); $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'.format(user)]
+            proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
+            out = proc.communicate()
+            finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
+            print(finalSid)
+            proc.wait()
+            self.ui.plainTextEdit.appendPlainText(finalSid)
+            self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
+        else:
+            msg = QMessageBox()
+            msg.setText("This is a message box")
+            msg.setInformativeText("This is additional information")
+            msg.setWindowTitle("MessageBox demo")
+            msg.setDetailedText("The details are as follows:")
 
     def returnFinalSid(self):
         user = self.ui.lineEdit_2.text()
@@ -51,14 +58,17 @@ class MyWin(QtWidgets.QMainWindow):
     # поиск доменного пользовател
     def getDcSid(self):
         user = self.ui.lineEdit_2.text()
-        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
-        proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
-        out = proc.communicate()
-        finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
-        proc.wait()
-        self.ui.plainTextEdit.appendPlainText(finalSid)
-        self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
-        self.check_accsess()
+        if len(user) > 0:
+            cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
+            proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
+            out = proc.communicate()
+            finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
+            proc.wait()
+            self.ui.plainTextEdit.appendPlainText(finalSid)
+            self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
+            self.check_accsess()
+        else:
+            QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя или группу")
 
     def returnDcSid(self):
         user = self.ui.lineEdit_2.text()
@@ -256,6 +266,17 @@ class MyWin(QtWidgets.QMainWindow):
         print(cmdline)
         print(proc.decode('cp866'))
         self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
+
+    # отключить наследование I
+    def off_nasled(self):
+        input_dir = self.ui.lineEdit.text()
+        dir = input_dir.replace('\/', '\\')
+        cmdline = ['/inheritance:d']
+        proc = subprocess.check_output(['icacls.exe', dir, cmdline], shell=True, stderr=subprocess.STDOUT)
+        print(cmdline)
+        print(proc.decode('cp866'))
+        self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
+        self.check_accsess()
 
     # лишняя проверка ненужна если есть слоты
     '''def uncheckRadio(self):
