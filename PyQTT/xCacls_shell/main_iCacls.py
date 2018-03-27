@@ -63,6 +63,7 @@ class MyWin(QtWidgets.QMainWindow):
         proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
         out = proc.communicate()
         finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
+        error_string = finalSid.find('Exception')
         if finalSid == '':
             QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(user))
             return
