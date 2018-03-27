@@ -21,7 +21,6 @@ class MyWin(QtWidgets.QMainWindow):
             list.append('(OI)')
         if self.ui.checkBox_3.isChecked():
             list.append('(CI)')
-        print(list)
         stroka = str(list)
         stroka = stroka.replace('[\'', '').replace('\']', '').replace('\'', '').replace(',', '').replace(' ', '')
         print(stroka)
