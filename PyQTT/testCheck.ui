@@ -25,6 +25,9 @@
    <property name="text">
     <string>1</string>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">buttonGroup</string>
+   </attribute>
   </widget>
   <widget class="QCheckBox" name="checkBox_2">
    <property name="geometry">
@@ -38,6 +41,9 @@
    <property name="text">
     <string>2</string>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">buttonGroup</string>
+   </attribute>
   </widget>
   <widget class="QCheckBox" name="checkBox_3">
    <property name="geometry">
@@ -51,6 +57,9 @@
    <property name="text">
     <string>3</string>
    </property>
+   <attribute name="buttonGroup">
+    <string notr="true">buttonGroup</string>
+   </attribute>
   </widget>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
@@ -78,4 +87,7 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>

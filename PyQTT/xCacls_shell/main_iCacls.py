@@ -28,6 +28,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_6.clicked.connect(self.takeown)
         self.ui.pushButton_7.clicked.connect(self.off_nasled)
         self.ui.pushButton_2.clicked.connect(self.check_checkbox)
+        self.ui.pushButton_8.clicked.connect(self.check_accsess)
 
     # поиск локальных пользователей на пк
     def getLocalSid(self):
@@ -143,51 +144,60 @@ class MyWin(QtWidgets.QMainWindow):
 
     # формирование строки для дополнительных прав, вида: RC,WA,WEA итд
     def dop_prava(self):
-        stroka = ''
-        if self.ui.checkBox.isChecked():
-            stroka = stroka + 'DE,'
-        if self.ui.checkBox_2.isChecked():
-            stroka = stroka + 'RC,'
-        if self.ui.checkBox_3.isChecked():
-            stroka = stroka + 'WDAC,'
-        if self.ui.checkBox_4.isChecked():
-            stroka = stroka + 'WO,'
-        if self.ui.checkBox_5.isChecked():
-            stroka = stroka + 'S,'
-        if self.ui.checkBox_6.isChecked():
-            stroka = stroka + 'AS,'
-        if self.ui.checkBox_7.isChecked():
-            stroka = stroka + 'MA,'
-        if self.ui.checkBox_8.isChecked():
-            stroka = stroka + 'GR,'
-        if self.ui.checkBox_9.isChecked():
-            stroka = stroka + 'GW,'
-        if self.ui.checkBox_10.isChecked():
-            stroka = stroka + 'GE,'
-        if self.ui.checkBox_19.isChecked():
-            stroka = stroka + 'GA,'
-        if self.ui.checkBox_15.isChecked():
-            stroka = stroka + 'RD,'
-        if self.ui.checkBox_18.isChecked():
-            stroka = stroka + 'WD,'
-        if self.ui.checkBox_13.isChecked():
-            stroka = stroka + 'AD,'
-        if self.ui.checkBox_16.isChecked():
-            stroka = stroka + 'REA,'
-        if self.ui.checkBox_17.isChecked():
-            stroka = stroka + 'WEA,'
-        if self.ui.checkBox_14.isChecked():
-            stroka = stroka + 'X,'
-        if self.ui.checkBox_12.isChecked():
-            stroka = stroka + 'DC,'
-        if self.ui.checkBox_20.isChecked():
-            stroka = stroka + 'RA,'
-        if self.ui.checkBox_11.isChecked():
-            stroka = stroka + 'WA,'
+        groupe = self.ui.buttonGroup_3.buttons()
+        a = 0
+        for checkboxes in groupe:
+            if checkboxes.isChecked():
+                a = 1
+                break
+        if a:
+            stroka = ''
+            if self.ui.checkBox.isChecked():
+                stroka = stroka + 'DE,'
+            if self.ui.checkBox_2.isChecked():
+                stroka = stroka + 'RC,'
+            if self.ui.checkBox_3.isChecked():
+                stroka = stroka + 'WDAC,'
+            if self.ui.checkBox_4.isChecked():
+                stroka = stroka + 'WO,'
+            if self.ui.checkBox_5.isChecked():
+                stroka = stroka + 'S,'
+            if self.ui.checkBox_6.isChecked():
+                stroka = stroka + 'AS,'
+            if self.ui.checkBox_7.isChecked():
+                stroka = stroka + 'MA,'
+            if self.ui.checkBox_8.isChecked():
+                stroka = stroka + 'GR,'
+            if self.ui.checkBox_9.isChecked():
+                stroka = stroka + 'GW,'
+            if self.ui.checkBox_10.isChecked():
+                stroka = stroka + 'GE,'
+            if self.ui.checkBox_19.isChecked():
+                stroka = stroka + 'GA,'
+            if self.ui.checkBox_15.isChecked():
+                stroka = stroka + 'RD,'
+            if self.ui.checkBox_18.isChecked():
+                stroka = stroka + 'WD,'
+            if self.ui.checkBox_13.isChecked():
+                stroka = stroka + 'AD,'
+            if self.ui.checkBox_16.isChecked():
+                stroka = stroka + 'REA,'
+            if self.ui.checkBox_17.isChecked():
+                stroka = stroka + 'WEA,'
+            if self.ui.checkBox_14.isChecked():
+                stroka = stroka + 'X,'
+            if self.ui.checkBox_12.isChecked():
+                stroka = stroka + 'DC,'
+            if self.ui.checkBox_20.isChecked():
+                stroka = stroka + 'RA,'
+            if self.ui.checkBox_11.isChecked():
+                stroka = stroka + 'WA,'
 
-        stroka = '(' + stroka[0:-1] + ')'
-        print(stroka[0:-1])
-        return stroka
+            stroka = '(' + stroka[0:-1] + ')'
+            print(stroka[0:-1])
+            return stroka
+        return ''
+
     # формирование строки наследований
     def stroka_nasledovanya(self):
         stroka = ''
