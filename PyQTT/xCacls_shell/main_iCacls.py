@@ -185,6 +185,7 @@ class MyWin(QtWidgets.QMainWindow):
         if self.ui.checkBox_11.isChecked():
             stroka = stroka + 'WA,'
 
+        stroka = '(' + stroka[0:-1] + ')'
         print(stroka[0:-1])
         return stroka
     # формирование строки наследований
@@ -205,24 +206,22 @@ class MyWin(QtWidgets.QMainWindow):
 
     # формирование строки основных прав
     def osnovnie_prava(self):
-        list = []
+        stroka = ''
         if self.ui.checkBox_26.isChecked():
-            list.append('(N)')
+            stroka = stroka + '(N)'
         if self.ui.checkBox_27.isChecked():
-            list.append('(F)')
+            stroka = stroka + '(F)'
         if self.ui.checkBox_28.isChecked():
-            list.append('(M)')
+            stroka = stroka + '(M)'
         if self.ui.checkBox_29.isChecked():
-            list.append('(RX)')
+            stroka = stroka + '(RX)'
         if self.ui.checkBox_31.isChecked():
-            list.append('(R)')
+            stroka = stroka + '(R)'
         if self.ui.checkBox_32.isChecked():
-            list.append('(W)')
+            stroka = stroka + '(W)'
         if self.ui.checkBox_30.isChecked():
-            list.append('(D)')
+            stroka = stroka + '(D)'
 
-        stroka = str(list)
-        stroka = stroka.replace('[\'', '').replace('\']', '').replace('\'', '').replace(',', '').replace(' ', '')
         return stroka
 
     # Проверка чекбоксов
@@ -237,7 +236,7 @@ class MyWin(QtWidgets.QMainWindow):
     def main_function(self):
         user = self.ui.lineEdit_2.text()
         if len(user) == 0:
-            QMessageBox.warning(self, "Ошибка", "Пользователь {}, не найден!".format(user))
+            QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя!")
             return
         if self.check_checkbox() == 0:
             QMessageBox.warning(self, "Ошибка", "Права не выбраны")

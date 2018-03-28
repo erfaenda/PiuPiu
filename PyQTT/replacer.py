@@ -16,10 +16,10 @@ class MyWin(QtWidgets.QMainWindow):
     def nasled(self):
         stroka = ''
         if self.ui.checkBox.isChecked():
-            stroka = stroka + '(OI)'
+            stroka = stroka + 'WA,'
         if self.ui.checkBox_2.isChecked():
-            stroka = stroka + '(CI)'
-        print(stroka)
+            stroka = stroka + 'RC,'
+        print('(' + stroka[0:-1] + ')')
 
     def stroka_nasledovanya(self):
         list = []
