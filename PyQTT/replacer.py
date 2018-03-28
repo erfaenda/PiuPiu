@@ -10,8 +10,16 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
 
         # Здесь прописываем событие нажатия на кнопку
-        self.ui.pushButton.clicked.connect(self.dop_prava)
+        self.ui.pushButton.clicked.connect(self.nasled)
         #self.ui.pushButton.clicked.connect(self.stroka_nasledovanya)
+
+    def nasled(self):
+        stroka = ''
+        if self.ui.checkBox.isChecked():
+            stroka = stroka + '(OI)'
+        if self.ui.checkBox_2.isChecked():
+            stroka = stroka + '(CI)'
+        print(stroka)
 
     def stroka_nasledovanya(self):
         list = []

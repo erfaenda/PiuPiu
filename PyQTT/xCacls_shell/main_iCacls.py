@@ -1,4 +1,4 @@
-import sys
+import sys, os
 import subprocess
 # Импортируем наш интерфейс из файла
 from PyQTT.xCacls_shell.iCaclsGUI_2 import *
@@ -57,17 +57,23 @@ class MyWin(QtWidgets.QMainWindow):
     def getDcSid(self):
         user = self.ui.lineEdit_2.text()
         if len(user) == 0:
-            QMessageBox.warning(self, "Ошибка", "Пользователь {}, не найден!".format(user))
+            QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя!")
             return
         cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
         proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
         out = proc.communicate()
+        proc.wait()
         finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
-        error_string = finalSid.find('Exception')
+        if len(finalSid) > 50:
+            QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(user))
+            return
+        #error_string = finalSid.find('Exception')
+        #if error_string > -1:
+        #    QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(user))
+        #    return
         if finalSid == '':
             QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(user))
             return
-        proc.wait()
         self.ui.plainTextEdit.appendPlainText(finalSid)
         self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
         self.check_accsess()
@@ -124,9 +130,16 @@ class MyWin(QtWidgets.QMainWindow):
     # порверка прав доступа на папку
     def check_accsess(self):
         input_dir = self.ui.lineEdit.text()
-        proc = subprocess.check_output(['icacls.exe', input_dir], shell=True, stderr=subprocess.STDOUT)
-        print(proc.decode('cp866'))
-        self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
+        if os.path.exists(input_dir):
+            proc = subprocess.check_output(['icacls.exe', input_dir], shell=True, stderr=subprocess.STDOUT)
+            print(proc.decode('cp866'))
+            self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
+        elif input_dir == '':
+            QMessageBox.warning(self, "Ошибка", "Не указан путь к папке")
+            return
+        else:
+            QMessageBox.warning(self, "Ошибка", "Путь {} не существует".format(input_dir))
+            return
 
     # формирование строки для дополнительных прав, вида: RC,WA,WEA итд
     def dop_prava(self):
@@ -176,19 +189,18 @@ class MyWin(QtWidgets.QMainWindow):
         return stroka
     # формирование строки наследований
     def stroka_nasledovanya(self):
-        list = []
+        stroka = ''
         if self.ui.checkBox_21.isChecked():
-            list.append('(OI)')
+            stroka = stroka + '(OI)'
         if self.ui.checkBox_22.isChecked():
-            list.append('(CI)')
+            stroka = stroka + '(CI)'
         if self.ui.checkBox_23.isChecked():
-            list.append('(IO)')
+            stroka = stroka + '(IO)'
         if self.ui.checkBox_24.isChecked():
-            list.append('(NP)')
+            stroka = stroka + '(NP)'
         if self.ui.checkBox_25.isChecked():
-            list.append('(I)')
-        stroka = str(list)
-        stroka = stroka.replace('[\'', '').replace('\']', '').replace('\'', '').replace(',', '').replace(' ', '')
+            stroka = stroka + '(I)'
+
         return stroka
 
     # формирование строки основных прав
