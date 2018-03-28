@@ -91,7 +91,16 @@ class MyWin(QtWidgets.QMainWindow):
                         counter += 1
         # And this is the result! Rounded to 2 decimal points
         message = "Ваш результат! " + "%.2f" % float(counter / len(self.bgrs) * 100) + "%"
-        self.ui.statusbar.setStyleSheet('color: navy; font-weight: bold;')
+        result = counter / len(self.bgrs) * 100
+        print(result)
+        color = ''
+        if result <= 50:
+            color = 'red'
+        elif result >= 51 and result <= 75:
+            color = 'yellow'
+        elif result >= 76:
+            color = 'green'
+        self.ui.statusbar.setStyleSheet('color: {}; font-weight: bold;'.format(color))
         self.ui.statusbar.showMessage(message)
 
 
