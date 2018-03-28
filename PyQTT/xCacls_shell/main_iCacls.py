@@ -257,43 +257,69 @@ class MyWin(QtWidgets.QMainWindow):
             QMessageBox.warning(self, "Ошибка", "Незвестное значение, SID не найден!")
             return
         input_dir = self.ui.lineEdit.text()
-        proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
-        print(cmdline)
-        print(proc.decode('cp866'))
-        self.check_accsess()
+        if os.path.exists(input_dir):
+            proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
+            print(cmdline)
+            print(proc.decode('cp866'))
+            self.check_accsess()
+        elif input_dir == '':
+            QMessageBox.warning(self, "Ошибка", "Не указан путь к папке")
+            return
+        else:
+            QMessageBox.warning(self, "Ошибка", "Путь {} не существует".format(input_dir))
+            return
 
 
     # забираем права
     def access_deny(self):
         input_dir = self.ui.lineEdit.text()
-        cmdline = ['/remove[:g] *{} /T /C'.format(self.returnDcSid())]
-        proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
-        print(cmdline)
-        print(proc.decode('cp866'))
-        self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
-        self.check_accsess()
-
+        if os.path.exists(input_dir):
+            finalSid = self.returnDcSid()
+            cmdline = ['/remove[:g] *{} /T /C'.format(finalSid)]
+            proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
+            print(cmdline)
+            print(proc.decode('cp866'))
+            self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
+            self.check_accsess()
+        elif input_dir == '':
+            QMessageBox.warning(self, "Ошибка", "Не указан путь к папке")
+            return
+        else:
+            QMessageBox.warning(self, "Ошибка", "Путь {} не существует".format(input_dir))
+            return
     # стать владельцем
     def takeown(self):
         input_dir = self.ui.lineEdit.text()
-        dir = input_dir.replace('/', '\\')
-        cmdline = [' /F "{}" /R'.format(dir)]
-        proc = subprocess.check_output(['takeown.exe', cmdline], shell=True, stderr=subprocess.STDOUT)
-        print(cmdline)
-        print(proc.decode('cp866'))
-        self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
-
+        if os.path.exists(input_dir):
+            dir = input_dir.replace('/', '\\')
+            cmdline = [' /F "{}" /R'.format(dir)]
+            proc = subprocess.check_output(['takeown.exe', cmdline], shell=True, stderr=subprocess.STDOUT)
+            print(cmdline)
+            print(proc.decode('cp866'))
+            self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
+        elif input_dir == '':
+            QMessageBox.warning(self, "Ошибка", "Не указан путь к папке")
+            return
+        else:
+            QMessageBox.warning(self, "Ошибка", "Путь {} не существует".format(input_dir))
+            return
     # отключить наследование I
     def off_nasled(self):
         input_dir = self.ui.lineEdit.text()
-        dir = input_dir.replace('\/', '\\')
-        cmdline = ['/inheritance:d']
-        proc = subprocess.check_output(['icacls.exe', dir, cmdline], shell=True, stderr=subprocess.STDOUT)
-        print(cmdline)
-        print(proc.decode('cp866'))
-        self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
-        self.check_accsess()
-
+        if os.path.exists(input_dir):
+            dir = input_dir.replace('\/', '\\')
+            cmdline = ['/inheritance:d']
+            proc = subprocess.check_output(['icacls.exe', dir, cmdline], shell=True, stderr=subprocess.STDOUT)
+            print(cmdline)
+            print(proc.decode('cp866'))
+            self.ui.plainTextEdit.appendPlainText(proc.decode('cp866'))
+            self.check_accsess()
+        elif input_dir == '':
+            QMessageBox.warning(self, "Ошибка", "Не указан путь к папке")
+            return
+        else:
+            QMessageBox.warning(self, "Ошибка", "Путь {} не существует".format(input_dir))
+            return
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)

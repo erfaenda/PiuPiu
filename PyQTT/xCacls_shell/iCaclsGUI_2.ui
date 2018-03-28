@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>iCacls Shell alpha</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../Trash/tmp/icona.ico</normaloff>../../../../Trash/tmp/icona.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0" colspan="2">
@@ -48,7 +52,7 @@
        <item row="0" column="1">
         <widget class="QPushButton" name="pushButton">
          <property name="styleSheet">
-          <string notr="true">background:rgb(70, 181, 255)</string>
+          <string notr="true">background:rgb(165, 221, 255)</string>
          </property>
          <property name="text">
           <string>Выбрать директорию</string>
@@ -65,7 +69,7 @@
        <item row="1" column="1">
         <widget class="QPushButton" name="pushButton_2">
          <property name="styleSheet">
-          <string notr="true">background:rgb(70, 181, 255)</string>
+          <string notr="true">background:rgb(165, 221, 255)</string>
          </property>
          <property name="text">
           <string>Найти</string>
@@ -354,7 +358,7 @@
        <item row="8" column="0">
         <widget class="QPushButton" name="pushButton_4">
          <property name="styleSheet">
-          <string notr="true">background:rgb(70, 181, 255)</string>
+          <string notr="true">background:rgb(165, 221, 255)</string>
          </property>
          <property name="text">
           <string>Очистить</string>
@@ -526,7 +530,7 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">background:rgb(255, 131, 73)</string>
+          <string notr="true">background:rgb(255, 210, 138)</string>
          </property>
          <property name="text">
           <string>Назначить</string>
@@ -583,7 +587,7 @@
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">background:rgb(70, 181, 255)</string>
+          <string notr="true">background:rgb(165, 221, 255)</string>
          </property>
          <property name="text">
           <string>Проверить права</string>
@@ -599,7 +603,7 @@
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">background:rgb(255, 131, 73)</string>
+          <string notr="true">background:rgb(255, 210, 138)</string>
          </property>
          <property name="text">
           <string>Отключить наследование</string>
@@ -615,7 +619,7 @@
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">background:rgb(70, 181, 255)</string>
+          <string notr="true">background:rgb(165, 221, 255)</string>
          </property>
          <property name="text">
           <string>Стасть владельцем</string>
@@ -631,7 +635,7 @@
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">background:rgb(255, 131, 73)</string>
+          <string notr="true">background:rgb(255, 210, 138)</string>
          </property>
          <property name="text">
           <string>Забрать все права</string>
@@ -670,8 +674,8 @@
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup_3"/>
-  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
