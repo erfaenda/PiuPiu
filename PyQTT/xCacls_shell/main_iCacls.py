@@ -272,10 +272,17 @@ class MyWin(QtWidgets.QMainWindow):
 
     # забираем права
     def access_deny(self):
+        user = self.ui.lineEdit_2.text()
+        if len(user) == 0:
+            QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя!")
+            return
         input_dir = self.ui.lineEdit.text()
         if os.path.exists(input_dir):
             finalSid = self.returnDcSid()
             cmdline = ['/remove[:g] *{} /T /C'.format(finalSid)]
+            if finalSid == '':
+                QMessageBox.warning(self, "Ошибка", "Незвестное значение, SID не найден!")
+                return
             proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
             print(cmdline)
             print(proc.decode('cp866'))
