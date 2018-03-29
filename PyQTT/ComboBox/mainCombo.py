@@ -17,8 +17,9 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.comboBox.editTextChanged.connect(self.findText)
 
         # Инициализация списка содержимого в комбобоксе
-        self.ui.comboBox.addItems(["Анастасия", "Александра", "Агафья", "Артензия", "Анюта", "Акинфеев", "Алоха",
-                                   "Ариша", "Анаконда", "Агафонов", "Аграномов"])
+        self.ui.comboBox.lineEdit()
+        self.ui.comboBox.addItems(["Анастасия Литвиненко", "Александра", "Агафья Тулуповна", "Артензия", "Анюта", "Акинфеев", "Алоха",
+                                  "Ариша", "Анаконда", "Агафонов Арогова", "Аграномов Аграномова"])
 
 
     def findText(self, s):
