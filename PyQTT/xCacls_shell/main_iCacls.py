@@ -2,9 +2,9 @@ import sys, os
 import subprocess
 # Импортируем наш интерфейс из файла
 from PyQTT.xCacls_shell.iCaclsGUI_2 import *
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog, QMessageBox
-from PyQt5.QtCore import Qt
+
 
 class MyWin(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -29,6 +29,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_7.clicked.connect(self.off_nasled)
         self.ui.pushButton_2.clicked.connect(self.check_checkbox)
         self.ui.pushButton_8.clicked.connect(self.check_accsess)
+        self.ui.pushButton_9.clicked.connect(self.ui.plainTextEdit.clear)
 
     # поиск локальных пользователей на пк
     def getLocalSid(self):
