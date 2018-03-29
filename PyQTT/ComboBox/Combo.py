@@ -14,8 +14,12 @@ class Ui_Form(object):
         Form.resize(556, 366)
         self.comboBox = QtWidgets.QComboBox(Form)
         self.comboBox.setGeometry(QtCore.QRect(60, 100, 431, 22))
+        self.comboBox.setTabletTracking(True)
+        self.comboBox.setAcceptDrops(True)
         self.comboBox.setEditable(True)
         self.comboBox.setCurrentText("")
+        self.comboBox.setMinimumContentsLength(5)
+        self.comboBox.setDuplicatesEnabled(True)
         self.comboBox.setObjectName("comboBox")
 
         self.retranslateUi(Form)

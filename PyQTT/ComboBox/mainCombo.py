@@ -18,9 +18,13 @@ class MyWin(QtWidgets.QMainWindow):
 
         # Инициализация списка содержимого в комбобоксе
         self.ui.comboBox.lineEdit()
+        self.ui.comboBox.addItem('')
+
         self.ui.comboBox.addItems(["Анастасия Литвиненко", "Александра", "Агафья Тулуповна", "Артензия", "Анюта", "Акинфеев", "Алоха",
                                   "Ариша", "Анаконда", "Агафонов Арогова", "Аграномов Аграномова"])
-
+        self.ui.comboBox.showPopup()
+        list = 'Петя'
+        self.ui.comboBox.view()
 
     def findText(self, s):
         index=self.ui.comboBox.findText(s)
