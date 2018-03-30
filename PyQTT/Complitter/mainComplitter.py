@@ -18,8 +18,12 @@ class MyWin(QtWidgets.QMainWindow):
 
     def Add(self):
         text = self.ui.lineEdit.text()
-        self.spisok.append(text)
-        self.ViewPlainText()
+        spisok = str(self.spisok)
+
+        if spisok.find(text) == -1:
+            self.spisok.append(text)
+            self.ViewPlainText()
+        return
 
     def ViewPlainText(self):
         self.ui.plainTextEdit.setPlainText(str(self.spisok))
