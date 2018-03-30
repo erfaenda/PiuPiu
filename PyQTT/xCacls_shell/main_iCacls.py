@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import QFileDialog, QMessageBox, QCompleter
 
 class MyWin(QtWidgets.QMainWindow):
     complitter_list = []
+    finalSid = ''
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
@@ -18,8 +19,6 @@ class MyWin(QtWidgets.QMainWindow):
 
         # Здесь прописываем событие нажатия на кнопку
         self.ui.action.triggered.connect(self.close)
-        self.ui.pushButton_2.clicked.connect(self.getDcSid)
-        self.ui.lineEdit_2.returnPressed.connect(self.getDcSid)
         self.ui.pushButton_4.clicked.connect(self.clearAllCheckboxes)
         self.ui.buttonGroup_3.buttonClicked.connect(self.clear1Checkboxes)
         self.ui.buttonGroup.buttonClicked.connect(self.clear2Checkboxes)
@@ -31,8 +30,13 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.check_checkbox)
         self.ui.pushButton_8.clicked.connect(self.check_accsess)
         self.ui.pushButton_9.clicked.connect(self.ui.plainTextEdit.clear)
-        self.ui.lineEdit.textEdited.connect(self.Compliteer)
+        self.ui.pushButton_2.clicked.connect(self.dc_or_local)
 
+    # Выбор какую функцию юзать локал или домен
+    def dc_or_local(self):
+        if self.ui.checkBox_33.isChecked():
+            return self.getLocalSid()
+        else:self.getDcSid()
 
     # Комплиттер
     def Compliteer(self):
@@ -49,20 +53,38 @@ class MyWin(QtWidgets.QMainWindow):
             self.complitter_list.append(text)
         return
 
+    # Проверки
+    # Пустой юзер
+    def empty_user(self):
+        user = self.ui.lineEdit_2.text()
+        if len(user) == 0:
+            QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя!")
+            return
+    # Не верный или пустой сид
+    def wrongSid(self):
+        if len(self.finalSid) > 50:
+            QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(self.ui.lineEdit_2.text()))
+            return
+        if self.finalSid == '':
+            QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(self.ui.lineEdit_2.text()))
+            return
+
     # поиск локальных пользователей на пк
     def getLocalSid(self):
-        user = self.ui.lineEdit_2.text()
-        if len(user) > 0:
-            cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}"); $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'.format(user)]
-            proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
-            out = proc.communicate()
-            finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
-            print(finalSid)
-            proc.wait()
-            self.ui.plainTextEdit.appendPlainText(finalSid)
-            self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
-        else:
-            QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя или группу")
+        if self.empty_user():
+            return
+        cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}"); $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'.format(self.ui.lineEdit_2.text())]
+        proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
+        out = proc.communicate()
+        self.finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
+        if self.wrongSid():
+            return
+        proc.wait()
+        self.ui.plainTextEdit.appendPlainText(self.finalSid)
+        self.ui.label.setText('{} SID'.format(self.ui.lineEdit_2.text() + ' is: ' + self.finalSid))
+        self.AddToCompliterList()
+        self.Compliteer()
+        self.check_accsess()
 
     def returnFinalSid(self):
         user = self.ui.lineEdit_2.text()
@@ -83,7 +105,7 @@ class MyWin(QtWidgets.QMainWindow):
         proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
         out = proc.communicate()
         proc.wait()
-        finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
+        self.finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
         if len(finalSid) > 50:
             QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(user))
             return
@@ -97,8 +119,8 @@ class MyWin(QtWidgets.QMainWindow):
 
         self.ui.plainTextEdit.appendPlainText(finalSid)
         self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
-        self.complitter_list = self.complitter_list.append(user)
         self.AddToCompliterList()
+        self.Compliteer()
         self.check_accsess()
 
     # Возврат
