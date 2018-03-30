@@ -3,29 +3,25 @@ import sys
 from PyQTT.ComboBox.Combo import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
-
+ва
 class MyWin(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-
-
-        # Здесь прописываем событие нажатия на кнопку
-        #self.ui.pushButton.clicked.connect(self.MyFunction)
-        #self.widget.keyPressEvent2.connect(self.MyFunction)
         self.ui.comboBox.editTextChanged.connect(self.findText)
+        self.ui.comboBox.editTextChanged.connect(self.pupUp)
+
 
         # Инициализация списка содержимого в комбобоксе
-        self.ui.comboBox.lineEdit()
         self.ui.comboBox.addItem('')
-
         self.ui.comboBox.addItems(["Анастасия Литвиненко", "Александра", "Агафья Тулуповна", "Артензия", "Анюта", "Акинфеев", "Алоха",
                                   "Ариша", "Анаконда", "Агафонов Арогова", "Аграномов Аграномова"])
-        self.ui.comboBox.showPopup()
-        list = 'Петя'
         self.ui.comboBox.view()
 
+    def pupUp(self):
+        if self.ui.comboBox.editTextChanged():
+            self.ui.comboBox.showPopup()
     def findText(self, s):
         index=self.ui.comboBox.findText(s)
         if index > -1:

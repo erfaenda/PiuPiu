@@ -16,6 +16,7 @@ class Example(QWidget):
         self.combo = QtWidgets.QComboBox(self)
         self.combo.setEditable(True)
         self.combo.editTextChanged.connect(self.findText)
+        #self.combo.currentTextChanged.connect(self.findText)
         self.combo.addItems([u"Петров", u"Сидоров", u"Иванов", u"Ивановa", "a.silantev", "a.alena", "a.olega", "a.pizda", "a.agafya", "a.prostitute",
                              "a.aleninka", "a.alenko"])
         self.show()
