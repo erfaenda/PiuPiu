@@ -3,10 +3,11 @@ import subprocess
 # Импортируем наш интерфейс из файла
 from PyQTT.xCacls_shell.iCaclsGUI_2 import *
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtWidgets import QFileDialog, QMessageBox
+from PyQt5.QtWidgets import QFileDialog, QMessageBox, QCompleter
 
 
 class MyWin(QtWidgets.QMainWindow):
+    complitter_list = ['a.silantev']
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
@@ -30,7 +31,14 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.check_checkbox)
         self.ui.pushButton_8.clicked.connect(self.check_accsess)
         self.ui.pushButton_9.clicked.connect(self.ui.plainTextEdit.clear)
+        self.ui.lineEdit_2.textChanged.connect(self.Compliteer)
 
+    # Комплиттер
+    def Compliteer(self):
+        # Создаём QCompleter, в который устанавливаем список, а также указатель на родителя
+        completer = QCompleter(self.complitter_list, self.ui.lineEdit_2)
+        self.ui.lineEdit_2.setCompleter(completer)  # Устанавливает QCompleter в поле ввода
+        self.ui.gridLayout.addWidget(self.ui.lineEdit_2, 1, 0, 1, 1)  # Добавляем поле ввода в сетку
     # поиск локальных пользователей на пк
     def getLocalSid(self):
         user = self.ui.lineEdit_2.text()
@@ -78,8 +86,10 @@ class MyWin(QtWidgets.QMainWindow):
             return
         self.ui.plainTextEdit.appendPlainText(finalSid)
         self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
+        self.complitter_list = self.complitter_list.append(user)
         self.check_accsess()
 
+    # Возврат
     def returnDcSid(self):
         user = self.ui.lineEdit_2.text()
         cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
