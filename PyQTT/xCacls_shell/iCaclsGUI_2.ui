@@ -545,26 +545,6 @@
        <string>Права наследования:</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="0">
-        <widget class="QCheckBox" name="checkBox_21">
-         <property name="text">
-          <string>OI - Наследование объектами</string>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup_2</string>
-         </attribute>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QCheckBox" name="checkBox_23">
-         <property name="text">
-          <string>IO - Только наследование</string>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup_2</string>
-         </attribute>
-        </widget>
-       </item>
        <item row="1" column="0">
         <widget class="QCheckBox" name="checkBox_22">
          <property name="text">
@@ -575,17 +555,7 @@
          </attribute>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QCheckBox" name="checkBox_24">
-         <property name="text">
-          <string>NP - Запрет на распространение наследования</string>
-         </property>
-         <attribute name="buttonGroup">
-          <string notr="true">buttonGroup_2</string>
-         </attribute>
-        </widget>
-       </item>
-       <item row="1" column="3">
+       <item row="1" column="4">
         <widget class="QPushButton" name="pushButton_3">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -619,7 +589,17 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="2" colspan="2">
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="checkBox_21">
+         <property name="text">
+          <string>OI - Наследование объектами</string>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item row="0" column="2" colspan="3">
         <widget class="QCheckBox" name="checkBox_25">
          <property name="text">
           <string>I - Наследование разрешений от родительского контейнера</string>
@@ -627,6 +607,42 @@
          <attribute name="buttonGroup">
           <string notr="true">buttonGroup_2</string>
          </attribute>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="checkBox_24">
+         <property name="text">
+          <string>NP - Запрет на распространение наследования</string>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QCheckBox" name="checkBox_23">
+         <property name="text">
+          <string>IO - Только наследование</string>
+         </property>
+         <attribute name="buttonGroup">
+          <string notr="true">buttonGroup_2</string>
+         </attribute>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <family>MS Serif</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
         </widget>
        </item>
       </layout>
@@ -676,7 +692,7 @@
      <x>0</x>
      <y>0</y>
      <width>1027</width>
-     <height>30</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -697,8 +713,8 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_3"/>
+  <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

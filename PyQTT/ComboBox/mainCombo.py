@@ -3,7 +3,7 @@ import sys
 from PyQTT.ComboBox.Combo import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
-ва
+
 class MyWin(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
