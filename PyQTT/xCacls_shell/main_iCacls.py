@@ -313,10 +313,10 @@ class MyWin(QtWidgets.QMainWindow):
         input_dir = self.ui.lineEdit.text()
         if os.path.exists(input_dir):
             proc = subprocess.Popen(['icacls', input_dir, cmdline], shell=True, stdout=subprocess.PIPE)
-            self.progress = QtWidgets.QProgressDialog('Поиск....', 'Стоп', 0, self.dirs_and_files(), self.ui.lineEdit)
+            self.progress = QtWidgets.QProgressDialog('Пересчет прав', 'Стоп', 0, self.dirs_and_files(), self.ui.lineEdit)
             self.progress.setWindowModality(QtCore.Qt.WindowModal)
             self.progress.setMinimumDuration(10)
-            i = 0
+            i = -1
             for line in proc.stdout:
                 self.progress.setValue(i)
                 if self.progress.wasCanceled():
@@ -328,6 +328,7 @@ class MyWin(QtWidgets.QMainWindow):
                 b = str(i)
                 self.ui.label_2.setText(b)
             self.progress.deleteLater()
+            self.ui.label_2.setVisible(False)
             proc.stdout.close()
             proc.terminate()
             self.check_accsess()
