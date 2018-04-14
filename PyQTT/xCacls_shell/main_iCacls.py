@@ -297,6 +297,7 @@ class MyWin(QtWidgets.QMainWindow):
 
     # основная функция раздачи прав
     def main_function(self):
+        self.canceled = False
         self.ui.label_2.setVisible(True)
         user = self.ui.lineEdit_2.text()
         if len(user) == 0:
@@ -311,16 +312,24 @@ class MyWin(QtWidgets.QMainWindow):
             return
         input_dir = self.ui.lineEdit.text()
         if os.path.exists(input_dir):
-            self.dirs_and_files()
             proc = subprocess.Popen(['icacls', input_dir, cmdline], shell=True, stdout=subprocess.PIPE)
+            self.progress = QtWidgets.QProgressDialog('Поиск....', 'Стоп', 0, self.dirs_and_files(), self.ui.lineEdit)
+            self.progress.setWindowModality(QtCore.Qt.WindowModal)
+            self.progress.setMinimumDuration(10)
             i = 0
             for line in proc.stdout:
+                self.progress.setValue(i)
+                if self.progress.wasCanceled():
+                    self.canceled = True
+                    return
                 line = line.strip()
                 self.ui.plainTextEdit.appendPlainText(line.decode('cp866'))
                 i = i + 1
                 b = str(i)
                 self.ui.label_2.setText(b)
+            self.progress.deleteLater()
             proc.stdout.close()
+            proc.terminate()
             self.check_accsess()
         elif input_dir == '':
             QMessageBox.warning(self, "Ошибка", "Не указан путь к папке")
@@ -395,7 +404,7 @@ class MyWin(QtWidgets.QMainWindow):
             i = 0
             a = i + len(dirs) + len(files)
             z = z + a
-        print(z + 1)
+        return z
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)

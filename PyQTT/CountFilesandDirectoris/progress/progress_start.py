@@ -1,9 +1,9 @@
 import sys, os
 # Импортируем наш интерфейс из файла
 from PyQTT.CountFilesandDirectoris.progress.progress_gui import *
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
-from PyQt5.QtCore import Qt
+
 
 class MyWin(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -37,6 +37,7 @@ class MyWin(QtWidgets.QMainWindow):
 
     # Пересчет количства файлов и папок
     def dirs_and_files(self):
+        self.canceled = False
         src = self.ui.lineEdit.text()
         z = 0
         self.progress = QtWidgets.QProgressDialog('Поиск....', 'Стоп', 0, self.just_progz(), self.ui.lineEdit)
@@ -44,6 +45,9 @@ class MyWin(QtWidgets.QMainWindow):
         self.progress.setMinimumDuration(10)
         for dir_name, dirs, files in os.walk(src):
             self.progress.setValue(z)
+            if self.progress.wasCanceled():
+                self.canceled = True
+                return
             i = 0
             a = i + len(dirs) + len(files)
             z = z + a
