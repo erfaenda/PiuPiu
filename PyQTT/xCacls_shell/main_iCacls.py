@@ -96,7 +96,9 @@ class MyWin(QtWidgets.QMainWindow):
 
     def returnFinalSid(self):
         user = self.ui.lineEdit_2.text()
-        cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}"); $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'.format(user)]
+        cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}");'
+                                 ' $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]);'
+                                 ' $strSID.Value'.format(user)]
         proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
         out = proc.communicate()
         finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
@@ -109,7 +111,9 @@ class MyWin(QtWidgets.QMainWindow):
         if len(user) == 0:
             QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя!")
             return
-        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
+        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}");'
+                                 ' $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]);'
+                                 ' $SID.Value'.format(user)]
         proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
         out = proc.communicate()
         proc.wait()
@@ -134,7 +138,9 @@ class MyWin(QtWidgets.QMainWindow):
     # Возврат
     def returnDcSid(self):
         user = self.ui.lineEdit_2.text()
-        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
+        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}");'
+                                 ' $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]);'
+                                 ' $SID.Value'.format(user)]
         proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
         out = proc.communicate()
         finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
@@ -313,7 +319,7 @@ class MyWin(QtWidgets.QMainWindow):
         input_dir = self.ui.lineEdit.text()
         if os.path.exists(input_dir):
             proc = subprocess.Popen(['icacls', input_dir, cmdline], shell=True, stdout=subprocess.PIPE)
-            self.progress = QtWidgets.QProgressDialog('Пересчет прав', 'Стоп', 0, self.dirs_and_files(), self.ui.lineEdit)
+            self.progress = QtWidgets.QProgressDialog('Пересчет прав...', 'Стоп', 0, self.dirs_and_files(), self.ui.lineEdit)
             self.progress.setWindowModality(QtCore.Qt.WindowModal)
             self.progress.setMinimumDuration(10)
             i = -1
