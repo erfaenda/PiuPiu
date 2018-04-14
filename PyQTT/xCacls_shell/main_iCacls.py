@@ -395,7 +395,7 @@ class MyWin(QtWidgets.QMainWindow):
             i = 0
             a = i + len(dirs) + len(files)
             z = z + a
-        print(z)
+        print(z + 1)
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)

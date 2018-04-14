@@ -52,6 +52,7 @@ class MyWin(QtWidgets.QMainWindow):
                 self.fileSplit.append(word)
 
         self.r.close()
+
         self.progress = QtWidgets.QProgressDialog('Поиск....', 'Стоп', 0, len(self.initW), self.ui.lineEdit)
         self.progress.setWindowModality(QtCore.Qt.WindowModal)
         self.progress.setMinimumDuration(100)
