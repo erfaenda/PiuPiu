@@ -13,9 +13,10 @@ class MyWin(QtWidgets.QMainWindow):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        # большая группа чекбоксов должна иметь множественный выбор
+        # большая группа чекбоксов должна иметь множественный выбор, наследовавние тоже
         self.ui.buttonGroup_3.setExclusive(False)
         self.ui.buttonGroup_2.setExclusive(False)
+        self.ui.label_2.setVisible(False)
 
         # Здесь прописываем событие нажатия на кнопку
         self.ui.action.triggered.connect(self.close)
@@ -31,6 +32,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_8.clicked.connect(self.check_accsess)
         self.ui.pushButton_9.clicked.connect(self.ui.plainTextEdit.clear)
         self.ui.pushButton_2.clicked.connect(self.dc_or_local)
+        self.ui.lineEdit_2.returnPressed.connect(self.dc_or_local)
 
     # Выбор какую функцию юзать локал или домен
     def dc_or_local(self):
@@ -73,22 +75,30 @@ class MyWin(QtWidgets.QMainWindow):
     def getLocalSid(self):
         if self.empty_user():
             return
-        cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}"); $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'.format(self.ui.lineEdit_2.text())]
-        proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
-        out = proc.communicate()
-        self.finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
+        cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}");'
+                                 ' $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]);'
+                                 ' $strSID.Value'.format(self.ui.lineEdit_2.text())]
+        proc = subprocess.Popen(cmdline, shell=False, stdout=subprocess.PIPE)
+        for line in proc.stdout:
+            line = line.strip()
+            fline = line.decode('cp866')
+            self.ui.plainTextEdit.appendPlainText(line.decode('cp866'))
+        proc.stdout.close()
+        self.finalSid = fline
+        #self.finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
         if self.wrongSid():
             return
-        proc.wait()
         self.ui.plainTextEdit.appendPlainText(self.finalSid)
         self.ui.label.setText('{} SID'.format(self.ui.lineEdit_2.text() + ' is: ' + self.finalSid))
         self.AddToCompliterList()
-        self.Compliteer()
+        #self.Compliteer()
         self.check_accsess()
 
     def returnFinalSid(self):
         user = self.ui.lineEdit_2.text()
-        cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}"); $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]); $strSID.Value'.format(user)]
+        cmdline = ['powershell', '$objUser = New-Object System.Security.Principal.NTAccount("{}");'
+                                 ' $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]);'
+                                 ' $strSID.Value'.format(user)]
         proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
         out = proc.communicate()
         finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
@@ -101,7 +111,9 @@ class MyWin(QtWidgets.QMainWindow):
         if len(user) == 0:
             QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя!")
             return
-        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
+        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}");'
+                                 ' $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]);'
+                                 ' $SID.Value'.format(user)]
         proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
         out = proc.communicate()
         proc.wait()
@@ -126,7 +138,9 @@ class MyWin(QtWidgets.QMainWindow):
     # Возврат
     def returnDcSid(self):
         user = self.ui.lineEdit_2.text()
-        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}"); $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]); $SID.Value'.format(user)]
+        cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}");'
+                                 ' $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]);'
+                                 ' $SID.Value'.format(user)]
         proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
         out = proc.communicate()
         finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
@@ -289,6 +303,8 @@ class MyWin(QtWidgets.QMainWindow):
 
     # основная функция раздачи прав
     def main_function(self):
+        self.canceled = False
+        self.ui.label_2.setVisible(True)
         user = self.ui.lineEdit_2.text()
         if len(user) == 0:
             QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя!")
@@ -296,16 +312,31 @@ class MyWin(QtWidgets.QMainWindow):
         if self.check_checkbox() == 0:
             QMessageBox.warning(self, "Ошибка", "Права не выбраны")
             return
-        finalSid = self.returnDcSid()
-        cmdline = ['/grant[:r] *{0}:{1}{2}{3} /T /C'.format(finalSid, self.stroka_nasledovanya(), self.osnovnie_prava(), self.dop_prava())]
-        if finalSid == '':
+        cmdline = ['/grant[:r] *{0}:{1}{2}{3} /T /C'.format(self.finalSid, self.stroka_nasledovanya(), self.osnovnie_prava(), self.dop_prava())]
+        if self.finalSid == '':
             QMessageBox.warning(self, "Ошибка", "Незвестное значение, SID не найден!")
             return
         input_dir = self.ui.lineEdit.text()
         if os.path.exists(input_dir):
-            proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
-            print(cmdline)
-            print(proc.decode('cp866'))
+            proc = subprocess.Popen(['icacls', input_dir, cmdline], shell=True, stdout=subprocess.PIPE)
+            self.progress = QtWidgets.QProgressDialog('Пересчет прав...', 'Стоп', 0, self.dirs_and_files(), self.ui.lineEdit)
+            self.progress.setWindowModality(QtCore.Qt.WindowModal)
+            self.progress.setMinimumDuration(10)
+            i = -1
+            for line in proc.stdout:
+                self.progress.setValue(i)
+                if self.progress.wasCanceled():
+                    self.canceled = True
+                    return
+                line = line.strip()
+                self.ui.plainTextEdit.appendPlainText(line.decode('cp866'))
+                i = i + 1
+                b = str(i)
+                self.ui.label_2.setText(b)
+            self.progress.deleteLater()
+            self.ui.label_2.setVisible(False)
+            proc.stdout.close()
+            proc.terminate()
             self.check_accsess()
         elif input_dir == '':
             QMessageBox.warning(self, "Ошибка", "Не указан путь к папке")
@@ -323,9 +354,8 @@ class MyWin(QtWidgets.QMainWindow):
             return
         input_dir = self.ui.lineEdit.text()
         if os.path.exists(input_dir):
-            finalSid = self.returnDcSid()
-            cmdline = ['/remove[:g] *{} /T /C'.format(finalSid)]
-            if finalSid == '':
+            cmdline = ['/remove[:g] *{} /T /C'.format(self.finalSid)]
+            if self.finalSid == '':
                 QMessageBox.warning(self, "Ошибка", "Незвестное значение, SID не найден!")
                 return
             proc = subprocess.check_output(['icacls.exe', input_dir, cmdline], shell=True, stderr=subprocess.STDOUT)
@@ -372,6 +402,16 @@ class MyWin(QtWidgets.QMainWindow):
         else:
             QMessageBox.warning(self, "Ошибка", "Путь {} не существует".format(input_dir))
             return
+
+    # пересчет файлов и папок
+    def dirs_and_files(self):
+        src = self.ui.lineEdit.text()
+        z = 0
+        for dir_name, dirs, files in os.walk(src):
+            i = 0
+            a = i + len(dirs) + len(files)
+            z = z + a
+        return z
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
