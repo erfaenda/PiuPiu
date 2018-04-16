@@ -48,12 +48,12 @@ while done:
             penguin.up = True
 
     if snake.down == True:
-        snake.y += 1
-        if snake.y == 430:
-            snake.down = False
-    else:
         snake.y -= 1
         if snake.y == 0:
+            snake.down = False
+    else:
+        snake.y += 1
+        if snake.y == 430:
             snake.down = True
 
     if Intersec(snake.x, penguin.x, snake.y, penguin.y) == True:
