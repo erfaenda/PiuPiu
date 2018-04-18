@@ -17,7 +17,6 @@ class Widget(Qt.QWidget):
         #table.setEnabled(False)
         table.setEditTriggers(table.NoEditTriggers)
         #self.tableName.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
-        table.Item
         layout.addWidget(table)
         btn2.clicked.connect(lambda: table.setEditTriggers())
         #btn2.clicked.connect(lambda : self.setEnabled(False))
