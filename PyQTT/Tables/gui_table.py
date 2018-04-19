@@ -78,8 +78,16 @@ class Ui_Form(object):
         self.tableWidget_2.setHorizontalHeaderItem(5, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_2.setHorizontalHeaderItem(6, item)
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setGeometry(QtCore.QRect(10, 360, 131, 34))
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(Form)
+        self.pushButton_2.setGeometry(QtCore.QRect(140, 360, 111, 34))
+        self.pushButton_2.setObjectName("pushButton_2")
 
         self.retranslateUi(Form)
+        self.tableWidget.cellChanged['int','int'].connect(self.tableWidget.resizeColumnsToContents)
+        self.tableWidget_2.cellChanged['int','int'].connect(self.tableWidget_2.resizeColumnsToContents)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -124,7 +132,6 @@ class Ui_Form(object):
         item = self.tableWidget.item(0, 7)
         item.setText(_translate("Form", "10.01.2018"))
         self.tableWidget.setSortingEnabled(__sortingEnabled)
-        self.tableWidget.resizeColumnsToContents()
         item = self.tableWidget_2.verticalHeaderItem(0)
         item.setText(_translate("Form", "1"))
         item = self.tableWidget_2.horizontalHeaderItem(0)
@@ -141,4 +148,6 @@ class Ui_Form(object):
         item.setText(_translate("Form", "ip адрес"))
         item = self.tableWidget_2.horizontalHeaderItem(6)
         item.setText(_translate("Form", "Дата"))
+        self.pushButton.setText(_translate("Form", "Редактировать"))
+        self.pushButton_2.setText(_translate("Form", "Добавить"))
 

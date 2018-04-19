@@ -13,180 +13,272 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>911</width>
-     <height>271</height>
-    </rect>
-   </property>
-   <property name="sizeAdjustPolicy">
-    <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
-   </property>
-   <property name="alternatingRowColors">
-    <bool>true</bool>
-   </property>
-   <property name="gridStyle">
-    <enum>Qt::DashLine</enum>
-   </property>
-   <property name="rowCount">
-    <number>10</number>
-   </property>
-   <attribute name="horizontalHeaderCascadingSectionResizes">
-    <bool>false</bool>
-   </attribute>
-   <row>
-    <property name="text">
-     <string>1</string>
-    </property>
-   </row>
-   <row>
-    <property name="text">
-     <string>2</string>
-    </property>
-   </row>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <column>
-    <property name="text">
-     <string>Акт</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Имя хоста</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Инвентарны номер</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>От кого</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Кому</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Примечание</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>ip адрес</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Дата</string>
-    </property>
-   </column>
+  <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0">
-    <property name="text">
-     <string>1</string>
-    </property>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="gridStyle">
+      <enum>Qt::DashLine</enum>
+     </property>
+     <property name="rowCount">
+      <number>10</number>
+     </property>
+     <attribute name="horizontalHeaderCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
+     <row>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </row>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <row/>
+     <column>
+      <property name="text">
+       <string>Акт</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Имя хоста</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Инвентарны номер</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>От кого</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Кому</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Примечание</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ip адрес</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Дата</string>
+      </property>
+     </column>
+     <item row="0" column="0">
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item row="0" column="1">
+      <property name="text">
+       <string>eis</string>
+      </property>
+     </item>
+     <item row="0" column="2">
+      <property name="text">
+       <string>2233</string>
+      </property>
+     </item>
+     <item row="0" column="3">
+      <property name="text">
+       <string>ЭИС</string>
+      </property>
+     </item>
+     <item row="0" column="4">
+      <property name="text">
+       <string>СМЭВ</string>
+      </property>
+     </item>
+     <item row="0" column="5">
+      <property name="text">
+       <string>Просто тест</string>
+      </property>
+     </item>
+     <item row="0" column="6">
+      <property name="text">
+       <string>10.9.9.9</string>
+      </property>
+     </item>
+     <item row="0" column="7">
+      <property name="text">
+       <string>10.01.2018</string>
+      </property>
+     </item>
+    </widget>
    </item>
-   <item row="0" column="1">
-    <property name="text">
-     <string>eis</string>
-    </property>
+   <item row="1" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Noto Sans Arabic Blk</family>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Акт №:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <family>Noto Sans Armenian Blk</family>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="0" column="2">
-    <property name="text">
-     <string>2233</string>
-    </property>
+   <item row="2" column="0">
+    <widget class="QTableWidget" name="tableWidget_2">
+     <row>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>Имя хоста</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Инвентарный номер</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>От кого</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Кому</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Примечание</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ip адрес</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Дата</string>
+      </property>
+     </column>
+    </widget>
    </item>
-   <item row="0" column="3">
-    <property name="text">
-     <string>ЭИС</string>
-    </property>
+   <item row="3" column="0">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="1">
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Редактировать</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>Добавить</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
-   <item row="0" column="4">
-    <property name="text">
-     <string>СМЭВ</string>
-    </property>
-   </item>
-   <item row="0" column="5">
-    <property name="text">
-     <string>Просто тест</string>
-    </property>
-   </item>
-   <item row="0" column="6">
-    <property name="text">
-     <string>10.9.9.9</string>
-    </property>
-   </item>
-   <item row="0" column="7">
-    <property name="text">
-     <string>10.01.2018</string>
-    </property>
-   </item>
-  </widget>
-  <widget class="QTableWidget" name="tableWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>290</y>
-     <width>911</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <row>
-    <property name="text">
-     <string>1</string>
-    </property>
-   </row>
-   <column>
-    <property name="text">
-     <string>Имя хоста</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Инвентарный номер</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>От кого</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Кому</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Примечание</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>ip адрес</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Дата</string>
-    </property>
-   </column>
-  </widget>
+  </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>tableWidget</sender>
+   <signal>cellChanged(int,int)</signal>
+   <receiver>tableWidget</receiver>
+   <slot>resizeColumnsToContents()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>465</x>
+     <y>145</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tableWidget_2</sender>
+   <signal>cellChanged(int,int)</signal>
+   <receiver>tableWidget_2</receiver>
+   <slot>resizeColumnsToContents()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>465</x>
+     <y>325</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
