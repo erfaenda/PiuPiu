@@ -53,6 +53,7 @@ class MyWin(QtWidgets.QMainWindow):
         spisok = str(self.complitter_list)
         if spisok.find(text) == -1:
             self.complitter_list.append(text)
+            self.ui.lineEdit_2.setFocus()
         return
 
     # Проверки
@@ -91,7 +92,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.plainTextEdit.appendPlainText(self.finalSid)
         self.ui.label.setText('{} SID'.format(self.ui.lineEdit_2.text() + ' is: ' + self.finalSid))
         self.AddToCompliterList()
-        #self.Compliteer()
+        self.Compliteer()
         self.check_accsess()
 
     def returnFinalSid(self):
