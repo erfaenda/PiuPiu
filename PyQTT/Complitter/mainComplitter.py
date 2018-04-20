@@ -15,18 +15,30 @@ class MyWin(QtWidgets.QMainWindow):
 
         self.ui.pushButton.clicked.connect(self.Add)
         self.ui.lineEdit.textEdited.connect(self.ViewPlainText)
+        self.ui.lineEdit.returnPressed.connect(self.Add)
 
     def Add(self):
         text = self.ui.lineEdit.text()
-        spisok = str(self.spisok)
+        Localspisok = str(self.spisok)
 
-        if spisok.find(text) == -1:
+        if Localspisok.find(text) == -1:
             self.spisok.append(text)
             self.ViewPlainText()
-        return
+            self.Compliteer()
+
+        else:
+            self.spisok.append(text + ' unicum')
+            self.ViewPlainText()
+            self.Compliteer()
 
     def ViewPlainText(self):
         self.ui.plainTextEdit.setPlainText(str(self.spisok))
+
+    def Compliteer(self):
+        # Создаём QCompleter, в который устанавливаем список, а также указатель на родителя
+        completer = QCompleter(self.spisok, self.ui.lineEdit)
+        self.ui.lineEdit.setCompleter(completer)  # Устанавливает QCompleter в поле ввода
+        self.ui.gridLayout.addWidget(self.ui.lineEdit, 1, 0, 1, 1)  # Добавляем поле ввода в сетку
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
