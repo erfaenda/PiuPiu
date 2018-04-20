@@ -149,9 +149,9 @@ class MyWin(QtWidgets.QMainWindow):
         return finalSid
 
     # отслеживаю нажатие  ентера и выполняю функцию
-    def keyPressEvent(self, e):
+    '''def keyPressEvent(self, e):
             if e.key() == QtCore.Qt.Key_Enter:
-                self.getSid()
+                self.getSid()'''
 
 
     # снятие чекбоксов во всехблоках
