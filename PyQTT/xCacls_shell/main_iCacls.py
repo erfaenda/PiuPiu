@@ -43,7 +43,7 @@ class MyWin(QtWidgets.QMainWindow):
     # Комплиттер
     def Compliteer(self):
         # Создаём QCompleter, в который устанавливаем список, а также указатель на родителя
-        completer = QCompleter(self.complitter_list, self.ui.lineEdit_2)
+        completer = QCompleter(self.complitter_list, self)
         self.ui.lineEdit_2.setCompleter(completer)  # Устанавливает QCompleter в поле ввода
         self.ui.gridLayout.addWidget(self.ui.lineEdit_2, 1, 0, 1, 1)  # Добавляем поле ввода в сетку
 
