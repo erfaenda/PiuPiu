@@ -51,7 +51,7 @@ class MyWin(QtWidgets.QMainWindow):
         conn.bind()
 
         conn.search(AD_SEARCH_TREE,
-                    '(&(objectCategory=Person)(!(UserAccountControl:1.2.840.113556.1.4.803:=2))(givenName=*)(sn=*))',
+                    '(&(objectCategory=Person))',
                     SUBTREE,
                     attributes=['cn', 'proxyAddresses', 'department', 'sAMAccountName', 'displayName',
                                 'telephoneNumber', 'ipPhone', 'streetAddress',
@@ -62,9 +62,16 @@ class MyWin(QtWidgets.QMainWindow):
             print(entry.sAMAccountName[0]) # внутри списка еще какая то хуйня по этому беру только первый элемент
             self.spisok.append(entry.sAMAccountName[0])
 
-
-
-
+        # ищу группы
+        conn.search(AD_SEARCH_TREE, '(&(objectCategory=group))',
+                    SUBTREE,
+                    attributes=['cn', 'proxyAddresses', 'department', 'sAMAccountName', 'displayName',
+                                'telephoneNumber', 'ipPhone', 'streetAddress',
+                                'title', 'manager', 'objectGUID', 'company', 'lastLogon']
+                    )
+        for entry in conn.entries:
+            print(entry.cn)
+            self.spisok.append(entry.cn[0])
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)

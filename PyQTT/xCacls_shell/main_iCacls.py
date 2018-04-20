@@ -4,6 +4,7 @@ import subprocess
 from PyQTT.xCacls_shell.iCaclsGUI_2 import *
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog, QMessageBox, QCompleter
+from ldap3 import Server, Connection, SUBTREE
 
 
 class MyWin(QtWidgets.QMainWindow):
@@ -13,10 +14,15 @@ class MyWin(QtWidgets.QMainWindow):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
         # большая группа чекбоксов должна иметь множественный выбор, наследовавние тоже
         self.ui.buttonGroup_3.setExclusive(False)
         self.ui.buttonGroup_2.setExclusive(False)
         self.ui.label_2.setVisible(False)
+
+        # получаем списки с пользователями и группами из ldap, добавляем в комплиттер
+        self.LdapGetUsersAndGroup()
+        self.Compliteer()
 
         # Здесь прописываем событие нажатия на кнопку
         self.ui.action.triggered.connect(self.close)
@@ -80,20 +86,16 @@ class MyWin(QtWidgets.QMainWindow):
                                  ' $strSID = $objUser.Translate([System.Security.Principal.SecurityIdentifier]);'
                                  ' $strSID.Value'.format(self.ui.lineEdit_2.text())]
         proc = subprocess.Popen(cmdline, shell=False, stdout=subprocess.PIPE)
-        for line in proc.stdout:
-            line = line.strip()
-            fline = line.decode('cp866')
-            self.ui.plainTextEdit.appendPlainText(line.decode('cp866'))
-        proc.stdout.close()
-        self.finalSid = fline
-        #self.finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
+        out = proc.communicate()
+        proc.wait()
+        self.finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
         if self.wrongSid():
             return
         self.ui.plainTextEdit.appendPlainText(self.finalSid)
         self.ui.label.setText('{} SID'.format(self.ui.lineEdit_2.text() + ' is: ' + self.finalSid))
         self.AddToCompliterList()
         self.Compliteer()
-        self.check_accsess()
+        #self.check_accsess()
 
     def returnFinalSid(self):
         user = self.ui.lineEdit_2.text()
@@ -108,33 +110,22 @@ class MyWin(QtWidgets.QMainWindow):
 
     # поиск доменного пользовател
     def getDcSid(self):
-        user = self.ui.lineEdit_2.text()
-        if len(user) == 0:
-            QMessageBox.warning(self, "Ошибка", "Вы не указали пользователя!")
+        if self.empty_user():
             return
         cmdline = ['powershell', '$User = New-Object System.Security.Principal.NTAccount("mfckgn.local", "{}");'
                                  ' $SID = $User.Translate([System.Security.Principal.SecurityIdentifier]);'
-                                 ' $SID.Value'.format(user)]
-        proc = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE)
+                                 ' $SID.Value'.format(self.ui.lineEdit_2.text())]
+        proc = subprocess.Popen(cmdline, shell=False, stdout=subprocess.PIPE)
         out = proc.communicate()
         proc.wait()
         self.finalSid = str(out).rstrip('\\r\\n\', None)').lstrip('(b\'')
-        if len(finalSid) > 50:
-            QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(user))
+        if self.wrongSid():
             return
-        #error_string = finalSid.find('Exception')
-        #if error_string > -1:
-        #    QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(user))
-        #    return
-        if finalSid == '':
-            QMessageBox.warning(self, "Ошибка", "Пользователь: {} не найден!".format(user))
-            return
-
-        self.ui.plainTextEdit.appendPlainText(finalSid)
-        self.ui.label.setText('{} SID'.format(user) + ' is: ' + finalSid)
+        self.ui.plainTextEdit.appendPlainText(self.finalSid)
+        self.ui.label.setText('{} SID'.format(self.ui.lineEdit_2.text() + ' is: ' + self.finalSid))
         self.AddToCompliterList()
         self.Compliteer()
-        self.check_accsess()
+        #self.check_accsess()
 
     # Возврат
     def returnDcSid(self):
@@ -386,6 +377,7 @@ class MyWin(QtWidgets.QMainWindow):
         else:
             QMessageBox.warning(self, "Ошибка", "Путь {} не существует".format(input_dir))
             return
+
     # отключить наследование I
     def off_nasled(self):
         input_dir = self.ui.lineEdit.text()
@@ -413,6 +405,40 @@ class MyWin(QtWidgets.QMainWindow):
             a = i + len(dirs) + len(files)
             z = z + a
         return z
+
+    # Получаем список пользователей и групп из Ldap
+    def LdapGetUsersAndGroup(self):
+        AD_SERVER = 'kgndc-01'
+        AD_USER = 'dcadmin3@mfckgn.local'
+        AD_PASSWORD = "Yjdfz'hf!"
+        AD_SEARCH_TREE = 'dc=mfckgn,dc=local'
+
+        server = Server(AD_SERVER)
+        conn = Connection(server, user=AD_USER, password=AD_PASSWORD)
+        conn.bind()
+
+        conn.search(AD_SEARCH_TREE,
+                    '(&(objectCategory=Person))',
+                    SUBTREE,
+                    attributes=['cn', 'proxyAddresses', 'department', 'sAMAccountName', 'displayName',
+                                'telephoneNumber', 'ipPhone', 'streetAddress',
+                                'title', 'manager', 'objectGUID', 'company', 'lastLogon']
+                    )
+
+        for entry in conn.entries:
+            print(entry.sAMAccountName[0]) # внутри списка еще какая то хуйня по этому беру только первый элемент
+            self.complitter_list.append(entry.sAMAccountName[0])
+
+        # ищу группы
+        conn.search(AD_SEARCH_TREE, '(&(objectCategory=group))',
+                    SUBTREE,
+                    attributes=['cn', 'proxyAddresses', 'department', 'sAMAccountName', 'displayName',
+                                'telephoneNumber', 'ipPhone', 'streetAddress',
+                                'title', 'manager', 'objectGUID', 'company', 'lastLogon']
+                    )
+        for entry in conn.entries:
+            print(entry.cn)
+            self.complitter_list.append(entry.cn[0])
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)

@@ -47,3 +47,11 @@ conn.search(AD_SEARCH_TREE,'(&(objectCategory=Person)(sAMAccountName=dcadmin))',
     )
 
 print(conn.entries)
+# ищу группы
+conn.search(AD_SEARCH_TREE,'(&(objectCategory=group))',
+    SUBTREE,
+    attributes =['cn','proxyAddresses','department','sAMAccountName', 'displayName', 'telephoneNumber', 'ipPhone', 'streetAddress',
+    'title','manager','objectGUID','company','lastLogon']
+            )
+for entry in conn.entries:
+    print(entry.cn)
