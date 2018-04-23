@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>950</width>
+    <height>572</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0">
+    <widget class="QTableWidget" name="tableWidget_2">
+     <row>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>Имя хоста</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Ивентарный номер</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Ip адрес</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>От кого</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Кому</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Примечание</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Дата</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0">
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="tabletTracking">
+      <bool>false</bool>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustIgnored</enum>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="gridStyle">
+      <enum>Qt::DashDotLine</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="rowCount">
+      <number>5</number>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>100</number>
+     </attribute>
+     <attribute name="horizontalHeaderMinimumSectionSize">
+      <number>37</number>
+     </attribute>
+     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+     <row>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </row>
+     <row/>
+     <row/>
+     <row/>
+     <column>
+      <property name="text">
+       <string>№ Акта</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Имя хоста</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Инвентарный номер</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>ip адрес</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>От кого</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Кому</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Примечание</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Дата</string>
+      </property>
+     </column>
+     <item row="0" column="0">
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item row="0" column="1">
+      <property name="text">
+       <string>EIS-08</string>
+      </property>
+     </item>
+     <item row="0" column="2">
+      <property name="text">
+       <string>6754</string>
+      </property>
+     </item>
+     <item row="0" column="3">
+      <property name="text">
+       <string>10.9.155.234</string>
+      </property>
+     </item>
+     <item row="0" column="4">
+      <property name="text">
+       <string>ЭИС</string>
+      </property>
+     </item>
+     <item row="0" column="5">
+      <property name="text">
+       <string>СМЭВ</string>
+      </property>
+     </item>
+     <item row="0" column="6">
+      <property name="text">
+       <string>Отдаем для нового сотрудника</string>
+      </property>
+     </item>
+     <item row="0" column="7">
+      <property name="text">
+       <string>1.01.2018</string>
+      </property>
+     </item>
+     <item row="1" column="0">
+      <property name="text">
+       <string>2</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -20,6 +20,7 @@ class MyWin(QtWidgets.QMainWindow):
     gigro = 0
 
     # Logic value
+    deviceLogic_state = True
     light = []
     ballu = []
     vlaga = []
@@ -28,9 +29,9 @@ class MyWin(QtWidgets.QMainWindow):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-        self.uptime()
+        #self.uptime()
 
-        # Здесь прописываем событие нажатия на кнопку
+        # signals and slots
         self.ui.pushButton.clicked.connect(self.sw1_on)
         self.ui.pushButton_2.clicked.connect(self.sw1_off)
         self.ui.pushButton_3.clicked.connect(self.sw2_on)
@@ -39,10 +40,29 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_6.clicked.connect(self.sw3_off)
         self.ui.pushButton_7.clicked.connect(self.sw4_on)
         self.ui.pushButton_8.clicked.connect(self.sw4_off)
+        self.ui.pushButton_logic_on.clicked.connect(self.device_logicON)
+        self.ui.pushButton_logic_on.clicked.connect(self.device_logicOFF)
+
+
+    # main function read devices value and control gpio ports
+    def deviceLogic(self):
+        if self.deviceLogic_state == True:
+            if self.middle_temp < self.ui.spinBoxOn_logic_1.value():
+                self.sw1_on()
+            if self.middle_temp > self.ui.spinBoxOff_logic_1.value():
+                self.sw1_off()
+
 
     def switch_light(self):
         a = self.ui.timeEdit.time()
-        print(a.hour())Л
+        print(a.hour())
+
+    def readDevices(self):
+        self.temp_1 = int(self.ui.temp1.text())
+        self.temp_2 = int(self.ui.temp2.text())
+        self.middle_temp = (self.temp_1 + self.temp_2) / 2
+        self.ui.midtemp.setValue(self.middle_temp)
+
 
 
     def dateTime(self):
@@ -71,7 +91,10 @@ class MyWin(QtWidgets.QMainWindow):
             self.ui.label_5.setText('Порт № 4 - OFF')
         else:self.ui.label_5.setText('Порт № 4 - ON')
 
-    #def sw1_on(self, button, state):
+    def device_logicON(self):
+        self.deviceLogic_state = True
+    def device_logicOFF(self):
+        self.deviceLogic_state = False
 
     # buttons ON/OFF
     def sw1_on(self):
@@ -121,9 +144,11 @@ if __name__=="__main__":
     timer.timeout.connect(myapp.check_state)
     timer.start(100)
     timeing = QTimer()
-    timeing.timeout.connect(myapp.uptime)
+    #timeing.timeout.connect(myapp.uptime)
     timeing.timeout.connect(myapp.dateTime)
     timeing.timeout.connect(myapp.switch_light)
+    timeing.timeout.connect(myapp.readDevices)
+    timeing.timeout.connect(myapp.deviceLogic)
     timeing.start(1000)
     myapp.show()
     sys.exit(app.exec_())

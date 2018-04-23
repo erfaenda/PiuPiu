@@ -243,16 +243,16 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QSpinBox" name="spinBox_5"/>
+       <widget class="QSpinBox" name="midtemp"/>
       </item>
       <item row="1" column="1">
-       <widget class="QSpinBox" name="spinBox_6"/>
+       <widget class="QSpinBox" name="temp2"/>
       </item>
       <item row="0" column="1">
-       <widget class="QSpinBox" name="spinBox_7"/>
+       <widget class="QSpinBox" name="temp1"/>
       </item>
       <item row="3" column="1">
-       <widget class="QSpinBox" name="spinBox_8"/>
+       <widget class="QSpinBox" name="gigrom"/>
       </item>
      </layout>
     </item>
@@ -310,7 +310,7 @@
      <x>230</x>
      <y>260</y>
      <width>491</width>
-     <height>411</height>
+     <height>421</height>
     </rect>
    </property>
    <property name="title">
@@ -319,43 +319,69 @@
    <layout class="QGridLayout" name="gridLayout_5">
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
+      <item row="0" column="0" colspan="2">
        <widget class="QLabel" name="label_12">
         <property name="text">
          <string>Вкл Порт № 1 при &lt;</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QSpinBox" name="spinBox"/>
-      </item>
       <item row="0" column="2">
+       <widget class="QSpinBox" name="spinBoxOn_logic_1"/>
+      </item>
+      <item row="0" column="3">
        <widget class="QLabel" name="label_13">
         <property name="text">
          <string>Выкл Порт № 1 при &gt;</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="3">
-       <widget class="QSpinBox" name="spinBox_2"/>
+      <item row="0" column="4">
+       <widget class="QSpinBox" name="spinBoxOff_logic_1"/>
       </item>
-      <item row="1" column="0">
+      <item row="1" column="0" colspan="2">
        <widget class="QLabel" name="label_14">
         <property name="text">
          <string>Вкл Порт № 4 при &lt;</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QSpinBox" name="spinBox_3"/>
+      <item row="1" column="2">
+       <widget class="QSpinBox" name="spinBoxOn_logic_2"/>
       </item>
       <item row="1" column="3">
-       <widget class="QSpinBox" name="spinBox_4"/>
-      </item>
-      <item row="1" column="2">
        <widget class="QLabel" name="label_15">
         <property name="text">
          <string>Выкл Порт № 4 при &gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QSpinBox" name="spinBoxOff_logic_2"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="pushButton_logic_on">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Logic ON</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="3">
+       <widget class="QPushButton" name="pushButton_logic_off">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Logic OFF</string>
         </property>
        </widget>
       </item>
