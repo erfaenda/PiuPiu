@@ -1,5 +1,5 @@
 import sys, time
-from datetime import timedelta
+from datetime import timedelta, datetime
 # Импортируем наш интерфейс из файла
 from PyQTT.Test.qtTimer.gui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -7,10 +7,22 @@ from PyQt5.QtCore import Qt, QTimer
 
 class MyWin(QtWidgets.QMainWindow):
 
+    # ports status
     sw_state1 = False
     sw_state2 = False
     sw_state3 = False
     sw_state4 = False
+
+    # devices value
+    temp_1 = 0
+    temp_2 = 0
+    middle_temp = 0
+    gigro = 0
+
+    # Logic value
+    light = []
+    ballu = []
+    vlaga = []
 
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
@@ -27,6 +39,18 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_6.clicked.connect(self.sw3_off)
         self.ui.pushButton_7.clicked.connect(self.sw4_on)
         self.ui.pushButton_8.clicked.connect(self.sw4_off)
+
+    def switch_light(self):
+        print(self.ui.timeEdit.text())
+        a = self.ui.timeEdit.time()
+        print(a)
+        b = self.ui.timeEdit.text()
+        print(b)
+
+    def dateTime(self):
+        #now = datetime.now()
+        now = datetime.strftime(datetime.now(), "%H:%M:%S")
+        self.ui.label_6.setText(str(now))
 
     def uptime(self):
         with open('/proc/uptime', 'r') as f:
@@ -98,8 +122,10 @@ if __name__=="__main__":
     timer = QTimer()
     timer.timeout.connect(myapp.check_state)
     timer.start(100)
-    timer2 = QTimer()
-    timer2.timeout.connect(myapp.uptime)
-    timer2.start(1000)
+    timeing = QTimer()
+    timeing.timeout.connect(myapp.uptime)
+    timeing.timeout.connect(myapp.dateTime)
+    timeing.timeout.connect(myapp.switch_light)
+    timeing.start(1000)
     myapp.show()
     sys.exit(app.exec_())
