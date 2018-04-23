@@ -41,11 +41,9 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_8.clicked.connect(self.sw4_off)
 
     def switch_light(self):
-        print(self.ui.timeEdit.text())
         a = self.ui.timeEdit.time()
-        print(a)
-        b = self.ui.timeEdit.text()
-        print(b)
+        print(a.hour())Л
+
 
     def dateTime(self):
         #now = datetime.now()
