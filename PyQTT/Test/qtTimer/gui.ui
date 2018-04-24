@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1033</width>
-    <height>1324</height>
+    <width>1101</width>
+    <height>955</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -89,10 +89,22 @@
       <layout class="QGridLayout" name="gridLayout">
        <item row="1" column="0">
         <widget class="QLabel" name="label_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>32</height>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
           </size>
          </property>
          <property name="text">
@@ -106,7 +118,7 @@
        <item row="0" column="0">
         <widget class="QLabel" name="label_2">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -114,7 +126,13 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>32</height>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
           </size>
          </property>
          <property name="text">
@@ -127,6 +145,18 @@
        </item>
        <item row="0" column="1">
         <widget class="QLabel" name="label_status_port1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <weight>75</weight>
@@ -140,6 +170,18 @@
        </item>
        <item row="1" column="1">
         <widget class="QLabel" name="label_status_port2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <weight>75</weight>
@@ -153,10 +195,22 @@
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>32</height>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
           </size>
          </property>
          <property name="text">
@@ -170,7 +224,7 @@
        <item row="3" column="0">
         <widget class="QLabel" name="label_5">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -178,7 +232,13 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>32</height>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
           </size>
          </property>
          <property name="text">
@@ -204,6 +264,18 @@
        </item>
        <item row="3" column="1">
         <widget class="QLabel" name="label_status_port4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <weight>75</weight>
@@ -217,6 +289,18 @@
        </item>
        <item row="2" column="1">
         <widget class="QLabel" name="label_status_port3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <weight>75</weight>
@@ -437,6 +521,12 @@
          </item>
          <item row="1" column="3">
           <widget class="QLabel" name="label_15">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
            <property name="text">
             <string>Выкл Порт № 4 больше</string>
            </property>
@@ -459,7 +549,20 @@
           </spacer>
          </item>
          <item row="1" column="4">
-          <widget class="QSpinBox" name="spinBoxOff_logic_2"/>
+          <widget class="QSpinBox" name="spinBoxOff_logic_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="2" column="0">
           <widget class="QPushButton" name="pushButton_logic_on">
@@ -526,6 +629,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
           </widget>
          </item>
          <item row="0" column="0" colspan="2">
@@ -535,6 +644,12 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
            </property>
            <property name="text">
             <string>Вкл Порт № 1 если меньше</string>
@@ -552,6 +667,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
            <property name="text">
             <string>Выкл Порт № 1 больше</string>
            </property>
@@ -568,10 +689,29 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
           </widget>
          </item>
          <item row="1" column="2">
-          <widget class="QSpinBox" name="spinBoxOn_logic_2"/>
+          <widget class="QSpinBox" name="spinBoxOn_logic_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="5">
           <widget class="QCheckBox" name="checkBox_5">
@@ -588,6 +728,12 @@
          </item>
          <item row="1" column="0" colspan="2">
           <widget class="QLabel" name="label_14">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
            <property name="text">
             <string>Вкл Порт № 4 если меньше</string>
            </property>
@@ -632,6 +778,12 @@
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
           <widget class="QLabel" name="label_7">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>Температура_1</string>
            </property>
@@ -642,6 +794,12 @@
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_8">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>Температура_2</string>
            </property>
@@ -652,6 +810,12 @@
          </item>
          <item row="3" column="0">
           <widget class="QLabel" name="label_9">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>Свободный датчик</string>
            </property>
@@ -662,6 +826,12 @@
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label_11">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>Средняя температура</string>
            </property>
@@ -671,18 +841,83 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QSpinBox" name="midtemp"/>
+          <widget class="QSpinBox" name="midtemp">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QSpinBox" name="temp2"/>
+          <widget class="QSpinBox" name="temp2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QSpinBox" name="temp1"/>
+          <widget class="QSpinBox" name="temp1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QSpinBox" name="gigrom"/>
+          <widget class="QSpinBox" name="gigrom">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
         </layout>
+       </item>
+       <item row="1" column="0">
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -724,6 +959,12 @@
              <height>0</height>
             </size>
            </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
            <property name="text">
             <string>Мотор</string>
            </property>
@@ -733,10 +974,36 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QTimeEdit" name="timeEdit_3"/>
+          <widget class="QTimeEdit" name="timeEdit_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="2">
-          <widget class="QTimeEdit" name="timeEdit_4"/>
+          <widget class="QTimeEdit" name="timeEdit_4">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="4">
           <spacer name="horizontalSpacer_2">
@@ -813,10 +1080,36 @@
           </widget>
          </item>
          <item row="0" column="2">
-          <widget class="QTimeEdit" name="timeEdit_23"/>
+          <widget class="QTimeEdit" name="timeEdit_23">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QTimeEdit" name="timeEdit_24"/>
+          <widget class="QTimeEdit" name="timeEdit_24">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_30">
@@ -830,6 +1123,12 @@
             <size>
              <width>200</width>
              <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
             </size>
            </property>
            <property name="text">
@@ -874,10 +1173,36 @@
           </widget>
          </item>
          <item row="0" column="2">
-          <widget class="QTimeEdit" name="timeEdit_19"/>
+          <widget class="QTimeEdit" name="timeEdit_19">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QTimeEdit" name="timeEdit_20"/>
+          <widget class="QTimeEdit" name="timeEdit_20">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_28">
@@ -891,6 +1216,12 @@
             <size>
              <width>200</width>
              <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
             </size>
            </property>
            <property name="text">
@@ -922,7 +1253,23 @@
        <item row="2" column="0" colspan="2">
         <layout class="QGridLayout" name="gridLayout_11">
          <item row="0" column="1">
-          <widget class="QTimeEdit" name="timeEdit_7"/>
+          <widget class="QTimeEdit" name="timeEdit_7">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background:rgb(255, 255, 255)</string>
+           </property>
+          </widget>
          </item>
          <item row="0" column="4">
           <spacer name="horizontalSpacer_4">
@@ -941,7 +1288,20 @@
           </spacer>
          </item>
          <item row="0" column="2">
-          <widget class="QTimeEdit" name="timeEdit_8"/>
+          <widget class="QTimeEdit" name="timeEdit_8">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_22">
@@ -955,6 +1315,12 @@
             <size>
              <width>200</width>
              <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
             </size>
            </property>
            <property name="text">
@@ -1034,10 +1400,36 @@
           </widget>
          </item>
          <item row="0" column="2">
-          <widget class="QTimeEdit" name="timeEdit_25"/>
+          <widget class="QTimeEdit" name="timeEdit_25">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QTimeEdit" name="timeEdit_26"/>
+          <widget class="QTimeEdit" name="timeEdit_26">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_31">
@@ -1051,6 +1443,12 @@
             <size>
              <width>200</width>
              <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
             </size>
            </property>
            <property name="text">
@@ -1095,10 +1493,36 @@
           </widget>
          </item>
          <item row="0" column="2">
-          <widget class="QTimeEdit" name="timeEdit_6"/>
+          <widget class="QTimeEdit" name="timeEdit_6">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QTimeEdit" name="timeEdit_5"/>
+          <widget class="QTimeEdit" name="timeEdit_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_21">
@@ -1112,6 +1536,12 @@
             <size>
              <width>200</width>
              <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
             </size>
            </property>
            <property name="text">
@@ -1156,10 +1586,36 @@
           </widget>
          </item>
          <item row="0" column="2">
-          <widget class="QTimeEdit" name="timeEdit_17"/>
+          <widget class="QTimeEdit" name="timeEdit_17">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QTimeEdit" name="timeEdit_18"/>
+          <widget class="QTimeEdit" name="timeEdit_18">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_27">
@@ -1173,6 +1629,12 @@
             <size>
              <width>200</width>
              <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
             </size>
            </property>
            <property name="text">
@@ -1204,7 +1666,20 @@
        <item row="0" column="0" colspan="2">
         <layout class="QGridLayout" name="gridLayout_7">
          <item row="0" column="2">
-          <widget class="QTimeEdit" name="timeEdit_2"/>
+          <widget class="QTimeEdit" name="timeEdit_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="4">
           <spacer name="horizontalSpacer">
@@ -1236,6 +1711,12 @@
              <height>0</height>
             </size>
            </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
            <property name="text">
             <string>Днат</string>
            </property>
@@ -1245,7 +1726,20 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QTimeEdit" name="timeEdit"/>
+          <widget class="QTimeEdit" name="timeEdit">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>26</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item row="0" column="3">
           <widget class="QCheckBox" name="checkBox">
@@ -1285,8 +1779,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1033</width>
-     <height>30</height>
+     <width>1101</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

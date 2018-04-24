@@ -1,7 +1,7 @@
 import sys, time
 from datetime import timedelta, datetime
 # Импортируем наш интерфейс из файла
-from PyQTT.Test.qtTimer.gui import *
+from gpio_gui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import QStyleFactory
@@ -31,7 +31,7 @@ class MyWin(QtWidgets.QMainWindow):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        #self.uptime()
+        self.uptime()
 
         # signals and slots
         self.ui.pushButton.clicked.connect(self.sw1_on)
@@ -169,7 +169,7 @@ if __name__=="__main__":
     timer.timeout.connect(myapp.check_state)
     timer.start(100)
     timeing = QTimer()
-    #timeing.timeout.connect(myapp.uptime)
+    timeing.timeout.connect(myapp.uptime)
     timeing.timeout.connect(myapp.dateTime)
     timeing.timeout.connect(myapp.switch_light)
     timeing.timeout.connect(myapp.readDevices)
