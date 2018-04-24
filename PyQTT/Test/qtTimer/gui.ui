@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1029</width>
-    <height>823</height>
+    <height>881</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -551,6 +551,32 @@
            </property>
           </widget>
          </item>
+         <item row="0" column="5">
+          <widget class="QCheckBox" name="checkBox_5">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="5">
+          <widget class="QCheckBox" name="checkBox_6">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="1" column="0">
@@ -675,7 +701,7 @@
          <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_2"/>
          </item>
-         <item row="0" column="3">
+         <item row="0" column="4">
           <spacer name="horizontalSpacer">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -716,6 +742,19 @@
          <item row="0" column="1">
           <widget class="QTimeEdit" name="timeEdit"/>
          </item>
+         <item row="0" column="3">
+          <widget class="QCheckBox" name="checkBox">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="1" column="0" colspan="2">
@@ -748,7 +787,7 @@
          <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_4"/>
          </item>
-         <item row="0" column="3">
+         <item row="0" column="4">
           <spacer name="horizontalSpacer_2">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -764,6 +803,19 @@
            </property>
           </spacer>
          </item>
+         <item row="0" column="3">
+          <widget class="QCheckBox" name="checkBox_2">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="2" column="0" colspan="2">
@@ -771,7 +823,7 @@
          <item row="0" column="1">
           <widget class="QTimeEdit" name="timeEdit_7"/>
          </item>
-         <item row="0" column="3">
+         <item row="0" column="4">
           <spacer name="horizontalSpacer_4">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -812,6 +864,19 @@
            </property>
           </widget>
          </item>
+         <item row="0" column="3">
+          <widget class="QCheckBox" name="checkBox_3">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="3" column="0" colspan="2">
@@ -844,7 +909,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="3">
+         <item row="0" column="4">
           <spacer name="horizontalSpacer_3">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -859,6 +924,19 @@
             </size>
            </property>
           </spacer>
+         </item>
+         <item row="0" column="3">
+          <widget class="QCheckBox" name="checkBox_4">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
