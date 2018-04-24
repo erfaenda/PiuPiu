@@ -1,7 +1,7 @@
 import sys, time
 from datetime import timedelta, datetime
 # Импортируем наш интерфейс из файла
-from gpio_gui import *
+from PyQTT.Gpio_control.gpio_gui import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import QStyleFactory
@@ -20,9 +20,15 @@ class MyWin(QtWidgets.QMainWindow):
     middle_temp = 0
     gigro = 0
 
-    # Logic value
+    # Logic state value
     deviceLogic_state = False
     timeLogic_state = False
+
+    # Time logick value
+    globalTime = 0
+    dnat_min = 0
+    dnat_max = 0
+
     light = []
     ballu = []
     vlaga = []
@@ -31,7 +37,8 @@ class MyWin(QtWidgets.QMainWindow):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.uptime()
+        #self.uptime()
+        # ini
 
         # signals and slots
         self.ui.pushButton.clicked.connect(self.sw1_on)
@@ -47,6 +54,19 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_logicTimer_on.clicked.connect(self.time_logicON)
         self.ui.pushButton_logicTimer_off.clicked.connect(self.time_logicOFF)
 
+    # main fuction read time and control gpio ports
+    def timer_logic(self):
+        if self.timeLogic_state == True:
+            time_min = self.ui.timeEdit.text()
+            time_max = self.ui.timeEdit_2.text()
+            #time_min = time_min.replace(':', '')
+            self.dnat_min = str(time_min.hour()) + str(time_min.minute())
+            self.dnat_max = time_max.hour() + time_max.minute()
+            if self.globalTime < self.time_min or self.globalTime > self.dnat_max:
+                self.sw1_on()
+            else:
+                self.sw1_off()
+            print(time_min)
 
     # main function read devices value and control gpio ports
     def deviceLogic(self):
@@ -59,7 +79,7 @@ class MyWin(QtWidgets.QMainWindow):
 
     def switch_light(self):
         a = self.ui.timeEdit.time()
-        print(a.hour())
+        print(a.hour() + a.minute())
 
     def readDevices(self):
         self.temp_1 = int(self.ui.temp1.text())
@@ -69,10 +89,13 @@ class MyWin(QtWidgets.QMainWindow):
 
 
 
+
     def dateTime(self):
         #now = datetime.now()
         now = datetime.strftime(datetime.now(), "%H:%M:%S")
+        self.globalTime = int(datetime.strftime(datetime.now(), "%H%M"))
         self.ui.label_6.setText('Системное время: ' + str(now))
+        print(self.globalTime)
 
     def uptime(self):
         with open('/proc/uptime', 'r') as f:
@@ -169,11 +192,12 @@ if __name__=="__main__":
     timer.timeout.connect(myapp.check_state)
     timer.start(100)
     timeing = QTimer()
-    timeing.timeout.connect(myapp.uptime)
+    #timeing.timeout.connect(myapp.uptime)
     timeing.timeout.connect(myapp.dateTime)
     timeing.timeout.connect(myapp.switch_light)
     timeing.timeout.connect(myapp.readDevices)
     timeing.timeout.connect(myapp.deviceLogic)
+    timeing.timeout.connect(myapp.timer_logic)
     timeing.start(1000)
     myapp.show()
     sys.exit(app.exec_())
