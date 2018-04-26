@@ -1,7 +1,7 @@
 import sys, time
 from datetime import timedelta, datetime
-# Импортируем наш интерфейс из файла
 from PyQTT.Gpio_control.gpio_gui import *
+from PyQTT.Gpio_control.gpio_child import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import QStyleFactory
@@ -33,10 +33,6 @@ class MyWin(QtWidgets.QMainWindow):
     dnat_min = 0
     dnat_max = 0
 
-    light = []
-    ballu = []
-    vlaga = []
-
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_MainWindow()
@@ -55,6 +51,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_logic_off.clicked.connect(self.device_logicOFF)
         self.ui.pushButton_logicTimer_on.clicked.connect(self.time_logicON)
         self.ui.pushButton_logicTimer_off.clicked.connect(self.time_logicOFF)
+        self.ui.btn_time_logic_editNames.clicked.connect(self.show_child_window)
 
     # test function
     def test(self):
@@ -64,7 +61,16 @@ class MyWin(QtWidgets.QMainWindow):
 
         print(now > today)
 
-    # universal main fuction read time and control gpio ports
+    # show_child_window
+    def show_child_window(self):
+        child_window.ui.lineEdit.setText(self.ui.label_10.text())
+        child_window.show()
+
+    def save_changed_names(self):
+        self.ui.label_10.setText(child_window.line_1)
+
+
+    # main fuction read time and control gpio ports
     def timer_logic(self):
         if self.timeLogic_state == True:
             time_min = self.ui.timeEdit.time()
@@ -78,7 +84,7 @@ class MyWin(QtWidgets.QMainWindow):
             else:
                 self.sw1_on()
 
-     # universal main fuction read time and control gpio ports
+    # universal main fuction read time and control gpio ports
     def uni_timer_logic(self, time_min, time_max, sw_state, checkbox):
         if self.ui.list_checkboxes[checkbox].isChecked():
             if self.timeLogic_state == True:
@@ -92,7 +98,7 @@ class MyWin(QtWidgets.QMainWindow):
                     self.list_state[sw_state] = False
                 else:
                     self.list_state[sw_state] = True
-
+    # function starter
     def starter_all_timer_logic(self):
         self.uni_timer_logic(self.ui.timeEdit.time(), self.ui.timeEdit_2.time(), 0, 0)
         self.uni_timer_logic(self.ui.timeEdit_3.time(), self.ui.timeEdit_4.time(), 1, 1)
@@ -227,6 +233,7 @@ if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle(QStyleFactory.create('Oxygen'))
     myapp = MyWin()
+    child_window = Child()
     timer = QTimer()
     timer.timeout.connect(myapp.check_state)
     timer.start(100)
@@ -238,6 +245,7 @@ if __name__=="__main__":
     timeing.timeout.connect(myapp.deviceLogic)
     #timeing.timeout.connect(myapp.timer_logic)
     timeing.timeout.connect(myapp.starter_all_timer_logic)
+    timeing.timeout.connect(myapp.save_changed_names)
     timeing.start(1000)
     myapp.show()
     sys.exit(app.exec_())
