@@ -17,8 +17,7 @@ class MyWin(QtWidgets.QMainWindow):
     sw_state6 = False
     sw_state7 = False
     sw_state8 = False
-    list_state =[sw_state1, sw_state2]
-
+    list_state = [sw_state1, sw_state2, sw_state3, sw_state4, sw_state5, sw_state6, sw_state7, sw_state8]
     # devices value
     temp_1 = 0
     temp_2 = 0
@@ -56,6 +55,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_logic_off.clicked.connect(self.device_logicOFF)
         self.ui.pushButton_logicTimer_on.clicked.connect(self.time_logicON)
         self.ui.pushButton_logicTimer_off.clicked.connect(self.time_logicOFF)
+
     # test function
     def test(self):
         t1 = self.ui.timeEdit.time()
@@ -79,23 +79,23 @@ class MyWin(QtWidgets.QMainWindow):
                 self.sw1_on()
 
      # universal main fuction read time and control gpio ports
-    def uni_timer_logic(self, time_min, time_max, sw_state):
-        if self.timeLogic_state == True:
-            if self.chekbox_list[chk]
-            now = datetime.now()
-            self.dnat_min = now.replace(hour=time_min.hour(), minute=time_min.minute(), second=0,
-                                                    microsecond=0)
-            self.dnat_max = now.replace(hour=time_max.hour(), minute=time_max.minute(), second=0,
-                                                    microsecond=0)
-            # off range
-            if now >= self.dnat_min and now <= self.dnat_max:
-                self.list_state[sw_state] = False
-            else:
-                self.list_state[sw_state] = True
+    def uni_timer_logic(self, time_min, time_max, sw_state, checkbox):
+        if self.ui.list_checkboxes[checkbox].isChecked():
+            if self.timeLogic_state == True:
+                now = datetime.now()
+                self.dnat_min = now.replace(hour=time_min.hour(), minute=time_min.minute(), second=0,
+                                                        microsecond=0)
+                self.dnat_max = now.replace(hour=time_max.hour(), minute=time_max.minute(), second=0,
+                                                        microsecond=0)
+                # off range
+                if now >= self.dnat_min and now <= self.dnat_max:
+                    self.list_state[sw_state] = False
+                else:
+                    self.list_state[sw_state] = True
 
     def starter_all_timer_logic(self):
-        self.uni_timer_logic(self.ui.timeEdit.time(), self.ui.timeEdit_2.time(), 0)
-        self.uni_timer_logic(self.ui.timeEdit_3.time(), self.ui.timeEdit_4.time(), 1)
+        self.uni_timer_logic(self.ui.timeEdit.time(), self.ui.timeEdit_2.time(), 0, 0)
+        self.uni_timer_logic(self.ui.timeEdit_3.time(), self.ui.timeEdit_4.time(), 1, 1)
 
 
 
@@ -149,11 +149,11 @@ class MyWin(QtWidgets.QMainWindow):
             self.ui.label_status_port2.setText('OFF')
         else:
             self.ui.label_status_port2.setText('ON')
-        if self.sw_state3 == False:
+        if self.list_state[2] == False:
             self.ui.label_status_port3.setText('OFF')
         else:
             self.ui.label_status_port3.setText('ON')
-        if self.sw_state4 == False:
+        if self.list_state[3] == False:
             self.ui.label_status_port4.setText('OFF')
         else:
             self.ui.label_status_port4.setText('ON')
@@ -186,42 +186,42 @@ class MyWin(QtWidgets.QMainWindow):
     def sw1_on(self):
         time.sleep(0.2)
         # >>>some real work code<<<
-        self.sw_state1 = True
+        self.list_state[0] = True
 
     def sw1_off(self):
         time.sleep(0.2)
         # >>>some real work code<<<
-        self.sw_state1 = False
+        self.list_state[0] = False
 
     def sw2_on(self):
         time.sleep(0.2)
         # >>>some real work code<<<
-        self.sw_state2 = True
+        self.list_state[1] = True
 
     def sw2_off(self):
         time.sleep(0.2)
         # >>>some real work code<<<
-        self.sw_state2 = False
+        self.list_state[1] = False
 
     def sw3_on(self):
         time.sleep(0.2)
         # >>>some real work code<<<
-        self.sw_state3 = True
+        self.list_state[2] = True
 
     def sw3_off(self):
         time.sleep(0.2)
         # >>>some real work code<<<
-        self.sw_state3 = False
+        self.list_state[2] = False
 
     def sw4_on(self):
         time.sleep(0.2)
         # >>>some real work code<<<
-        self.sw_state4 = True
+        self.list_state[3] = True
 
     def sw4_off(self):
         time.sleep(0.2)
         # >>>some real work code<<<
-        self.sw_state4 = False
+        self.list_state[3] = False
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)

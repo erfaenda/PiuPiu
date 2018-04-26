@@ -2129,4 +2129,6 @@ class Ui_MainWindow(object):
         self.menu.setTitle(_translate("MainWindow", "Меню"))
         self.menu_2.setTitle(_translate("MainWindow", "О программе"))
         self.action.setText(_translate("MainWindow", "Выход"))
+        self.list_checkboxes = [self.checkBox, self.checkBox_2, self.checkBox_3, self.checkBox_4,
+                                self.checkBox_11, self.checkBox_12, self.checkBox_14, self.checkBox_15]
 
