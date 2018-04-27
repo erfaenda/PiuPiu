@@ -78,14 +78,17 @@ class MyWin(QtWidgets.QMainWindow):
         #child_window.ui.lineEdit.setText(self.ui.label_10.text())
         child_window.show()
 
-    # Поиск по именам объектов
+    # Поиск по именам объектов.... магия
     def Save_change(self):
         for line in range(1, 9):
             str_1 = 'label_time_logic_{}'.format(line)
             str_2 = 'lineEdit_{}'.format(line)
+            str_3 = 'label_device_logic_{}'.format(line)
             abstract_line = self.findChild(QtCore.QObject, str_1)
             abstract_lineEdit = child_window.findChild(QtCore.QObject, str_2)
+            abstract_label_device_logic = self.findChild(QtCore.QObject, str_3)
             abstract_line.setText(abstract_lineEdit.text())
+            abstract_label_device_logic.setText(abstract_lineEdit.text())
 
 
     # main fuction read time and control gpio ports
@@ -101,21 +104,6 @@ class MyWin(QtWidgets.QMainWindow):
                 self.sw1_off()
             else:
                 self.sw1_on()
-
-    # universal main fuction read time and control gpio ports
-    '''def uni_timer_logic(self, time_min, time_max, sw_state, checkbox):
-        if self.ui.buttonGroup.buttons().isChecked():
-            if self.timeLogic_state == True:
-                now = datetime.now()
-                self.dnat_min = now.replace(hour=time_min.hour(), minute=time_min.minute(), second=0,
-                                                        microsecond=0)
-                self.dnat_max = now.replace(hour=time_max.hour(), minute=time_max.minute(), second=0,
-                                                        microsecond=0)
-                # off range
-                if now >= self.dnat_min and now <= self.dnat_max:
-                    self.list_state[sw_state] = False
-                else:
-                    self.list_state[sw_state] = True'''
 
     # universal main fuction read time and control gpio ports
     def uni_timer_logic(self, time_min, time_max, sw_state, checkbox_in_list, combobox):
