@@ -91,7 +91,7 @@ class MyWin(QtWidgets.QMainWindow):
             abstract_label_device_logic.setText(abstract_lineEdit.text())
 
 
-    # main fuction read time and control gpio ports
+    # main fuction read time and control gpio ports, not used
     def timer_logic(self):
         if self.timeLogic_state == True:
             time_min = self.ui.timeEdit.time()
@@ -143,8 +143,6 @@ class MyWin(QtWidgets.QMainWindow):
         self.uni_timer_logic(self.ui.timeEdit_20.time(), self.ui.timeEdit_19.time(), 5, 5, self.ui.comboBox_6)
         self.uni_timer_logic(self.ui.timeEdit_24.time(), self.ui.timeEdit_23.time(), 6, 6, self.ui.comboBox_7)
         self.uni_timer_logic(self.ui.timeEdit_26.time(), self.ui.timeEdit_25.time(), 7, 7, self.ui.comboBox_8)
-
-
 
     # main function read devices value and control gpio ports
     def deviceLogic(self):
