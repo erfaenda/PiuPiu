@@ -127,7 +127,7 @@ class MyWin(QtWidgets.QMainWindow):
                 self.dnat_max = now.replace(hour=time_max.hour(), minute=time_max.minute(), second=0,
                                                                 microsecond=0)
                 # off range and on range
-                if self.ui.comboBox.currentIndex() == 1:
+                if combobox.currentIndex() == 1:
                     if now >= self.dnat_min and now <= self.dnat_max:
                         self.list_state[sw_state] = False
                     else:
@@ -162,9 +162,9 @@ class MyWin(QtWidgets.QMainWindow):
     def deviceLogic(self):
         if self.deviceLogic_state == True:
             if self.middle_temp < self.ui.spinBoxOn_logic_1.value():
-                self.sw1_on()
+                self.sw_on(0)
             if self.middle_temp > self.ui.spinBoxOff_logic_1.value():
-                self.sw1_off()
+                self.sw_off(0)
 
 
     def switch_light(self):
@@ -178,6 +178,14 @@ class MyWin(QtWidgets.QMainWindow):
         self.middle_temp = (self.temp_1 + self.temp_2) / 2
         self.ui.midtemp.setValue(self.middle_temp)
 
+    # temp raspberry
+    def measure_temp(self):
+        temp = os.popen("vcgencmd measure_temp").readline()
+        a = temp.replace("temp=", "")
+        s = a[0:2]
+        i = int(s)
+        print(s)
+        self.ui.midtemp.setValue(i)
 
     def dateTime(self):
         # display time
