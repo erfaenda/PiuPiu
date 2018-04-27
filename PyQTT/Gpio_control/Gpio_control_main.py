@@ -1,4 +1,4 @@
-import sys, time
+import sys, time, os
 from datetime import timedelta, datetime
 from PyQTT.Gpio_control.gpio_gui import *
 from PyQTT.Gpio_control.gpio_child import *
@@ -151,7 +151,6 @@ class MyWin(QtWidgets.QMainWindow):
                 self.sw_on(0)
             if self.middle_temp > self.ui.spinBoxOff_logic_1.value():
                 self.sw_off(0)
-
 
     def switch_light(self):
         a = self.ui.timeEdit.time()
