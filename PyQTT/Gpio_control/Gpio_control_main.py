@@ -42,34 +42,36 @@ class MyWin(QtWidgets.QMainWindow):
         self.append_list_checkboxes()
         self.ui.buttonGroup.setExclusive(False)
         # signals and slots
-        self.ui.pushButton.clicked.connect(self.sw1_on)
-        self.ui.pushButton_2.clicked.connect(self.sw1_off)
-        self.ui.pushButton_3.clicked.connect(self.sw2_on)
-        self.ui.pushButton_4.clicked.connect(self.sw2_off)
-        self.ui.pushButton_5.clicked.connect(self.sw3_on)
-        self.ui.pushButton_6.clicked.connect(self.sw3_off)
-        self.ui.pushButton_7.clicked.connect(self.sw4_on)
-        self.ui.pushButton_8.clicked.connect(self.sw4_off)
+        #self.ui.pushButton.clicked.connect(self.sw1_on)
         self.ui.pushButton_logic_on.clicked.connect(self.device_logicON)
         self.ui.pushButton_logic_off.clicked.connect(self.device_logicOFF)
         self.ui.pushButton_logicTimer_on.clicked.connect(self.time_logicON)
         self.ui.pushButton_logicTimer_off.clicked.connect(self.time_logicOFF)
         self.ui.btn_time_logic_editNames.clicked.connect(self.show_child_window)
-        self.ui.pushButton_logicTimer_off.clicked.connect(self.test)
+        self.ui.pushButton.clicked.connect(lambda: self.sw_on(0))
+        self.ui.pushButton_2.clicked.connect(lambda: self.sw_off(0))
+        self.ui.pushButton_3.clicked.connect(lambda: self.sw_on(1))
+        self.ui.pushButton_4.clicked.connect(lambda: self.sw_off(1))
+        self.ui.pushButton_5.clicked.connect(lambda: self.sw_on(2))
+        self.ui.pushButton_6.clicked.connect(lambda: self.sw_off(2))
+        self.ui.pushButton_7.clicked.connect(lambda: self.sw_on(3))
+        self.ui.pushButton_8.clicked.connect(lambda: self.sw_off(3))
+        self.ui.pushButton_9.clicked.connect(lambda: self.sw_on(4))
+        self.ui.pushButton_10.clicked.connect(lambda: self.sw_off(4))
+        self.ui.pushButton_11.clicked.connect(lambda: self.sw_on(5))
+        self.ui.pushButton_12.clicked.connect(lambda: self.sw_off(5))
+        self.ui.pushButton_13.clicked.connect(lambda: self.sw_on(6))
+        self.ui.pushButton_14.clicked.connect(lambda: self.sw_off(6))
+        self.ui.pushButton_15.clicked.connect(lambda: self.sw_on(7))
+        self.ui.pushButton_16.clicked.connect(lambda: self.sw_off(7))
 
-    # test function
-    def test(self):
-        groupe = self.ui.buttonGroup.buttons()
-        print(self.list_checkboxes[0].isChecked())
-        i = 0
-        for checkbox in groupe:
-            if checkbox.isChecked():
-                print(i)
-                print('Чекнут')
+    def sw_on(self, sw_state):
+        if self.list_state[sw_state] == False:
+            self.list_state[sw_state] = True
 
-            i = i + 1
-
-
+    def sw_off(self, sw_state):
+        if self.list_state[sw_state] == True:
+            self.list_state[sw_state] = False
 
     # show_child_window
     def show_child_window(self):
@@ -130,12 +132,10 @@ class MyWin(QtWidgets.QMainWindow):
                     self.list_state[sw_state] = True
 
     def append_list_checkboxes(self):
-        i = 1
         for i in range(1,9):
             str_1 = 'checkBox_time_logic_{}'.format(i)
             abstract_chkbx = self.findChild(QtCore.QObject, str_1)
             self.list_checkboxes_time_logic.append(abstract_chkbx)
-            i = i + 1
 
 
     # function starter shitcode
@@ -193,6 +193,7 @@ class MyWin(QtWidgets.QMainWindow):
 
     def check_state(self):
         # check state buttons on/off
+        # это гавно надо переписать
         if self.list_state[0] == False:
             self.ui.label_status_port1.setText('OFF')
         else:
@@ -209,6 +210,23 @@ class MyWin(QtWidgets.QMainWindow):
             self.ui.label_status_port4.setText('OFF')
         else:
             self.ui.label_status_port4.setText('ON')
+        if self.list_state[4] == False:
+            self.ui.label_status_port5.setText('OFF')
+        else:
+            self.ui.label_status_port5.setText('ON')
+        if self.list_state[5] == False:
+            self.ui.label_status_port6.setText('OFF')
+        else:
+            self.ui.label_status_port6.setText('ON')
+        if self.list_state[6] == False:
+            self.ui.label_status_port7.setText('OFF')
+        else:
+            self.ui.label_status_port7.setText('ON')
+        if self.list_state[7] == False:
+            self.ui.label_status_port8.setText('OFF')
+        else:
+            self.ui.label_status_port8.setText('ON')
+
         # check state logic on/off
         if self.deviceLogic_state == False:
             self.ui.label__status_logic.setText('Logic disable')
@@ -234,10 +252,8 @@ class MyWin(QtWidgets.QMainWindow):
     def time_logicOFF(self):
         self.timeLogic_state = False
 
-    # universal ON/OFF
-    # напишу потом, не сегодня
 
-    # buttons ON/OFF
+    '''# buttons ON/OFF
     def sw1_on(self):
         time.sleep(0.2)
         # >>>some real work code<<<
@@ -276,7 +292,7 @@ class MyWin(QtWidgets.QMainWindow):
     def sw4_off(self):
         time.sleep(0.2)
         # >>>some real work code<<<
-        self.list_state[3] = False
+        self.list_state[3] = False'''
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
