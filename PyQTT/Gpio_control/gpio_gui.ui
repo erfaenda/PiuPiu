@@ -1965,12 +1965,12 @@
            </property>
            <item>
             <property name="text">
-             <string>работать от</string>
+             <string>работать с</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>не работать от</string>
+             <string>не работать с</string>
             </property>
            </item>
           </widget>
@@ -2161,12 +2161,12 @@
            </property>
            <item>
             <property name="text">
-             <string>работать от</string>
+             <string>работать с</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>не работать от</string>
+             <string>не работать с</string>
             </property>
            </item>
           </widget>
@@ -2354,12 +2354,12 @@
            </property>
            <item>
             <property name="text">
-             <string>работать от</string>
+             <string>работать с</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>не работать от</string>
+             <string>не работать с</string>
             </property>
            </item>
           </widget>
@@ -2547,12 +2547,12 @@
            </property>
            <item>
             <property name="text">
-             <string>работать от</string>
+             <string>работать с</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>не работать от</string>
+             <string>не работать с</string>
             </property>
            </item>
           </widget>
@@ -2749,12 +2749,12 @@
            </property>
            <item>
             <property name="text">
-             <string>работать от</string>
+             <string>работать с</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>не работать от</string>
+             <string>не работать с</string>
             </property>
            </item>
           </widget>
@@ -2942,12 +2942,12 @@
            </property>
            <item>
             <property name="text">
-             <string>работать от</string>
+             <string>работать с</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>не работать от</string>
+             <string>не работать с</string>
             </property>
            </item>
           </widget>
@@ -3135,12 +3135,12 @@
            </property>
            <item>
             <property name="text">
-             <string>работать от</string>
+             <string>работать с</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>не работать от</string>
+             <string>не работать с</string>
             </property>
            </item>
           </widget>
@@ -3328,12 +3328,12 @@
            </property>
            <item>
             <property name="text">
-             <string>работать от</string>
+             <string>работать с</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>не работать от</string>
+             <string>не работать с</string>
             </property>
            </item>
           </widget>
