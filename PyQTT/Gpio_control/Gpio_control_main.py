@@ -117,7 +117,8 @@ class MyWin(QtWidgets.QMainWindow):
                 else:
                     self.list_state[sw_state] = True'''
 
-    def uni_timer_logic(self, time_min, time_max, sw_state, checkbox_in_list):
+    # universal main fuction read time and control gpio ports
+    def uni_timer_logic(self, time_min, time_max, sw_state, checkbox_in_list, combobox):
         if self.timeLogic_state == True:
             if self.list_checkboxes_time_logic[checkbox_in_list].isChecked():
                 now = datetime.now()
@@ -125,11 +126,17 @@ class MyWin(QtWidgets.QMainWindow):
                                                                 microsecond=0)
                 self.dnat_max = now.replace(hour=time_max.hour(), minute=time_max.minute(), second=0,
                                                                 microsecond=0)
-                # off range
-                if now >= self.dnat_min and now <= self.dnat_max:
-                    self.list_state[sw_state] = False
+                # off range and on range
+                if self.ui.comboBox.currentIndex() == 1:
+                    if now >= self.dnat_min and now <= self.dnat_max:
+                        self.list_state[sw_state] = False
+                    else:
+                        self.list_state[sw_state] = True
                 else:
-                    self.list_state[sw_state] = True
+                    if now >= self.dnat_min and now <= self.dnat_max:
+                        self.list_state[sw_state] = True
+                    else:
+                        self.list_state[sw_state] = False
 
     def append_list_checkboxes(self):
         for i in range(1,9):
@@ -138,16 +145,16 @@ class MyWin(QtWidgets.QMainWindow):
             self.list_checkboxes_time_logic.append(abstract_chkbx)
 
 
-    # function starter shitcode
+    # function starter ACHTUNG! shitcode
     def starter_all_timer_logic(self):
-        self.uni_timer_logic(self.ui.timeEdit.time(), self.ui.timeEdit_2.time(), 0, 0)
-        self.uni_timer_logic(self.ui.timeEdit_3.time(), self.ui.timeEdit_4.time(), 1, 1)
-        self.uni_timer_logic(self.ui.timeEdit_7.time(), self.ui.timeEdit_8.time(), 2, 2)
-        self.uni_timer_logic(self.ui.timeEdit_5.time(), self.ui.timeEdit_6.time(), 3, 3)
-        self.uni_timer_logic(self.ui.timeEdit_18.time(), self.ui.timeEdit_17.time(), 4, 4)
-        self.uni_timer_logic(self.ui.timeEdit_20.time(), self.ui.timeEdit_19.time(), 5, 5)
-        self.uni_timer_logic(self.ui.timeEdit_24.time(), self.ui.timeEdit_23.time(), 6, 6)
-        self.uni_timer_logic(self.ui.timeEdit_26.time(), self.ui.timeEdit_25.time(), 7, 7)
+        self.uni_timer_logic(self.ui.timeEdit.time(), self.ui.timeEdit_2.time(), 0, 0, self.ui.comboBox)
+        self.uni_timer_logic(self.ui.timeEdit_3.time(), self.ui.timeEdit_4.time(), 1, 1, self.ui.comboBox_2)
+        self.uni_timer_logic(self.ui.timeEdit_7.time(), self.ui.timeEdit_8.time(), 2, 2, self.ui.comboBox_3)
+        self.uni_timer_logic(self.ui.timeEdit_5.time(), self.ui.timeEdit_6.time(), 3, 3, self.ui.comboBox_4)
+        self.uni_timer_logic(self.ui.timeEdit_18.time(), self.ui.timeEdit_17.time(), 4, 4, self.ui.comboBox_5)
+        self.uni_timer_logic(self.ui.timeEdit_20.time(), self.ui.timeEdit_19.time(), 5, 5, self.ui.comboBox_6)
+        self.uni_timer_logic(self.ui.timeEdit_24.time(), self.ui.timeEdit_23.time(), 6, 6, self.ui.comboBox_7)
+        self.uni_timer_logic(self.ui.timeEdit_26.time(), self.ui.timeEdit_25.time(), 7, 7, self.ui.comboBox_8)
 
 
 
@@ -164,6 +171,7 @@ class MyWin(QtWidgets.QMainWindow):
         a = self.ui.timeEdit.time()
         #print(a.hour() + a.minute())
 
+    # read devices values and show they
     def readDevices(self):
         self.temp_1 = int(self.ui.temp1.text())
         self.temp_2 = int(self.ui.temp2.text())
@@ -227,7 +235,7 @@ class MyWin(QtWidgets.QMainWindow):
         else:
             self.ui.label_status_port8.setText('ON')
 
-        # check state logic on/off
+        # check state device logic on/off
         if self.deviceLogic_state == False:
             self.ui.label__status_logic.setText('Logic disable')
         else:
@@ -253,47 +261,6 @@ class MyWin(QtWidgets.QMainWindow):
         self.timeLogic_state = False
 
 
-    '''# buttons ON/OFF
-    def sw1_on(self):
-        time.sleep(0.2)
-        # >>>some real work code<<<
-        self.list_state[0] = True
-
-    def sw1_off(self):
-        time.sleep(0.2)
-        # >>>some real work code<<<
-        self.list_state[0] = False
-
-    def sw2_on(self):
-        time.sleep(0.2)
-        # >>>some real work code<<<
-        self.list_state[1] = True
-
-    def sw2_off(self):
-        time.sleep(0.2)
-        # >>>some real work code<<<
-        self.list_state[1] = False
-
-    def sw3_on(self):
-        time.sleep(0.2)
-        # >>>some real work code<<<
-        self.list_state[2] = True
-
-    def sw3_off(self):
-        time.sleep(0.2)
-        # >>>some real work code<<<
-        self.list_state[2] = False
-
-    def sw4_on(self):
-        time.sleep(0.2)
-        # >>>some real work code<<<
-        self.list_state[3] = True
-
-    def sw4_off(self):
-        time.sleep(0.2)
-        # >>>some real work code<<<
-        self.list_state[3] = False'''
-
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle(QStyleFactory.create('Oxygen'))
@@ -315,4 +282,3 @@ if __name__=="__main__":
     child_window.ui.pushButton.clicked.connect(myapp.Save_change)
     myapp.show()
     sys.exit(app.exec_())
-

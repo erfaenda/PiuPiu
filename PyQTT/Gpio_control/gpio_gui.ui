@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1433</width>
-    <height>1032</height>
+    <width>1503</width>
+    <height>1034</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -2950,14 +2950,14 @@
             </font>
            </property>
            <property name="text">
-            <string>Мотор</string>
+            <string>Порт № 2</string>
            </property>
            <property name="margin">
             <number>6</number>
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_3">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -2981,7 +2981,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="2">
+         <item row="0" column="3">
           <widget class="QTimeEdit" name="timeEdit_4">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3005,7 +3005,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="4">
+         <item row="0" column="5">
           <spacer name="horizontalSpacer_2">
            <property name="font">
             <font>
@@ -3023,13 +3023,13 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>400</width>
+             <width>200</width>
              <height>20</height>
             </size>
            </property>
           </spacer>
          </item>
-         <item row="0" column="3">
+         <item row="0" column="4">
           <widget class="QCheckBox" name="checkBox_time_logic_2">
            <property name="minimumSize">
             <size>
@@ -3053,11 +3053,25 @@
            </attribute>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_2">
+           <item>
+            <property name="text">
+             <string>работать от</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>не работать от</string>
+            </property>
+           </item>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="3" column="0" colspan="5">
         <layout class="QGridLayout" name="gridLayout_11">
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_7">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3084,7 +3098,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="4">
+         <item row="0" column="5">
           <spacer name="horizontalSpacer_4">
            <property name="font">
             <font>
@@ -3102,13 +3116,13 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>400</width>
+             <width>200</width>
              <height>20</height>
             </size>
            </property>
           </spacer>
          </item>
-         <item row="0" column="2">
+         <item row="0" column="3">
           <widget class="QTimeEdit" name="timeEdit_8">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3161,14 +3175,14 @@
             </font>
            </property>
            <property name="text">
-            <string>Приток</string>
+            <string>Порт № 3</string>
            </property>
            <property name="margin">
             <number>6</number>
            </property>
           </widget>
          </item>
-         <item row="0" column="3">
+         <item row="0" column="4">
           <widget class="QCheckBox" name="checkBox_time_logic_3">
            <property name="minimumSize">
             <size>
@@ -3192,11 +3206,25 @@
            </attribute>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_3">
+           <item>
+            <property name="text">
+             <string>работать от</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>не работать от</string>
+            </property>
+           </item>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="4" column="0" colspan="5">
         <layout class="QGridLayout" name="gridLayout_10">
-         <item row="0" column="2">
+         <item row="0" column="3">
           <widget class="QTimeEdit" name="timeEdit_6">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3220,7 +3248,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_5">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3273,14 +3301,14 @@
             </font>
            </property>
            <property name="text">
-            <string>Вентеляторы</string>
+            <string>Порт № 4</string>
            </property>
            <property name="margin">
             <number>6</number>
            </property>
           </widget>
          </item>
-         <item row="0" column="4">
+         <item row="0" column="5">
           <spacer name="horizontalSpacer_3">
            <property name="font">
             <font>
@@ -3298,13 +3326,13 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>400</width>
+             <width>200</width>
              <height>20</height>
             </size>
            </property>
           </spacer>
          </item>
-         <item row="0" column="3">
+         <item row="0" column="4">
           <widget class="QCheckBox" name="checkBox_time_logic_4">
            <property name="minimumSize">
             <size>
@@ -3328,11 +3356,25 @@
            </attribute>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_4">
+           <item>
+            <property name="text">
+             <string>работать от</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>не работать от</string>
+            </property>
+           </item>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="5" column="0" colspan="5">
         <layout class="QGridLayout" name="gridLayout_16">
-         <item row="0" column="2">
+         <item row="0" column="3">
           <widget class="QTimeEdit" name="timeEdit_17">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3356,7 +3398,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_18">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3409,14 +3451,14 @@
             </font>
            </property>
            <property name="text">
-            <string>Вентеляторы</string>
+            <string>Порт № 5</string>
            </property>
            <property name="margin">
             <number>6</number>
            </property>
           </widget>
          </item>
-         <item row="0" column="4">
+         <item row="0" column="5">
           <spacer name="horizontalSpacer_9">
            <property name="font">
             <font>
@@ -3434,13 +3476,13 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>400</width>
+             <width>200</width>
              <height>20</height>
             </size>
            </property>
           </spacer>
          </item>
-         <item row="0" column="3">
+         <item row="0" column="4">
           <widget class="QCheckBox" name="checkBox_time_logic_5">
            <property name="minimumSize">
             <size>
@@ -3464,11 +3506,25 @@
            </attribute>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_5">
+           <item>
+            <property name="text">
+             <string>работать от</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>не работать от</string>
+            </property>
+           </item>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="1" column="0" colspan="5">
         <layout class="QGridLayout" name="gridLayout_7">
-         <item row="0" column="2">
+         <item row="0" column="3">
           <widget class="QTimeEdit" name="timeEdit_2">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3492,7 +3548,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="4">
+         <item row="0" column="5">
           <spacer name="horizontalSpacer">
            <property name="font">
             <font>
@@ -3510,7 +3566,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>400</width>
+             <width>200</width>
              <height>20</height>
             </size>
            </property>
@@ -3545,14 +3601,14 @@
             </font>
            </property>
            <property name="text">
-            <string>Днат</string>
+            <string>Порт № 1</string>
            </property>
            <property name="margin">
             <number>6</number>
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3576,7 +3632,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="3">
+         <item row="0" column="4">
           <widget class="QCheckBox" name="checkBox_time_logic_1">
            <property name="minimumSize">
             <size>
@@ -3600,11 +3656,34 @@
            </attribute>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="sizeAdjustPolicy">
+            <enum>QComboBox::AdjustToContents</enum>
+           </property>
+           <item>
+            <property name="text">
+             <string>работать от</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>не работать от</string>
+            </property>
+           </item>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="6" column="0" colspan="5">
         <layout class="QGridLayout" name="gridLayout_17">
-         <item row="0" column="2">
+         <item row="0" column="3">
           <widget class="QTimeEdit" name="timeEdit_19">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3628,7 +3707,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_20">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3681,14 +3760,14 @@
             </font>
            </property>
            <property name="text">
-            <string>Вентеляторы</string>
+            <string>Порт № 6</string>
            </property>
            <property name="margin">
             <number>6</number>
            </property>
           </widget>
          </item>
-         <item row="0" column="4">
+         <item row="0" column="5">
           <spacer name="horizontalSpacer_10">
            <property name="font">
             <font>
@@ -3706,13 +3785,13 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>400</width>
+             <width>200</width>
              <height>20</height>
             </size>
            </property>
           </spacer>
          </item>
-         <item row="0" column="3">
+         <item row="0" column="4">
           <widget class="QCheckBox" name="checkBox_time_logic_6">
            <property name="minimumSize">
             <size>
@@ -3736,11 +3815,25 @@
            </attribute>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_6">
+           <item>
+            <property name="text">
+             <string>работать от</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>не работать от</string>
+            </property>
+           </item>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="7" column="0" colspan="5">
         <layout class="QGridLayout" name="gridLayout_19">
-         <item row="0" column="2">
+         <item row="0" column="3">
           <widget class="QTimeEdit" name="timeEdit_23">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3764,7 +3857,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_24">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3817,14 +3910,14 @@
             </font>
            </property>
            <property name="text">
-            <string>Вентеляторы</string>
+            <string>Порт № 7</string>
            </property>
            <property name="margin">
             <number>6</number>
            </property>
           </widget>
          </item>
-         <item row="0" column="4">
+         <item row="0" column="5">
           <spacer name="horizontalSpacer_12">
            <property name="font">
             <font>
@@ -3842,13 +3935,13 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>400</width>
+             <width>200</width>
              <height>20</height>
             </size>
            </property>
           </spacer>
          </item>
-         <item row="0" column="3">
+         <item row="0" column="4">
           <widget class="QCheckBox" name="checkBox_time_logic_7">
            <property name="minimumSize">
             <size>
@@ -3872,11 +3965,25 @@
            </attribute>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_7">
+           <item>
+            <property name="text">
+             <string>работать от</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>не работать от</string>
+            </property>
+           </item>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="8" column="0" colspan="5">
         <layout class="QGridLayout" name="gridLayout_20">
-         <item row="0" column="3">
+         <item row="0" column="4">
           <widget class="QCheckBox" name="checkBox_time_logic_8">
            <property name="minimumSize">
             <size>
@@ -3900,7 +4007,7 @@
            </attribute>
           </widget>
          </item>
-         <item row="0" column="2">
+         <item row="0" column="3">
           <widget class="QTimeEdit" name="timeEdit_25">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3924,7 +4031,7 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_26">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -3977,14 +4084,14 @@
             </font>
            </property>
            <property name="text">
-            <string>Вентеляторы</string>
+            <string>Порт № 8</string>
            </property>
            <property name="margin">
             <number>6</number>
            </property>
           </widget>
          </item>
-         <item row="0" column="4">
+         <item row="0" column="5">
           <spacer name="horizontalSpacer_13">
            <property name="font">
             <font>
@@ -4002,11 +4109,25 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>400</width>
+             <width>200</width>
              <height>20</height>
             </size>
            </property>
           </spacer>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_8">
+           <item>
+            <property name="text">
+             <string>работать от</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>не работать от</string>
+            </property>
+           </item>
+          </widget>
          </item>
         </layout>
        </item>
@@ -4132,7 +4253,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1433</width>
+     <width>1503</width>
      <height>30</height>
     </rect>
    </property>
