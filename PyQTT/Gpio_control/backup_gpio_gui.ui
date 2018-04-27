@@ -2934,7 +2934,7 @@
           </spacer>
          </item>
          <item row="0" column="3">
-          <widget class="QCheckBox" name="checkBox_time_logic_2">
+          <widget class="QCheckBox" name="checkBox_time_logic_6">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -3100,6 +3100,30 @@
        </item>
        <item row="4" column="0" colspan="5">
         <layout class="QGridLayout" name="gridLayout_10">
+         <item row="0" column="3">
+          <widget class="QCheckBox" name="checkBox_time_logic_4">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup</string>
+           </attribute>
+          </widget>
+         </item>
          <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_6">
            <property name="sizePolicy">
@@ -3208,8 +3232,12 @@
            </property>
           </spacer>
          </item>
+        </layout>
+       </item>
+       <item row="5" column="0" colspan="5">
+        <layout class="QGridLayout" name="gridLayout_16">
          <item row="0" column="3">
-          <widget class="QCheckBox" name="checkBox_time_logic_4">
+          <widget class="QCheckBox" name="checkBox_time_logic_5">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -3232,10 +3260,6 @@
            </attribute>
           </widget>
          </item>
-        </layout>
-       </item>
-       <item row="5" column="0" colspan="5">
-        <layout class="QGridLayout" name="gridLayout_16">
          <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_17">
            <property name="sizePolicy">
@@ -3343,30 +3367,6 @@
             </size>
            </property>
           </spacer>
-         </item>
-         <item row="0" column="3">
-          <widget class="QCheckBox" name="checkBox_time_logic_5">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>on / off</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">buttonGroup</string>
-           </attribute>
-          </widget>
          </item>
         </layout>
        </item>
@@ -3481,7 +3481,7 @@
           </widget>
          </item>
          <item row="0" column="3">
-          <widget class="QCheckBox" name="checkBox_time_logic_1">
+          <widget class="QCheckBox" name="checkBox_time_logic_2">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -3617,7 +3617,7 @@
           </spacer>
          </item>
          <item row="0" column="3">
-          <widget class="QCheckBox" name="checkBox_time_logic_6">
+          <widget class="QCheckBox" name="checkBox_time_logic_1">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -3644,6 +3644,30 @@
        </item>
        <item row="7" column="0" colspan="5">
         <layout class="QGridLayout" name="gridLayout_19">
+         <item row="0" column="3">
+          <widget class="QCheckBox" name="checkBox_time_logic_7">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">buttonGroup</string>
+           </attribute>
+          </widget>
+         </item>
          <item row="0" column="2">
           <widget class="QTimeEdit" name="timeEdit_23">
            <property name="sizePolicy">
@@ -3751,30 +3775,6 @@
             </size>
            </property>
           </spacer>
-         </item>
-         <item row="0" column="3">
-          <widget class="QCheckBox" name="checkBox_time_logic_7">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>on / off</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">buttonGroup</string>
-           </attribute>
-          </widget>
          </item>
         </layout>
        </item>

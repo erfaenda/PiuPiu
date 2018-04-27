@@ -18,6 +18,7 @@ class MyWin(QtWidgets.QMainWindow):
     sw_state7 = False
     sw_state8 = False
     list_state = [sw_state1, sw_state2, sw_state3, sw_state4, sw_state5, sw_state6, sw_state7, sw_state8]
+    list_checkboxes_time_logic = []
     # devices value
     temp_1 = 0
     temp_2 = 0
@@ -38,6 +39,8 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         #self.uptime()
+        self.append_list_checkboxes()
+        self.ui.buttonGroup.setExclusive(False)
         # signals and slots
         self.ui.pushButton.clicked.connect(self.sw1_on)
         self.ui.pushButton_2.clicked.connect(self.sw1_off)
@@ -52,22 +55,35 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_logicTimer_on.clicked.connect(self.time_logicON)
         self.ui.pushButton_logicTimer_off.clicked.connect(self.time_logicOFF)
         self.ui.btn_time_logic_editNames.clicked.connect(self.show_child_window)
+        self.ui.pushButton_logicTimer_off.clicked.connect(self.test)
 
     # test function
     def test(self):
-        t1 = self.ui.timeEdit.time()
-        now = datetime.now()
-        today = now.replace(hour=t1.hour(), minute=t1.minute(), second=0, microsecond=0)
+        groupe = self.ui.buttonGroup.buttons()
+        print(self.list_checkboxes[0].isChecked())
+        i = 0
+        for checkbox in groupe:
+            if checkbox.isChecked():
+                print(i)
+                print('Чекнут')
 
-        print(now > today)
+            i = i + 1
+
+
 
     # show_child_window
     def show_child_window(self):
-        child_window.ui.lineEdit.setText(self.ui.label_10.text())
+        #child_window.ui.lineEdit.setText(self.ui.label_10.text())
         child_window.show()
 
-    def save_changed_names(self):
-        self.ui.label_10.setText(child_window.line_1)
+    # Поиск по именам объектов
+    def Save_change(self):
+        for line in range(1, 9):
+            str_1 = 'label_time_logic_{}'.format(line)
+            str_2 = 'lineEdit_{}'.format(line)
+            abstract_line = self.findChild(QtCore.QObject, str_1)
+            abstract_lineEdit = child_window.findChild(QtCore.QObject, str_2)
+            abstract_line.setText(abstract_lineEdit.text())
 
 
     # main fuction read time and control gpio ports
@@ -85,8 +101,8 @@ class MyWin(QtWidgets.QMainWindow):
                 self.sw1_on()
 
     # universal main fuction read time and control gpio ports
-    def uni_timer_logic(self, time_min, time_max, sw_state, checkbox):
-        if self.ui.list_checkboxes[checkbox].isChecked():
+    '''def uni_timer_logic(self, time_min, time_max, sw_state, checkbox):
+        if self.ui.buttonGroup.buttons().isChecked():
             if self.timeLogic_state == True:
                 now = datetime.now()
                 self.dnat_min = now.replace(hour=time_min.hour(), minute=time_min.minute(), second=0,
@@ -97,11 +113,41 @@ class MyWin(QtWidgets.QMainWindow):
                 if now >= self.dnat_min and now <= self.dnat_max:
                     self.list_state[sw_state] = False
                 else:
+                    self.list_state[sw_state] = True'''
+
+    def uni_timer_logic(self, time_min, time_max, sw_state, checkbox_in_list):
+        if self.timeLogic_state == True:
+            if self.list_checkboxes_time_logic[checkbox_in_list].isChecked():
+                now = datetime.now()
+                self.dnat_min = now.replace(hour=time_min.hour(), minute=time_min.minute(), second=0,
+                                                                microsecond=0)
+                self.dnat_max = now.replace(hour=time_max.hour(), minute=time_max.minute(), second=0,
+                                                                microsecond=0)
+                # off range
+                if now >= self.dnat_min and now <= self.dnat_max:
+                    self.list_state[sw_state] = False
+                else:
                     self.list_state[sw_state] = True
-    # function starter
+
+    def append_list_checkboxes(self):
+        i = 1
+        for i in range(1,9):
+            str_1 = 'checkBox_time_logic_{}'.format(i)
+            abstract_chkbx = self.findChild(QtCore.QObject, str_1)
+            self.list_checkboxes_time_logic.append(abstract_chkbx)
+            i = i + 1
+
+
+    # function starter shitcode
     def starter_all_timer_logic(self):
         self.uni_timer_logic(self.ui.timeEdit.time(), self.ui.timeEdit_2.time(), 0, 0)
         self.uni_timer_logic(self.ui.timeEdit_3.time(), self.ui.timeEdit_4.time(), 1, 1)
+        self.uni_timer_logic(self.ui.timeEdit_7.time(), self.ui.timeEdit_8.time(), 2, 2)
+        self.uni_timer_logic(self.ui.timeEdit_5.time(), self.ui.timeEdit_6.time(), 3, 3)
+        self.uni_timer_logic(self.ui.timeEdit_18.time(), self.ui.timeEdit_17.time(), 4, 4)
+        self.uni_timer_logic(self.ui.timeEdit_20.time(), self.ui.timeEdit_19.time(), 5, 5)
+        self.uni_timer_logic(self.ui.timeEdit_24.time(), self.ui.timeEdit_23.time(), 6, 6)
+        self.uni_timer_logic(self.ui.timeEdit_26.time(), self.ui.timeEdit_25.time(), 7, 7)
 
 
 
@@ -116,7 +162,7 @@ class MyWin(QtWidgets.QMainWindow):
 
     def switch_light(self):
         a = self.ui.timeEdit.time()
-        print(a.hour() + a.minute())
+        #print(a.hour() + a.minute())
 
     def readDevices(self):
         self.temp_1 = int(self.ui.temp1.text())
@@ -131,7 +177,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.label_6.setText('Системное время: ' + str(now))
         time = datetime.now()
         #print('time ' + str(self.globalTime))
-        print(self.list_state[0])
+        #print(self.list_state[0])
 
     def uptime(self):
         with open('/proc/uptime', 'r') as f:
@@ -187,6 +233,9 @@ class MyWin(QtWidgets.QMainWindow):
 
     def time_logicOFF(self):
         self.timeLogic_state = False
+
+    # universal ON/OFF
+    # напишу потом, не сегодня
 
     # buttons ON/OFF
     def sw1_on(self):
@@ -245,7 +294,9 @@ if __name__=="__main__":
     timeing.timeout.connect(myapp.deviceLogic)
     #timeing.timeout.connect(myapp.timer_logic)
     timeing.timeout.connect(myapp.starter_all_timer_logic)
-    timeing.timeout.connect(myapp.save_changed_names)
     timeing.start(1000)
+    # event slots children windows
+    child_window.ui.pushButton.clicked.connect(myapp.Save_change)
     myapp.show()
     sys.exit(app.exec_())
+
