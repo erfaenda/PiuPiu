@@ -22,7 +22,7 @@ class MyWin(QtWidgets.QMainWindow):
 
     # devices value
     list_devices = ['Средняя температура', 'Температура 1','Температура 2','Гигрометр 1','Гигрометр 2',
-                    'Средняя влажность']
+                    'Средняя влажность ']
     temp_1 = 0
     temp_2 = 0
     middle_temp = 0
