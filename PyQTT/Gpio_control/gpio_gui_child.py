@@ -95,6 +95,14 @@ class Ui_Form(object):
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.lineEdit_8)
 
         self.retranslateUi(Form)
+        self.lineEdit_1.returnPressed.connect(self.pushButton.click)
+        self.lineEdit_2.returnPressed.connect(self.pushButton.click)
+        self.lineEdit_3.returnPressed.connect(self.pushButton.click)
+        self.lineEdit_4.returnPressed.connect(self.pushButton.click)
+        self.lineEdit_5.returnPressed.connect(self.pushButton.click)
+        self.lineEdit_6.returnPressed.connect(self.pushButton.click)
+        self.lineEdit_7.returnPressed.connect(self.pushButton.click)
+        self.lineEdit_8.returnPressed.connect(self.pushButton.click)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):

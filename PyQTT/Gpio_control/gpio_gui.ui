@@ -3737,6 +3737,13 @@
              <height>25</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
            <property name="text">
             <string>name</string>
            </property>
@@ -3840,6 +3847,13 @@
              <height>25</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
            <property name="text">
             <string>name</string>
            </property>
@@ -3909,6 +3923,13 @@
              <width>16777215</width>
              <height>25</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
            </property>
            <property name="text">
             <string>name</string>
@@ -4079,6 +4100,13 @@
              <height>25</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
            <property name="text">
             <string>name</string>
            </property>
@@ -4188,6 +4216,13 @@
              <height>25</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
            <property name="text">
             <string>name</string>
            </property>
@@ -4281,6 +4316,13 @@
              <width>0</width>
              <height>0</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
            </property>
            <item>
             <property name="text">
@@ -4409,6 +4451,13 @@
              <height>25</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
            <property name="text">
             <string>name</string>
            </property>
@@ -4473,6 +4522,24 @@
          </item>
          <item row="11" column="0" colspan="3">
           <widget class="QLabel" name="label__status_logic">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>15</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>15</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <family>DejaVu Sans</family>
@@ -4499,6 +4566,13 @@
              <width>16777215</width>
              <height>25</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
            </property>
            <property name="text">
             <string>name</string>
@@ -4578,6 +4652,13 @@
              <width>16777215</width>
              <height>25</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
            </property>
            <property name="text">
             <string>name</string>
@@ -4739,8 +4820,9 @@
            <property name="font">
             <font>
              <family>DejaVu Sans</family>
-             <weight>75</weight>
-             <bold>true</bold>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="text">
@@ -4750,6 +4832,13 @@
          </item>
          <item row="9" column="3">
           <widget class="QLabel" name="label_47">
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
            <property name="text">
             <string>Включает если меньше</string>
            </property>
@@ -4805,7 +4894,7 @@
      <x>0</x>
      <y>0</y>
      <width>1503</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

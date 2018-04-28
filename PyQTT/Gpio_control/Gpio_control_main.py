@@ -19,7 +19,10 @@ class MyWin(QtWidgets.QMainWindow):
     sw_state8 = False
     list_state = [sw_state1, sw_state2, sw_state3, sw_state4, sw_state5, sw_state6, sw_state7, sw_state8]
     list_checkboxes_time_logic = []
+
     # devices value
+    list_devices = ['Средняя температура', 'Температура 1','Температура 2','Гигрометр 1','Гигрометр 2',
+                    'Средняя влажность']
     temp_1 = 0
     temp_2 = 0
     middle_temp = 0
@@ -169,7 +172,6 @@ class MyWin(QtWidgets.QMainWindow):
         a = temp.replace("temp=", "")
         s = a[0:2]
         i = int(s)
-        print(s)
         self.ui.midtemp.setValue(i)
 
     def dateTime(self):
