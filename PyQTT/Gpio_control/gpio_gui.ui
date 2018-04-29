@@ -4351,6 +4351,11 @@
            </item>
            <item>
             <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
              <string/>
             </property>
            </item>
@@ -4845,25 +4850,242 @@
           </widget>
          </item>
          <item row="2" column="2">
-          <widget class="QComboBox" name="comboBox_10"/>
+          <widget class="QComboBox" name="comboBox_10">
+           <item>
+            <property name="text">
+             <string>Средняя температура</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
+          </widget>
          </item>
          <item row="3" column="2">
-          <widget class="QComboBox" name="comboBox_11"/>
+          <widget class="QComboBox" name="comboBox_11">
+           <item>
+            <property name="text">
+             <string>Средняя температура</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
+          </widget>
          </item>
          <item row="4" column="2">
-          <widget class="QComboBox" name="comboBox_12"/>
+          <widget class="QComboBox" name="comboBox_12">
+           <item>
+            <property name="text">
+             <string>Средняя температура</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
+          </widget>
          </item>
          <item row="5" column="2">
-          <widget class="QComboBox" name="comboBox_13"/>
+          <widget class="QComboBox" name="comboBox_13">
+           <item>
+            <property name="text">
+             <string>Средняя температура</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температуа 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
+          </widget>
          </item>
          <item row="6" column="2">
-          <widget class="QComboBox" name="comboBox_14"/>
+          <widget class="QComboBox" name="comboBox_14">
+           <item>
+            <property name="text">
+             <string>Средняя температура</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
+          </widget>
          </item>
          <item row="7" column="2">
-          <widget class="QComboBox" name="comboBox_15"/>
+          <widget class="QComboBox" name="comboBox_15">
+           <item>
+            <property name="text">
+             <string>Средняя температура</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
+          </widget>
          </item>
          <item row="8" column="2">
-          <widget class="QComboBox" name="comboBox_16"/>
+          <widget class="QComboBox" name="comboBox_16">
+           <item>
+            <property name="text">
+             <string>Средняя температура</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
+          </widget>
          </item>
         </layout>
        </item>
@@ -4894,7 +5116,7 @@
      <x>0</x>
      <y>0</y>
      <width>1503</width>
-     <height>30</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

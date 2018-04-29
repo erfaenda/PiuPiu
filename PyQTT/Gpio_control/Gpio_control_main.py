@@ -42,8 +42,8 @@ class MyWin(QtWidgets.QMainWindow):
 
     # Time logick value
     globalTime = 0
-    dnat_min = 0
-    dnat_max = 0
+    spin_min = 0
+    spin_max = 0
 
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
@@ -75,11 +75,11 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_14.clicked.connect(lambda: self.sw_off(6))
         self.ui.pushButton_15.clicked.connect(lambda: self.sw_on(7))
         self.ui.pushButton_16.clicked.connect(lambda: self.sw_off(7))
-
+    # switch on
     def sw_on(self, sw_state):
         if self.list_state[sw_state] == False:
             self.list_state[sw_state] = True
-
+    # switch off
     def sw_off(self, sw_state):
         if self.list_state[sw_state] == True:
             self.list_state[sw_state] = False
@@ -108,10 +108,10 @@ class MyWin(QtWidgets.QMainWindow):
             time_min = self.ui.timeEdit.time()
             time_max = self.ui.timeEdit_2.time()
             now = datetime.now()
-            self.dnat_min = now.replace(hour=time_min.hour(), minute=time_min.minute(), second=0, microsecond=0)
-            self.dnat_max = now.replace(hour=time_max.hour(), minute=time_max.minute(), second=0, microsecond=0)
+            self.spin_min = now.replace(hour=time_min.hour(), minute=time_min.minute(), second=0, microsecond=0)
+            self.spin_max = now.replace(hour=time_max.hour(), minute=time_max.minute(), second=0, microsecond=0)
             # off range
-            if now >= self.dnat_min and now <= self.dnat_max:
+            if now >= self.spin_min and now <= self.spin_max:
                 self.sw1_off()
             else:
                 self.sw1_on()
@@ -121,21 +121,28 @@ class MyWin(QtWidgets.QMainWindow):
         if self.timeLogic_state == True:
             if self.list_checkboxes_time_logic[checkbox_in_list].isChecked():
                 now = datetime.now()
-                self.dnat_min = now.replace(hour=time_min.hour(), minute=time_min.minute(), second=0,
-                                                                microsecond=0)
-                self.dnat_max = now.replace(hour=time_max.hour(), minute=time_max.minute(), second=0,
-                                                                microsecond=0)
+                self.spin_min = now.replace(hour=time_min.hour(), minute=time_min.minute(), second=0,
+                                            microsecond=0)
+                self.spin_max = now.replace(hour=time_max.hour(), minute=time_max.minute(), second=0,
+                                            microsecond=0)
                 # off range and on range
                 if combobox.currentIndex() == 1:
-                    if now >= self.dnat_min and now <= self.dnat_max:
+                    if now >= self.spin_min and now <= self.spin_max:
                         self.list_state[sw_state] = False
                     else:
                         self.list_state[sw_state] = True
                 else:
-                    if now >= self.dnat_min and now <= self.dnat_max:
+                    if now >= self.spin_min and now <= self.spin_max:
                         self.list_state[sw_state] = True
                     else:
                         self.list_state[sw_state] = False
+
+    def uni_device_logic(self):
+        if self.deviceLogic_state == True:
+            if self.middle_temp < self.ui.spinBoxOn_logic_1.value():
+                self.sw_on(0)
+            if self.middle_temp > self.ui.spinBoxOff_logic_1.value():
+                self.sw_off(0)
 
     def append_list_checkboxes(self):
         for i in range(1,9):
@@ -144,7 +151,7 @@ class MyWin(QtWidgets.QMainWindow):
             self.list_checkboxes_time_logic.append(abstract_chkbx)
 
 
-    # function starter ACHTUNG! shitcode
+    # function starter
     def starter_all_timer_logic(self):
         self.uni_timer_logic(self.ui.timeEdit.time(), self.ui.timeEdit_2.time(), 0, 0, self.ui.comboBox)
         self.uni_timer_logic(self.ui.timeEdit_3.time(), self.ui.timeEdit_4.time(), 1, 1, self.ui.comboBox_2)
@@ -182,6 +189,7 @@ class MyWin(QtWidgets.QMainWindow):
         i = int(s)
         self.ui.midtemp.setValue(i)
 
+    # time display only
     def dateTime(self):
         # display time
         now = datetime.strftime(datetime.now(), "%H:%M:%S")
@@ -190,6 +198,7 @@ class MyWin(QtWidgets.QMainWindow):
         #print('time ' + str(self.globalTime))
         #print(self.list_state[0])
 
+    # uptme system
     def uptime(self):
         with open('/proc/uptime', 'r') as f:
             uptime_seconds = float(f.readline().split()[0])
@@ -202,6 +211,7 @@ class MyWin(QtWidgets.QMainWindow):
         for state in self.list_state:
             if state == False:'''
 
+    # check state ports and switch real gpio ports
     def check_state(self):
         # check state buttons on/off
         # это гавно надо переписать
