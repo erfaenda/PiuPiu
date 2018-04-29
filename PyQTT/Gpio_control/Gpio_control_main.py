@@ -1,3 +1,4 @@
+#import RPi.GPIO as GPIO
 import sys, time, os
 from datetime import timedelta, datetime
 from PyQTT.Gpio_control.gpio_gui import *
@@ -7,6 +8,13 @@ from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import QStyleFactory
 
 class MyWin(QtWidgets.QMainWindow):
+
+    '''# initial port GPIO
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(4, GPIO.IN)
+    GPIO.setup(17, GPIO.IN)
+    GPIO.setup(27, GPIO.IN)
+    GPIO.setup(22, GPIO.IN)'''
 
     # ports status
     sw_state1 = False
@@ -198,9 +206,14 @@ class MyWin(QtWidgets.QMainWindow):
         # check state buttons on/off
         # это гавно надо переписать
         if self.list_state[0] == False:
+            time.sleep(0.5)
             self.ui.label_status_port1.setText('OFF')
+            #GPIO.setup(4, GPIO.IN)
         else:
+            time.sleep(0.5)
             self.ui.label_status_port1.setText('ON')
+            #GPIO.setup(4, GPIO.OUT)
+
         if self.list_state[1] == False:
             self.ui.label_status_port2.setText('OFF')
         else:
