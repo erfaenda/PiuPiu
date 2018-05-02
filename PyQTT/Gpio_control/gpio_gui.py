@@ -2370,6 +2370,9 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.action = QtWidgets.QAction(MainWindow)
         self.action.setObjectName("action")
+        self.action_2 = QtWidgets.QAction(MainWindow)
+        self.action_2.setObjectName("action_2")
+        self.menu.addAction(self.action_2)
         self.menu.addAction(self.action)
         self.menubar.addAction(self.menu.menuAction())
         self.menubar.addAction(self.menu_2.menuAction())
@@ -2560,4 +2563,5 @@ class Ui_MainWindow(object):
         self.menu.setTitle(_translate("MainWindow", "Меню"))
         self.menu_2.setTitle(_translate("MainWindow", "О программе"))
         self.action.setText(_translate("MainWindow", "Выход"))
+        self.action_2.setText(_translate("MainWindow", "Сохранить настройки"))
 
