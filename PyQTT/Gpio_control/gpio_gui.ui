@@ -1551,7 +1551,7 @@
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QSpinBox" name="gigrom">
+          <widget class="QSpinBox" name="gigro_1">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
              <horstretch>0</horstretch>
@@ -1599,7 +1599,7 @@
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QSpinBox" name="temp1_2">
+          <widget class="QSpinBox" name="gigro_2">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
              <horstretch>0</horstretch>
@@ -1647,7 +1647,7 @@
           </widget>
          </item>
          <item row="5" column="1">
-          <widget class="QSpinBox" name="temp2_2">
+          <widget class="QSpinBox" name="middle_hymanity">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
              <horstretch>0</horstretch>
@@ -1695,7 +1695,7 @@
           </widget>
          </item>
          <item row="6" column="1">
-          <widget class="QSpinBox" name="midtemp_2">
+          <widget class="QSpinBox" name="rezerv_1">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
              <horstretch>0</horstretch>
@@ -1743,7 +1743,7 @@
           </widget>
          </item>
          <item row="7" column="1">
-          <widget class="QSpinBox" name="gigrom_2">
+          <widget class="QSpinBox" name="rezerv_2">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
              <horstretch>0</horstretch>
@@ -3531,122 +3531,8 @@
        </item>
        <item row="0" column="1">
         <layout class="QGridLayout" name="gridLayout_4">
-         <item row="5" column="3">
-          <widget class="QSpinBox" name="spinBoxOn_logic_5">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="5">
-          <widget class="QCheckBox" name="checkBox_10">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>on / off</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="5">
-          <widget class="QCheckBox" name="checkBox_9">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>on / off</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="3">
-          <widget class="QSpinBox" name="spinBoxOn_logic_6">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-          </widget>
-         </item>
          <item row="7" column="5">
-          <widget class="QCheckBox" name="checkBox_16">
+          <widget class="QCheckBox" name="checkBox_device_logic_7">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -3669,143 +3555,6 @@
            </property>
            <property name="text">
             <string>on / off</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="5">
-          <widget class="QCheckBox" name="checkBox_7">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>on / off</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="0">
-          <widget class="QLabel" name="label_53">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Порт № 8</string>
-           </property>
-           <property name="margin">
-            <number>6</number>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="1">
-          <widget class="QLabel" name="label_device_logic_8">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>name</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="3">
-          <widget class="QSpinBox" name="spinBoxOn_logic_7">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="4">
-          <widget class="QSpinBox" name="spinBoxOff_logic_6">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
            </property>
           </widget>
          </item>
@@ -3830,345 +3579,6 @@
            </property>
            <property name="margin">
             <number>6</number>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QLabel" name="label_device_logic_6">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>name</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="5">
-          <widget class="QCheckBox" name="checkBox_5">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>on / off</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_14">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Порт № 2</string>
-           </property>
-           <property name="margin">
-            <number>6</number>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="label_device_logic_2">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>name</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="3">
-          <widget class="QSpinBox" name="spinBoxOn_logic_2">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="4">
-          <widget class="QSpinBox" name="spinBoxOff_logic_8">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="10" column="0">
-          <widget class="QPushButton" name="pushButton_logic_off">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>75</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background:rgba(169, 230, 255, 170)</string>
-           </property>
-           <property name="text">
-            <string>Logic OFF</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="4">
-          <widget class="QSpinBox" name="spinBoxOff_logic_1">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="0">
-          <widget class="QLabel" name="label_56">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Порт № 7</string>
-           </property>
-           <property name="margin">
-            <number>6</number>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="1">
-          <widget class="QLabel" name="label_device_logic_7">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>name</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_48">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Порт № 3</string>
-           </property>
-           <property name="margin">
-            <number>6</number>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="3">
-          <widget class="QSpinBox" name="spinBoxOn_logic_4">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
            </property>
           </widget>
          </item>
@@ -4199,6 +3609,59 @@
              <weight>50</weight>
              <bold>false</bold>
             </font>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="5">
+          <widget class="QCheckBox" name="checkBox_device_logic_6">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="label_device_logic_2">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>name</string>
            </property>
           </widget>
          </item>
@@ -4258,8 +3721,8 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="5">
-          <widget class="QCheckBox" name="checkBox_6">
+         <item row="5" column="5">
+          <widget class="QCheckBox" name="checkBox_device_logic_5">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -4282,6 +3745,530 @@
            </property>
            <property name="text">
             <string>on / off</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLabel" name="label_device_logic_6">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_48">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Порт № 3</string>
+           </property>
+           <property name="margin">
+            <number>6</number>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_53">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Порт № 8</string>
+           </property>
+           <property name="margin">
+            <number>6</number>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLabel" name="label_device_logic_8">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="5">
+          <widget class="QCheckBox" name="checkBox_device_logic_1">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QSpinBox" name="spinBoxOn_logic_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_56">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Порт № 7</string>
+           </property>
+           <property name="margin">
+            <number>6</number>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="4">
+          <widget class="QSpinBox" name="spinBoxOff_logic_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLabel" name="label_device_logic_7">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_14">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Порт № 2</string>
+           </property>
+           <property name="margin">
+            <number>6</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="5">
+          <widget class="QCheckBox" name="checkBox_device_logic_3">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="3">
+          <widget class="QSpinBox" name="spinBoxOn_logic_6">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QSpinBox" name="spinBoxOff_logic_1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="3">
+          <widget class="QSpinBox" name="spinBoxOn_logic_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="0">
+          <widget class="QPushButton" name="pushButton_logic_off">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background:rgba(169, 230, 255, 170)</string>
+           </property>
+           <property name="text">
+            <string>Logic OFF</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="3">
+          <widget class="QSpinBox" name="spinBoxOn_logic_8">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3">
+          <widget class="QSpinBox" name="spinBoxOn_logic_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="4">
+          <widget class="QSpinBox" name="spinBoxOff_logic_6">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="3">
+          <widget class="QLabel" name="label_47">
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Включает если меньше</string>
            </property>
           </widget>
          </item>
@@ -4361,89 +4348,76 @@
            </item>
           </widget>
          </item>
-         <item row="4" column="5">
-          <widget class="QCheckBox" name="checkBox_8">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>on / off</string>
-           </property>
+         <item row="4" column="2">
+          <widget class="QComboBox" name="comboBox_12">
+           <item>
+            <property name="text">
+             <string>Средняя температура</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
           </widget>
          </item>
-         <item row="3" column="4">
-          <widget class="QSpinBox" name="spinBoxOff_logic_4">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
+         <item row="7" column="2">
+          <widget class="QComboBox" name="comboBox_15">
+           <item>
+            <property name="text">
+             <string>Средняя температура</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
           </widget>
          </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_49">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Порт № 4</string>
-           </property>
-           <property name="margin">
-            <number>6</number>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLabel" name="label_device_logic_3">
+         <item row="5" column="1">
+          <widget class="QLabel" name="label_device_logic_5">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -4468,8 +4442,42 @@
            </property>
           </widget>
          </item>
+         <item row="2" column="2">
+          <widget class="QComboBox" name="comboBox_10">
+           <item>
+            <property name="text">
+             <string>Средняя температура</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
+          </widget>
+         </item>
          <item row="8" column="4">
-          <widget class="QSpinBox" name="spinBoxOff_logic_5">
+          <widget class="QSpinBox" name="spinBoxOff_logic_8">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -4499,7 +4507,7 @@
           </widget>
          </item>
          <item row="8" column="5">
-          <widget class="QCheckBox" name="checkBox_13">
+          <widget class="QCheckBox" name="checkBox_device_logic_8">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -4525,243 +4533,8 @@
            </property>
           </widget>
          </item>
-         <item row="11" column="0" colspan="3">
-          <widget class="QLabel" name="label__status_logic">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>15</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>15</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Status devices logic</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLabel" name="label_device_logic_4">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>name</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="4">
-          <widget class="QSpinBox" name="spinBoxOff_logic_3">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_54">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Порт № 5</string>
-           </property>
-           <property name="margin">
-            <number>6</number>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QLabel" name="label_device_logic_5">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>25</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>name</string>
-           </property>
-          </widget>
-         </item>
          <item row="2" column="4">
           <widget class="QSpinBox" name="spinBoxOff_logic_2">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="3">
-          <widget class="QSpinBox" name="spinBoxOn_logic_8">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="4">
-          <widget class="QSpinBox" name="spinBoxOff_logic_7">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>200</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>26</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>DejaVu Sans</family>
-             <pointsize>9</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="3">
-          <widget class="QSpinBox" name="spinBoxOn_logic_3">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -4820,8 +4593,14 @@
            </property>
           </widget>
          </item>
-         <item row="9" column="4">
-          <widget class="QLabel" name="label_36">
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_49">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <family>DejaVu Sans</family>
@@ -4831,124 +4610,41 @@
             </font>
            </property>
            <property name="text">
-            <string>Выключает если больше</string>
+            <string>Порт № 4</string>
+           </property>
+           <property name="margin">
+            <number>6</number>
            </property>
           </widget>
          </item>
-         <item row="9" column="3">
-          <widget class="QLabel" name="label_47">
+         <item row="4" column="4">
+          <widget class="QSpinBox" name="spinBoxOff_logic_4">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
            <property name="font">
             <font>
+             <family>DejaVu Sans</family>
              <pointsize>9</pointsize>
              <weight>50</weight>
              <bold>false</bold>
             </font>
            </property>
-           <property name="text">
-            <string>Включает если меньше</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QComboBox" name="comboBox_10">
-           <item>
-            <property name="text">
-             <string>Средняя температура</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Температура 1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Температура 2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Гигрометр 1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Гигрометр 2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Средняя влажность</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="3" column="2">
-          <widget class="QComboBox" name="comboBox_11">
-           <item>
-            <property name="text">
-             <string>Средняя температура</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Температура 1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Температура 2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Гигрометр 1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Гигрометр 2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Средняя влажность</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="4" column="2">
-          <widget class="QComboBox" name="comboBox_12">
-           <item>
-            <property name="text">
-             <string>Средняя температура</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Температура 1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Температура 2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Гигрометр 1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Гигрометр 2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Средняя влажность</string>
-            </property>
-           </item>
           </widget>
          </item>
          <item row="5" column="2">
@@ -5019,40 +4715,6 @@
            </item>
           </widget>
          </item>
-         <item row="7" column="2">
-          <widget class="QComboBox" name="comboBox_15">
-           <item>
-            <property name="text">
-             <string>Средняя температура</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Температура 1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Температура 2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Гигрометр 1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Гигрометр 2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Средняя влажность</string>
-            </property>
-           </item>
-          </widget>
-         </item>
          <item row="8" column="2">
           <widget class="QComboBox" name="comboBox_16">
            <item>
@@ -5086,6 +4748,357 @@
             </property>
            </item>
           </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QComboBox" name="comboBox_11">
+           <item>
+            <property name="text">
+             <string>Средняя температура</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Температура 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Гигрометр 2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Средняя влажность</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLabel" name="label_device_logic_4">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="4">
+          <widget class="QSpinBox" name="spinBoxOff_logic_7">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="4">
+          <widget class="QLabel" name="label_36">
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Выключает если больше</string>
+           </property>
+          </widget>
+         </item>
+         <item row="12" column="0" colspan="3">
+          <widget class="QLabel" name="label__status_logic">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>15</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>15</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Status devices logic</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="5">
+          <widget class="QCheckBox" name="checkBox_device_logic_4">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="3">
+          <widget class="QSpinBox" name="spinBoxOn_logic_7">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="3">
+          <widget class="QSpinBox" name="spinBoxOn_logic_4">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="label_device_logic_3">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="5">
+          <widget class="QCheckBox" name="checkBox_device_logic_2">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>on / off</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_54">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Порт № 5</string>
+           </property>
+           <property name="margin">
+            <number>6</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="4">
+          <widget class="QSpinBox" name="spinBoxOff_logic_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>DejaVu Sans</family>
+             <pointsize>9</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="0">
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>

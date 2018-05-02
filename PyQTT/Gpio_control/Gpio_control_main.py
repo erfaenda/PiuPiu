@@ -26,7 +26,9 @@ class MyWin(QtWidgets.QMainWindow):
     sw_state7 = False
     sw_state8 = False
     list_state = [sw_state1, sw_state2, sw_state3, sw_state4, sw_state5, sw_state6, sw_state7, sw_state8]
+
     list_checkboxes_time_logic = []
+    list_checkboxes_device_logic = []
 
     # devices value
     list_devices = ['Средняя температура', 'Температура 1','Температура 2','Гигрометр 1','Гигрометр 2',
@@ -34,16 +36,22 @@ class MyWin(QtWidgets.QMainWindow):
     temp_1 = 0
     temp_2 = 0
     middle_temp = 0
-    gigro = 0
+    gigro_1 = 0
+    gigro_2 = 0
+    middle_humidity = 0
+    unknow_1 = 0
+    unknow_2 = 0
 
     # Logic state value
     deviceLogic_state = False
     timeLogic_state = False
 
-    # Time logick value
+    # logic value
     globalTime = 0
     spin_min = 0
     spin_max = 0
+    dev_min = 0
+    dev_max = 0
 
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
@@ -136,20 +144,63 @@ class MyWin(QtWidgets.QMainWindow):
                         self.list_state[sw_state] = True
                     else:
                         self.list_state[sw_state] = False
+        return
 
-    def uni_device_logic(self):
+    # control gpio ports in device block
+    # тоже неправильно, но пока пусть будет так...
+    def uni_device_logic(self, min, max, sw_state, checkbox_in_list, combobox):
         if self.deviceLogic_state == True:
-            if self.middle_temp < self.ui.spinBoxOn_logic_1.value():
-                self.sw_on(0)
-            if self.middle_temp > self.ui.spinBoxOff_logic_1.value():
-                self.sw_off(0)
+            if self.list_checkboxes_device_logic[checkbox_in_list].isChecked():
+                if combobox.currentIndex() == 0:
+                    if self.middle_temp < min:
+                        self.list_state[sw_state] = True
+                    if self.middle_temp > max:
+                        self.list_state[sw_state] = False
+                if combobox.currentIndex() == 1:
+                    if self.temp_1 < min:
+                        self.list_state[sw_state] = True
+                    if self.temp_1 > max:
+                        self.list_state[sw_state] = False
+                if combobox.currentIndex() == 2:
+                    if self.temp_2 < min:
+                        self.list_state[sw_state] = True
+                    if self.temp_2 > max:
+                        self.list_state[sw_state] = False
+                if combobox.currentIndex() == 3:
+                    if self.gigro_1 < min:
+                        self.list_state[sw_state] = True
+                    if self.gigro_1 > max:
+                        self.list_state[sw_state] = False
+                if combobox.currentIndex() == 4:
+                    if self.gigro_2 < min:
+                        self.list_state[sw_state] = True
+                    if self.gigro_2 > max:
+                        self.list_state[sw_state] = False
+                if combobox.currentIndex() == 5:
+                    if self.middle_humidity < min:
+                        self.list_state[sw_state] = True
+                    if self.middle_humidity > max:
+                        self.list_state[sw_state] = False
+                if combobox.currentIndex() == 6:
+                    if self.unknow_1 < min:
+                        self.list_state[sw_state] = True
+                    if self.unknow_1 > max:
+                        self.list_state[sw_state] = False
+                if combobox.currentIndex() == 7:
+                    if self.unknow_2 < min:
+                        self.list_state[sw_state] = True
+                    if self.unknow_2 > max:
+                        self.list_state[sw_state] = False
 
+    # add obj checkboxes in lists
     def append_list_checkboxes(self):
         for i in range(1,9):
             str_1 = 'checkBox_time_logic_{}'.format(i)
+            str_2 = 'checkBox_device_logic_{}'.format(i)
             abstract_chkbx = self.findChild(QtCore.QObject, str_1)
+            abstract_chkbx_2 = self.findChild(QtCore.QObject, str_2)
             self.list_checkboxes_time_logic.append(abstract_chkbx)
-
+            self.list_checkboxes_device_logic.append(abstract_chkbx_2)
 
     # function starter
     def starter_all_timer_logic(self):
@@ -161,6 +212,15 @@ class MyWin(QtWidgets.QMainWindow):
         self.uni_timer_logic(self.ui.timeEdit_20.time(), self.ui.timeEdit_19.time(), 5, 5, self.ui.comboBox_6)
         self.uni_timer_logic(self.ui.timeEdit_24.time(), self.ui.timeEdit_23.time(), 6, 6, self.ui.comboBox_7)
         self.uni_timer_logic(self.ui.timeEdit_26.time(), self.ui.timeEdit_25.time(), 7, 7, self.ui.comboBox_8)
+        # devices
+        self.uni_device_logic(self.ui.spinBoxOn_logic_1.value(), self.ui.spinBoxOff_logic_1.value(), 0, 0, self.ui.comboBox_9)
+        self.uni_device_logic(self.ui.spinBoxOn_logic_2.value(), self.ui.spinBoxOff_logic_2.value(), 1, 1, self.ui.comboBox_10)
+        self.uni_device_logic(self.ui.spinBoxOn_logic_3.value(), self.ui.spinBoxOff_logic_3.value(), 2, 2, self.ui.comboBox_11)
+        self.uni_device_logic(self.ui.spinBoxOn_logic_4.value(), self.ui.spinBoxOff_logic_4.value(), 3, 3, self.ui.comboBox_12)
+        self.uni_device_logic(self.ui.spinBoxOn_logic_5.value(), self.ui.spinBoxOff_logic_5.value(), 4, 4, self.ui.comboBox_13)
+        self.uni_device_logic(self.ui.spinBoxOn_logic_6.value(), self.ui.spinBoxOff_logic_6.value(), 5, 5, self.ui.comboBox_14)
+        self.uni_device_logic(self.ui.spinBoxOn_logic_7.value(), self.ui.spinBoxOff_logic_7.value(), 6, 6, self.ui.comboBox_15)
+        self.uni_device_logic(self.ui.spinBoxOn_logic_8.value(), self.ui.spinBoxOff_logic_8.value(), 7, 7, self.ui.comboBox_16)
 
     # main function read devices value and control gpio ports
     def deviceLogic(self):
@@ -174,12 +234,17 @@ class MyWin(QtWidgets.QMainWindow):
         a = self.ui.timeEdit.time()
         #print(a.hour() + a.minute())
 
-    # read devices values and show they
+    # read devices values and show they, test func
     def readDevices(self):
         self.temp_1 = int(self.ui.temp1.text())
         self.temp_2 = int(self.ui.temp2.text())
         self.middle_temp = (self.temp_1 + self.temp_2) / 2
         self.ui.midtemp.setValue(self.middle_temp)
+
+        self.gigro_1 = int(self.ui.gigro_1.text())
+        self.gigro_2 = int(self.ui.gigro_2.text())
+        self.middle_humidity = (self.gigro_1 + self.gigro_2) / 2
+        self.ui.middle_hymanity.setValue(self.middle_humidity)
 
     # temp raspberry
     def measure_temp(self):
@@ -216,11 +281,9 @@ class MyWin(QtWidgets.QMainWindow):
         # check state buttons on/off
         # это гавно надо переписать
         if self.list_state[0] == False:
-            time.sleep(0.5)
             self.ui.label_status_port1.setText('OFF')
             #GPIO.setup(4, GPIO.IN)
         else:
-            time.sleep(0.5)
             self.ui.label_status_port1.setText('ON')
             #GPIO.setup(4, GPIO.OUT)
 
@@ -281,7 +344,7 @@ class MyWin(QtWidgets.QMainWindow):
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
-    app.setStyle(QStyleFactory.create('Oxygen'))
+    app.setStyle(QStyleFactory.create('Fusion'))
     myapp = MyWin()
     child_window = Child()
     timer = QTimer()
@@ -292,7 +355,7 @@ if __name__=="__main__":
     timeing.timeout.connect(myapp.dateTime)
     timeing.timeout.connect(myapp.switch_light)
     timeing.timeout.connect(myapp.readDevices)
-    timeing.timeout.connect(myapp.deviceLogic)
+    #timeing.timeout.connect(myapp.deviceLogic)
     #timeing.timeout.connect(myapp.timer_logic)
     timeing.timeout.connect(myapp.starter_all_timer_logic)
     timeing.start(1000)
