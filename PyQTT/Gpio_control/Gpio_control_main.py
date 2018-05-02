@@ -204,12 +204,12 @@ class MyWin(QtWidgets.QMainWindow):
         config = configparser.ConfigParser()
         config.read(path)
 
-        if config.get("Settings", "time_logic") == False:
-            self.timeLogic_state = False
+        '''if config.get("Settings", "time_logic") == False:
+            self.timeLogic_state = 0
         else:
-            self.timeLogic_state = True
-        #self.timeLogic_state = (config.get("Settings", "time_logic"))
-        #self.deviceLogic_state = (config.get("Settings", "device_logic"))
+            self.timeLogic_state = 1'''
+        self.timeLogic_state = int(config.get("Settings", "time_logic"))
+        self.deviceLogic_state = int(config.get("Settings", "device_logic"))
 
         # Читаем некоторые значения из конфиг. файла.
         child_window.ui.lineEdit_1.setText(config.get("Settings", "port_name_1"))
@@ -331,7 +331,7 @@ class MyWin(QtWidgets.QMainWindow):
 
     # main fuction read time and control gpio ports, not used
     def timer_logic(self):
-        if self.timeLogic_state == True:
+        if self.timeLogic_state == 1:
             time_min = self.ui.timeEdit.time()
             time_max = self.ui.timeEdit_2.time()
             now = datetime.now()
@@ -345,7 +345,7 @@ class MyWin(QtWidgets.QMainWindow):
 
     # universal main fuction read time and control gpio ports
     def uni_timer_logic(self, time_min, time_max, sw_state, checkbox_in_list, combobox):
-        if self.timeLogic_state == True:
+        if self.timeLogic_state == 1:
             if self.list_checkboxes_time_logic[checkbox_in_list].isChecked():
                 now = datetime.now()
                 self.spin_min = now.replace(hour=time_min.hour(), minute=time_min.minute(), second=0,
@@ -368,7 +368,7 @@ class MyWin(QtWidgets.QMainWindow):
     # control gpio ports in device block
     # тоже неправильно, но пока пусть будет так...
     def uni_device_logic(self, min, max, sw_state, checkbox_in_list, combobox):
-        if self.deviceLogic_state == True:
+        if self.deviceLogic_state == 1:
             if self.list_checkboxes_device_logic[checkbox_in_list].isChecked():
                 if combobox.currentIndex() == 0:
                     if self.middle_temp < min:
@@ -443,7 +443,7 @@ class MyWin(QtWidgets.QMainWindow):
 
     # main function read devices value and control gpio ports
     def deviceLogic(self):
-        if self.deviceLogic_state == True:
+        if self.deviceLogic_state == 1:
             if self.middle_temp < self.ui.spinBoxOn_logic_1.value():
                 self.sw_on(0)
             if self.middle_temp > self.ui.spinBoxOff_logic_1.value():
@@ -536,29 +536,29 @@ class MyWin(QtWidgets.QMainWindow):
             self.ui.label_status_port8.setText('ON')
 
         # check state device logic on/off
-        if self.deviceLogic_state == False:
+        if self.deviceLogic_state == 0:
             self.ui.label__status_logic.setText('Logic disable')
         else:
             self.ui.label__status_logic.setText('Logic enable')
 
-        if self.timeLogic_state == False:
+        if self.timeLogic_state == 0:
             self.ui.label_time_status.setText('Logic disable')
         else:
             self.ui.label_time_status.setText('Logic enable')
 
     def device_logicON(self):
-        self.deviceLogic_state = True
+        self.deviceLogic_state = 1
         print(self.deviceLogic_state)
 
     def device_logicOFF(self):
-        self.deviceLogic_state = False
+        self.deviceLogic_state = 0
         print(self.deviceLogic_state)
 
     def time_logicON(self):
-        self.timeLogic_state = True
+        self.timeLogic_state = 1
 
     def time_logicOFF(self):
-        self.timeLogic_state = False
+        self.timeLogic_state = 0
 
 
 if __name__=="__main__":
