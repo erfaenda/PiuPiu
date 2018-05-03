@@ -1,3 +1,6 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
 #import RPi.GPIO as GPIO
 import sys, time, os, configparser
 from datetime import timedelta, datetime
