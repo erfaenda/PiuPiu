@@ -86,222 +86,6 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.action.triggered.connect(self.close)
 
 
-
-    def read_config(self):
-        path = "settings.ini"
-        self.readConfig(path)
-
-    def save_config(self):
-        path = "settings.ini"
-        self.createConfig(path)
-
-    # create config file
-    # Когданибудь я это перепишу
-    def createConfig(self, path):
-        # Create a config file
-        config = configparser.ConfigParser()
-        config.add_section("Settings")
-
-        config.set("Settings", "device_logic", str(self.deviceLogic_state))
-        config.set("Settings", "time_logic", str(self.timeLogic_state))
-
-        config.set("Settings", "port_name_1", str(child_window.ui.lineEdit_1.text()))
-        config.set("Settings", "port_name_2", str(child_window.ui.lineEdit_2.text()))
-        config.set("Settings", "port_name_3", str(child_window.ui.lineEdit_3.text()))
-        config.set("Settings", "port_name_4", str(child_window.ui.lineEdit_4.text()))
-        config.set("Settings", "port_name_5", str(child_window.ui.lineEdit_5.text()))
-        config.set("Settings", "port_name_6", str(child_window.ui.lineEdit_6.text()))
-        config.set("Settings", "port_name_7", str(child_window.ui.lineEdit_7.text()))
-        config.set("Settings", "port_name_8", str(child_window.ui.lineEdit_8.text()))
-        # time logic
-        config.set("Settings", "time_box_1", str(self.ui.comboBox.currentIndex()))
-        config.set("Settings", "time_box_2", str(self.ui.comboBox_2.currentIndex()))
-        config.set("Settings", "time_box_3", str(self.ui.comboBox_3.currentIndex()))
-        config.set("Settings", "time_box_4", str(self.ui.comboBox_4.currentIndex()))
-        config.set("Settings", "time_box_5", str(self.ui.comboBox_5.currentIndex()))
-        config.set("Settings", "time_box_6", str(self.ui.comboBox_6.currentIndex()))
-        config.set("Settings", "time_box_7", str(self.ui.comboBox_7.currentIndex()))
-        config.set("Settings", "time_box_8", str(self.ui.comboBox_8.currentIndex()))
-
-        config.set("Settings", "time_spin_min_1", self.ui.timeEdit.text())
-        config.set("Settings", "time_spin_min_2", self.ui.timeEdit_3.text())
-        config.set("Settings", "time_spin_min_3", self.ui.timeEdit_7.text())
-        config.set("Settings", "time_spin_min_4", self.ui.timeEdit_5.text())
-        config.set("Settings", "time_spin_min_5", self.ui.timeEdit_18.text())
-        config.set("Settings", "time_spin_min_6", self.ui.timeEdit_20.text())
-        config.set("Settings", "time_spin_min_7", self.ui.timeEdit_24.text())
-        config.set("Settings", "time_spin_min_8", self.ui.timeEdit_26.text())
-
-        config.set("Settings", "time_spin_max_1", self.ui.timeEdit_2.text())
-        config.set("Settings", "time_spin_max_2", self.ui.timeEdit_4.text())
-        config.set("Settings", "time_spin_max_3", self.ui.timeEdit_8.text())
-        config.set("Settings", "time_spin_max_4", self.ui.timeEdit_6.text())
-        config.set("Settings", "time_spin_max_5", self.ui.timeEdit_17.text())
-        config.set("Settings", "time_spin_max_6", self.ui.timeEdit_19.text())
-        config.set("Settings", "time_spin_max_7", self.ui.timeEdit_23.text())
-        config.set("Settings", "time_spin_max_8", self.ui.timeEdit_25.text())
-
-        for chk in range(0, 8):
-            if self.list_checkboxes_time_logic[chk].isChecked() == True:
-                config.set("Settings", "time_checkbox_{}".format(chk+1), "1")
-            else:
-                config.set("Settings", "time_checkbox_{}".format(chk+1), "0")
-
-        # device logic
-        config.set("Settings", "dev_box_1", str(self.ui.comboBox_9.currentIndex()))
-        config.set("Settings", "dev_box_2", str(self.ui.comboBox_10.currentIndex()))
-        config.set("Settings", "dev_box_3", str(self.ui.comboBox_11.currentIndex()))
-        config.set("Settings", "dev_box_4", str(self.ui.comboBox_12.currentIndex()))
-        config.set("Settings", "dev_box_5", str(self.ui.comboBox_13.currentIndex()))
-        config.set("Settings", "dev_box_6", str(self.ui.comboBox_14.currentIndex()))
-        config.set("Settings", "dev_box_7", str(self.ui.comboBox_15.currentIndex()))
-        config.set("Settings", "dev_box_8", str(self.ui.comboBox_16.currentIndex()))
-
-        config.set("Settings", "dev_spin_min_1", "0")
-        config.set("Settings", "dev_spin_min_2", "0")
-        config.set("Settings", "dev_spin_min_3", "0")
-        config.set("Settings", "dev_spin_min_4", "0")
-        config.set("Settings", "dev_spin_min_5", "0")
-        config.set("Settings", "dev_spin_min_6", "0")
-        config.set("Settings", "dev_spin_min_7", "0")
-        config.set("Settings", "dev_spin_min_8", "0")
-
-        config.set("Settings", "dev_spin_max_1", "0")
-        config.set("Settings", "dev_spin_max_2", "0")
-        config.set("Settings", "dev_spin_max_3", "0")
-        config.set("Settings", "dev_spin_max_4", "0")
-        config.set("Settings", "dev_spin_max_5", "0")
-        config.set("Settings", "dev_spin_max_6", "0")
-        config.set("Settings", "dev_spin_max_7", "0")
-        config.set("Settings", "dev_spin_max_8", "0")
-
-        for chk in range(0, 8):
-            if self.list_checkboxes_device_logic[chk].isChecked() == True:
-                config.set("Settings", "dev_checkbox_{}".format(chk+1), "1")
-            else:
-                config.set("Settings", "dev_checkbox_{}".format(chk+1), "0")
-
-        '''config.set("Settings", "dev_checkbox_1", "0")
-        config.set("Settings", "dev_checkbox_2", "0")
-        config.set("Settings", "dev_checkbox_3", "0")
-        config.set("Settings", "dev_checkbox_4", "0")
-        config.set("Settings", "dev_checkbox_5", "0")
-        config.set("Settings", "dev_checkbox_6", "0")
-        config.set("Settings", "dev_checkbox_7", "0")
-        config.set("Settings", "dev_checkbox_8", "0")'''
-
-        with open(path, "w") as config_file:
-            config.write(config_file)
-
-    def readConfig(self, path):
-
-        """
-        Create, read, update, delete config
-        """
-        if not os.path.exists(path):
-            self.createConfig(path)
-
-        config = configparser.ConfigParser()
-        config.read(path)
-
-        '''if config.get("Settings", "time_logic") == False:
-            self.timeLogic_state = 0
-        else:
-            self.timeLogic_state = 1'''
-        self.timeLogic_state = int(config.get("Settings", "time_logic"))
-        self.deviceLogic_state = int(config.get("Settings", "device_logic"))
-
-        # Читаем некоторые значения из конфиг. файла.
-        child_window.ui.lineEdit_1.setText(config.get("Settings", "port_name_1"))
-        child_window.ui.lineEdit_2.setText(config.get("Settings", "port_name_2"))
-        child_window.ui.lineEdit_3.setText(config.get("Settings", "port_name_3"))
-        child_window.ui.lineEdit_4.setText(config.get("Settings", "port_name_4"))
-        child_window.ui.lineEdit_5.setText(config.get("Settings", "port_name_5"))
-        child_window.ui.lineEdit_6.setText(config.get("Settings", "port_name_6"))
-        child_window.ui.lineEdit_7.setText(config.get("Settings", "port_name_7"))
-        child_window.ui.lineEdit_8.setText(config.get("Settings", "port_name_8"))
-
-        self.ui.comboBox.setCurrentIndex(int(config.get("Settings", "time_box_1")))
-        self.ui.comboBox_2.setCurrentIndex(int(config.get("Settings", "time_box_2")))
-        self.ui.comboBox_3.setCurrentIndex(int(config.get("Settings", "time_box_3")))
-        self.ui.comboBox_4.setCurrentIndex(int(config.get("Settings", "time_box_4")))
-        self.ui.comboBox_5.setCurrentIndex(int(config.get("Settings", "time_box_5")))
-        self.ui.comboBox_6.setCurrentIndex(int(config.get("Settings", "time_box_6")))
-        self.ui.comboBox_7.setCurrentIndex(int(config.get("Settings", "time_box_7")))
-        self.ui.comboBox_8.setCurrentIndex(int(config.get("Settings", "time_box_8")))
-
-        self.ui.comboBox_9.setCurrentIndex(int(config.get("Settings", "dev_box_1")))
-        self.ui.comboBox_10.setCurrentIndex(int(config.get("Settings", "dev_box_2")))
-        self.ui.comboBox_11.setCurrentIndex(int(config.get("Settings", "dev_box_3")))
-        self.ui.comboBox_12.setCurrentIndex(int(config.get("Settings", "dev_box_4")))
-        self.ui.comboBox_13.setCurrentIndex(int(config.get("Settings", "dev_box_5")))
-        self.ui.comboBox_14.setCurrentIndex(int(config.get("Settings", "dev_box_6")))
-        self.ui.comboBox_15.setCurrentIndex(int(config.get("Settings", "dev_box_7")))
-        self.ui.comboBox_16.setCurrentIndex(int(config.get("Settings", "dev_box_8")))
-
-        list_time_text_spin = []
-        list_int_time_spin = []
-        # забираю текстовое значение из спинов и забиваю ими список
-        list_time_text_spin.append(config.get("Settings", "time_spin_min_1"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_min_2"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_min_3"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_min_4"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_min_5"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_min_6"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_min_7"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_min_8"))
-
-        list_time_text_spin.append(config.get("Settings", "time_spin_max_1"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_max_2"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_max_3"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_max_4"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_max_5"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_max_6"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_max_7"))
-        list_time_text_spin.append(config.get("Settings", "time_spin_max_8"))
-
-        # разбираю строку на минуты и часы, конвертирую и снова забиваю список, тупо....
-        for text in list_time_text_spin:
-            index = text.find(":")
-            hour = text[:index]
-            minute = text[index + 1:]
-            hour = int(hour)
-            minute = int(minute)
-            list_int_time_spin.append(hour)
-            list_int_time_spin.append(minute)
-            print(list_int_time_spin)
-
-        # раз уж я тупо забил список, так же тупо подставлю значения из списка в спин при загрузке
-        self.ui.timeEdit.setTime(QtCore.QTime(list_int_time_spin[0], list_int_time_spin[1]))
-        self.ui.timeEdit_3.setTime(QtCore.QTime(list_int_time_spin[2], list_int_time_spin[3]))
-        self.ui.timeEdit_7.setTime(QtCore.QTime(list_int_time_spin[4], list_int_time_spin[5]))
-        self.ui.timeEdit_5.setTime(QtCore.QTime(list_int_time_spin[6], list_int_time_spin[7]))
-        self.ui.timeEdit_18.setTime(QtCore.QTime(list_int_time_spin[8], list_int_time_spin[9]))
-        self.ui.timeEdit_20.setTime(QtCore.QTime(list_int_time_spin[10], list_int_time_spin[11]))
-        self.ui.timeEdit_24.setTime(QtCore.QTime(list_int_time_spin[12], list_int_time_spin[13]))
-        self.ui.timeEdit_26.setTime(QtCore.QTime(list_int_time_spin[14], list_int_time_spin[15]))
-
-        self.ui.timeEdit_2.setTime(QtCore.QTime(list_int_time_spin[16], list_int_time_spin[17]))
-        self.ui.timeEdit_4.setTime(QtCore.QTime(list_int_time_spin[18], list_int_time_spin[19]))
-        self.ui.timeEdit_8.setTime(QtCore.QTime(list_int_time_spin[20], list_int_time_spin[21]))
-        self.ui.timeEdit_6.setTime(QtCore.QTime(list_int_time_spin[22], list_int_time_spin[23]))
-        self.ui.timeEdit_17.setTime(QtCore.QTime(list_int_time_spin[24], list_int_time_spin[25]))
-        self.ui.timeEdit_19.setTime(QtCore.QTime(list_int_time_spin[26], list_int_time_spin[27]))
-        self.ui.timeEdit_23.setTime(QtCore.QTime(list_int_time_spin[28], list_int_time_spin[29]))
-        self.ui.timeEdit_25.setTime(QtCore.QTime(list_int_time_spin[30], list_int_time_spin[31]))
-
-        # расставляем чекбоксы
-        self.ui.checkBox_time_logic_1.setChecked(int(config.get("Settings", "time_checkbox_1")))
-        self.ui.checkBox_time_logic_2.setChecked(int(config.get("Settings", "time_checkbox_2")))
-        self.ui.checkBox_time_logic_3.setChecked(int(config.get("Settings", "time_checkbox_3")))
-        self.ui.checkBox_time_logic_4.setChecked(int(config.get("Settings", "time_checkbox_4")))
-        self.ui.checkBox_time_logic_5.setChecked(int(config.get("Settings", "time_checkbox_5")))
-        self.ui.checkBox_time_logic_6.setChecked(int(config.get("Settings", "time_checkbox_6")))
-        self.ui.checkBox_time_logic_7.setChecked(int(config.get("Settings", "time_checkbox_7")))
-        self.ui.checkBox_time_logic_8.setChecked(int(config.get("Settings", "time_checkbox_8")))
-
-        self.Save_change()
-
     # switch on
     def sw_on(self, sw_state):
         if self.list_state[sw_state] == False:
@@ -560,10 +344,257 @@ class MyWin(QtWidgets.QMainWindow):
     def time_logicOFF(self):
         self.timeLogic_state = 0
 
+    # более чем позорный код
+    def read_config(self):
+        path = "settings.ini"
+        self.readConfig(path)
+
+    def save_config(self):
+        path = "settings.ini"
+        self.createConfig(path)
+
+    # create config file
+    # Когданибудь я это перепишу
+    def createConfig(self, path):
+        # Create a config file
+        config = configparser.ConfigParser()
+        config.add_section("Settings")
+
+        config.set("Settings", "device_logic", str(self.deviceLogic_state))
+        config.set("Settings", "time_logic", str(self.timeLogic_state))
+
+        config.set("Settings", "port_name_1", str(child_window.ui.lineEdit_1.text()))
+        config.set("Settings", "port_name_2", str(child_window.ui.lineEdit_2.text()))
+        config.set("Settings", "port_name_3", str(child_window.ui.lineEdit_3.text()))
+        config.set("Settings", "port_name_4", str(child_window.ui.lineEdit_4.text()))
+        config.set("Settings", "port_name_5", str(child_window.ui.lineEdit_5.text()))
+        config.set("Settings", "port_name_6", str(child_window.ui.lineEdit_6.text()))
+        config.set("Settings", "port_name_7", str(child_window.ui.lineEdit_7.text()))
+        config.set("Settings", "port_name_8", str(child_window.ui.lineEdit_8.text()))
+        # time logic
+        config.set("Settings", "time_box_1", str(self.ui.comboBox.currentIndex()))
+        config.set("Settings", "time_box_2", str(self.ui.comboBox_2.currentIndex()))
+        config.set("Settings", "time_box_3", str(self.ui.comboBox_3.currentIndex()))
+        config.set("Settings", "time_box_4", str(self.ui.comboBox_4.currentIndex()))
+        config.set("Settings", "time_box_5", str(self.ui.comboBox_5.currentIndex()))
+        config.set("Settings", "time_box_6", str(self.ui.comboBox_6.currentIndex()))
+        config.set("Settings", "time_box_7", str(self.ui.comboBox_7.currentIndex()))
+        config.set("Settings", "time_box_8", str(self.ui.comboBox_8.currentIndex()))
+
+        config.set("Settings", "time_spin_min_1", self.ui.timeEdit.text())
+        config.set("Settings", "time_spin_min_2", self.ui.timeEdit_3.text())
+        config.set("Settings", "time_spin_min_3", self.ui.timeEdit_7.text())
+        config.set("Settings", "time_spin_min_4", self.ui.timeEdit_5.text())
+        config.set("Settings", "time_spin_min_5", self.ui.timeEdit_18.text())
+        config.set("Settings", "time_spin_min_6", self.ui.timeEdit_20.text())
+        config.set("Settings", "time_spin_min_7", self.ui.timeEdit_24.text())
+        config.set("Settings", "time_spin_min_8", self.ui.timeEdit_26.text())
+
+        config.set("Settings", "time_spin_max_1", self.ui.timeEdit_2.text())
+        config.set("Settings", "time_spin_max_2", self.ui.timeEdit_4.text())
+        config.set("Settings", "time_spin_max_3", self.ui.timeEdit_8.text())
+        config.set("Settings", "time_spin_max_4", self.ui.timeEdit_6.text())
+        config.set("Settings", "time_spin_max_5", self.ui.timeEdit_17.text())
+        config.set("Settings", "time_spin_max_6", self.ui.timeEdit_19.text())
+        config.set("Settings", "time_spin_max_7", self.ui.timeEdit_23.text())
+        config.set("Settings", "time_spin_max_8", self.ui.timeEdit_25.text())
+
+        for chk in range(0, 8):
+            if self.list_checkboxes_time_logic[chk].isChecked() == True:
+                config.set("Settings", "time_checkbox_{}".format(chk+1), "1")
+            else:
+                config.set("Settings", "time_checkbox_{}".format(chk+1), "0")
+
+        # device logic
+        config.set("Settings", "dev_box_1", str(self.ui.comboBox_9.currentIndex()))
+        config.set("Settings", "dev_box_2", str(self.ui.comboBox_10.currentIndex()))
+        config.set("Settings", "dev_box_3", str(self.ui.comboBox_11.currentIndex()))
+        config.set("Settings", "dev_box_4", str(self.ui.comboBox_12.currentIndex()))
+        config.set("Settings", "dev_box_5", str(self.ui.comboBox_13.currentIndex()))
+        config.set("Settings", "dev_box_6", str(self.ui.comboBox_14.currentIndex()))
+        config.set("Settings", "dev_box_7", str(self.ui.comboBox_15.currentIndex()))
+        config.set("Settings", "dev_box_8", str(self.ui.comboBox_16.currentIndex()))
+
+        config.set("Settings", "dev_spin_min_1", str(self.ui.spinBoxOn_logic_1.value()))
+        config.set("Settings", "dev_spin_min_2", str(self.ui.spinBoxOn_logic_2.value()))
+        config.set("Settings", "dev_spin_min_3", str(self.ui.spinBoxOn_logic_3.value()))
+        config.set("Settings", "dev_spin_min_4", str(self.ui.spinBoxOn_logic_4.value()))
+        config.set("Settings", "dev_spin_min_5", str(self.ui.spinBoxOn_logic_5.value()))
+        config.set("Settings", "dev_spin_min_6", str(self.ui.spinBoxOn_logic_6.value()))
+        config.set("Settings", "dev_spin_min_7", str(self.ui.spinBoxOn_logic_7.value()))
+        config.set("Settings", "dev_spin_min_8", str(self.ui.spinBoxOn_logic_8.value()))
+
+        config.set("Settings", "dev_spin_max_1", str(self.ui.spinBoxOff_logic_1.value()))
+        config.set("Settings", "dev_spin_max_2", str(self.ui.spinBoxOff_logic_2.value()))
+        config.set("Settings", "dev_spin_max_3", str(self.ui.spinBoxOff_logic_3.value()))
+        config.set("Settings", "dev_spin_max_4", str(self.ui.spinBoxOff_logic_4.value()))
+        config.set("Settings", "dev_spin_max_5", str(self.ui.spinBoxOff_logic_5.value()))
+        config.set("Settings", "dev_spin_max_6", str(self.ui.spinBoxOff_logic_6.value()))
+        config.set("Settings", "dev_spin_max_7", str(self.ui.spinBoxOff_logic_7.value()))
+        config.set("Settings", "dev_spin_max_8", str(self.ui.spinBoxOff_logic_8.value()))
+
+        # сохраняю состояние чекбоксов
+        for chk in range(0, 8):
+            if self.list_checkboxes_device_logic[chk].isChecked() == True:
+                config.set("Settings", "dev_checkbox_{}".format(chk+1), "1")
+            else:
+                config.set("Settings", "dev_checkbox_{}".format(chk+1), "0")
+
+
+        '''config.set("Settings", "dev_checkbox_1", "0")
+        config.set("Settings", "dev_checkbox_2", "0")
+        config.set("Settings", "dev_checkbox_3", "0")
+        config.set("Settings", "dev_checkbox_4", "0")
+        config.set("Settings", "dev_checkbox_5", "0")
+        config.set("Settings", "dev_checkbox_6", "0")
+        config.set("Settings", "dev_checkbox_7", "0")
+        config.set("Settings", "dev_checkbox_8", "0")'''
+
+        with open(path, "w") as config_file:
+            config.write(config_file)
+
+    def readConfig(self, path):
+
+        """
+        Create, read, update, delete config
+        """
+        if not os.path.exists(path):
+            self.createConfig(path)
+
+        config = configparser.ConfigParser()
+        config.read(path)
+
+        '''if config.get("Settings", "time_logic") == False:
+            self.timeLogic_state = 0
+        else:
+            self.timeLogic_state = 1'''
+        self.timeLogic_state = int(config.get("Settings", "time_logic"))
+        self.deviceLogic_state = int(config.get("Settings", "device_logic"))
+
+        # Читаем некоторые значения из конфиг. файла.
+        # названия портов
+        child_window.ui.lineEdit_1.setText(config.get("Settings", "port_name_1"))
+        child_window.ui.lineEdit_2.setText(config.get("Settings", "port_name_2"))
+        child_window.ui.lineEdit_3.setText(config.get("Settings", "port_name_3"))
+        child_window.ui.lineEdit_4.setText(config.get("Settings", "port_name_4"))
+        child_window.ui.lineEdit_5.setText(config.get("Settings", "port_name_5"))
+        child_window.ui.lineEdit_6.setText(config.get("Settings", "port_name_6"))
+        child_window.ui.lineEdit_7.setText(config.get("Settings", "port_name_7"))
+        child_window.ui.lineEdit_8.setText(config.get("Settings", "port_name_8"))
+        # индексы комбобоксов
+        self.ui.comboBox.setCurrentIndex(int(config.get("Settings", "time_box_1")))
+        self.ui.comboBox_2.setCurrentIndex(int(config.get("Settings", "time_box_2")))
+        self.ui.comboBox_3.setCurrentIndex(int(config.get("Settings", "time_box_3")))
+        self.ui.comboBox_4.setCurrentIndex(int(config.get("Settings", "time_box_4")))
+        self.ui.comboBox_5.setCurrentIndex(int(config.get("Settings", "time_box_5")))
+        self.ui.comboBox_6.setCurrentIndex(int(config.get("Settings", "time_box_6")))
+        self.ui.comboBox_7.setCurrentIndex(int(config.get("Settings", "time_box_7")))
+        self.ui.comboBox_8.setCurrentIndex(int(config.get("Settings", "time_box_8")))
+
+        self.ui.comboBox_9.setCurrentIndex(int(config.get("Settings", "dev_box_1")))
+        self.ui.comboBox_10.setCurrentIndex(int(config.get("Settings", "dev_box_2")))
+        self.ui.comboBox_11.setCurrentIndex(int(config.get("Settings", "dev_box_3")))
+        self.ui.comboBox_12.setCurrentIndex(int(config.get("Settings", "dev_box_4")))
+        self.ui.comboBox_13.setCurrentIndex(int(config.get("Settings", "dev_box_5")))
+        self.ui.comboBox_14.setCurrentIndex(int(config.get("Settings", "dev_box_6")))
+        self.ui.comboBox_15.setCurrentIndex(int(config.get("Settings", "dev_box_7")))
+        self.ui.comboBox_16.setCurrentIndex(int(config.get("Settings", "dev_box_8")))
+
+        list_time_text_spin = []
+        list_int_time_spin = []
+        # забираю текстовое значение из спинов и забиваю ими список
+        list_time_text_spin.append(config.get("Settings", "time_spin_min_1"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_min_2"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_min_3"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_min_4"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_min_5"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_min_6"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_min_7"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_min_8"))
+
+        list_time_text_spin.append(config.get("Settings", "time_spin_max_1"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_max_2"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_max_3"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_max_4"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_max_5"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_max_6"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_max_7"))
+        list_time_text_spin.append(config.get("Settings", "time_spin_max_8"))
+
+        # разбираю строку на минуты и часы, конвертирую и снова забиваю список, тупо....
+        for text in list_time_text_spin:
+            index = text.find(":")
+            hour = text[:index]
+            minute = text[index + 1:]
+            hour = int(hour)
+            minute = int(minute)
+            list_int_time_spin.append(hour)
+            list_int_time_spin.append(minute)
+            print(list_int_time_spin)
+
+        # раз уж я тупо забил список, так же тупо подставлю значения из списка в спин при загрузке
+        self.ui.timeEdit.setTime(QtCore.QTime(list_int_time_spin[0], list_int_time_spin[1]))
+        self.ui.timeEdit_3.setTime(QtCore.QTime(list_int_time_spin[2], list_int_time_spin[3]))
+        self.ui.timeEdit_7.setTime(QtCore.QTime(list_int_time_spin[4], list_int_time_spin[5]))
+        self.ui.timeEdit_5.setTime(QtCore.QTime(list_int_time_spin[6], list_int_time_spin[7]))
+        self.ui.timeEdit_18.setTime(QtCore.QTime(list_int_time_spin[8], list_int_time_spin[9]))
+        self.ui.timeEdit_20.setTime(QtCore.QTime(list_int_time_spin[10], list_int_time_spin[11]))
+        self.ui.timeEdit_24.setTime(QtCore.QTime(list_int_time_spin[12], list_int_time_spin[13]))
+        self.ui.timeEdit_26.setTime(QtCore.QTime(list_int_time_spin[14], list_int_time_spin[15]))
+
+        self.ui.timeEdit_2.setTime(QtCore.QTime(list_int_time_spin[16], list_int_time_spin[17]))
+        self.ui.timeEdit_4.setTime(QtCore.QTime(list_int_time_spin[18], list_int_time_spin[19]))
+        self.ui.timeEdit_8.setTime(QtCore.QTime(list_int_time_spin[20], list_int_time_spin[21]))
+        self.ui.timeEdit_6.setTime(QtCore.QTime(list_int_time_spin[22], list_int_time_spin[23]))
+        self.ui.timeEdit_17.setTime(QtCore.QTime(list_int_time_spin[24], list_int_time_spin[25]))
+        self.ui.timeEdit_19.setTime(QtCore.QTime(list_int_time_spin[26], list_int_time_spin[27]))
+        self.ui.timeEdit_23.setTime(QtCore.QTime(list_int_time_spin[28], list_int_time_spin[29]))
+        self.ui.timeEdit_25.setTime(QtCore.QTime(list_int_time_spin[30], list_int_time_spin[31]))
+
+        # рапихиваю числовые спины
+        self.ui.spinBoxOn_logic_1.setValue(int(config.get("Settings", "dev_spin_min_1")))
+        self.ui.spinBoxOn_logic_2.setValue(int(config.get("Settings", "dev_spin_min_2")))
+        self.ui.spinBoxOn_logic_3.setValue(int(config.get("Settings", "dev_spin_min_3")))
+        self.ui.spinBoxOn_logic_4.setValue(int(config.get("Settings", "dev_spin_min_4")))
+        self.ui.spinBoxOn_logic_5.setValue(int(config.get("Settings", "dev_spin_min_5")))
+        self.ui.spinBoxOn_logic_6.setValue(int(config.get("Settings", "dev_spin_min_6")))
+        self.ui.spinBoxOn_logic_7.setValue(int(config.get("Settings", "dev_spin_min_7")))
+        self.ui.spinBoxOn_logic_8.setValue(int(config.get("Settings", "dev_spin_min_8")))
+
+        self.ui.spinBoxOff_logic_1.setValue(int(config.get("Settings", "dev_spin_max_1")))
+        self.ui.spinBoxOff_logic_2.setValue(int(config.get("Settings", "dev_spin_max_2")))
+        self.ui.spinBoxOff_logic_3.setValue(int(config.get("Settings", "dev_spin_max_3")))
+        self.ui.spinBoxOff_logic_4.setValue(int(config.get("Settings", "dev_spin_max_4")))
+        self.ui.spinBoxOff_logic_5.setValue(int(config.get("Settings", "dev_spin_max_5")))
+        self.ui.spinBoxOff_logic_6.setValue(int(config.get("Settings", "dev_spin_max_6")))
+        self.ui.spinBoxOff_logic_7.setValue(int(config.get("Settings", "dev_spin_max_7")))
+        self.ui.spinBoxOff_logic_8.setValue(int(config.get("Settings", "dev_spin_max_8")))
+
+        # расставляем чекбоксы
+        self.ui.checkBox_time_logic_1.setChecked(int(config.get("Settings", "time_checkbox_1")))
+        self.ui.checkBox_time_logic_2.setChecked(int(config.get("Settings", "time_checkbox_2")))
+        self.ui.checkBox_time_logic_3.setChecked(int(config.get("Settings", "time_checkbox_3")))
+        self.ui.checkBox_time_logic_4.setChecked(int(config.get("Settings", "time_checkbox_4")))
+        self.ui.checkBox_time_logic_5.setChecked(int(config.get("Settings", "time_checkbox_5")))
+        self.ui.checkBox_time_logic_6.setChecked(int(config.get("Settings", "time_checkbox_6")))
+        self.ui.checkBox_time_logic_7.setChecked(int(config.get("Settings", "time_checkbox_7")))
+        self.ui.checkBox_time_logic_8.setChecked(int(config.get("Settings", "time_checkbox_8")))
+
+        self.ui.checkBox_device_logic_1.setChecked(int(config.get("Settings", "dev_checkbox_1")))
+        self.ui.checkBox_device_logic_2.setChecked(int(config.get("Settings", "dev_checkbox_2")))
+        self.ui.checkBox_device_logic_3.setChecked(int(config.get("Settings", "dev_checkbox_3")))
+        self.ui.checkBox_device_logic_4.setChecked(int(config.get("Settings", "dev_checkbox_4")))
+        self.ui.checkBox_device_logic_5.setChecked(int(config.get("Settings", "dev_checkbox_5")))
+        self.ui.checkBox_device_logic_6.setChecked(int(config.get("Settings", "dev_checkbox_6")))
+        self.ui.checkBox_device_logic_7.setChecked(int(config.get("Settings", "dev_checkbox_7")))
+        self.ui.checkBox_device_logic_8.setChecked(int(config.get("Settings", "dev_checkbox_8")))
+
+        self.Save_change()
+
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
-    app.setStyle(QStyleFactory.create('Fusion'))
+    app.setStyle(QStyleFactory.create('Oxygen'))
     myapp = MyWin()
     child_window = Child()
     path = "settings.ini"
