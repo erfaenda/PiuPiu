@@ -7,8 +7,9 @@ from datetime import timedelta, datetime
 from PyQTT.Gpio_control.gpio_gui import *
 from PyQTT.Gpio_control.gpio_child import *
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QFont, QIcon
 from PyQt5.QtCore import Qt, QTimer
-from PyQt5.QtWidgets import QStyleFactory
+from PyQt5.QtWidgets import QStyleFactory, QToolTip
 
 class MyWin(QtWidgets.QMainWindow):
 
@@ -63,6 +64,7 @@ class MyWin(QtWidgets.QMainWindow):
         #self.uptime()
         self.append_list_checkboxes()
         self.ui.buttonGroup.setExclusive(False)
+        self.setWindowIcon(QIcon('ico.png'))
         # signals and slots
         self.ui.pushButton_logic_on.clicked.connect(self.device_logicON)
         self.ui.pushButton_logic_off.clicked.connect(self.device_logicOFF)
@@ -207,6 +209,12 @@ class MyWin(QtWidgets.QMainWindow):
             abstract_chkbx_2 = self.findChild(QtCore.QObject, str_2)
             self.list_checkboxes_time_logic.append(abstract_chkbx)
             self.list_checkboxes_device_logic.append(abstract_chkbx_2)
+    # add tooltips
+    def add_tooltips(self, combobox):
+        if combobox.currentIndex() == 2:
+            combobox.setToolTip('ХАХАХАХ')
+
+
 
     # function starter
     def starter_all_timer_logic(self):
@@ -227,6 +235,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.uni_device_logic(self.ui.spinBoxOn_logic_6.value(), self.ui.spinBoxOff_logic_6.value(), 5, 5, self.ui.comboBox_14)
         self.uni_device_logic(self.ui.spinBoxOn_logic_7.value(), self.ui.spinBoxOff_logic_7.value(), 6, 6, self.ui.comboBox_15)
         self.uni_device_logic(self.ui.spinBoxOn_logic_8.value(), self.ui.spinBoxOff_logic_8.value(), 7, 7, self.ui.comboBox_16)
+        self.add_tooltips(self.ui.comboBox_9)
 
     # main function read devices value and control gpio ports
     def deviceLogic(self):
@@ -346,6 +355,16 @@ class MyWin(QtWidgets.QMainWindow):
 
     def time_logicOFF(self):
         self.timeLogic_state = 0
+
+    # датчики виснут в опросе а отдельный поток создавать я пока не умею
+    # по этому я буду опрашивать их отдельным скриптом, а отсюда парсить
+    def read_dht22_down(self):
+        config = configparser.ConfigParser()
+        config.read("/home/pi/Templates/Gpio_control/DHT.ini")
+
+        # Читаем некоторые значения из конфиг. файла.
+        t = config.get("DHT22_last", "temperature")
+        h = config.get("DHT22_last", "humi")
 
     # более чем позорный код
     def read_config(self):
