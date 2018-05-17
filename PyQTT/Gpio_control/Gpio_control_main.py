@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 #import RPi.GPIO as GPIO
-import sys, time, os, configparser
+import sys, time, os, configparser, threading
 from datetime import timedelta, datetime
 from PyQTT.Gpio_control.gpio_gui import *
 from PyQTT.Gpio_control.gpio_child import *
@@ -10,6 +10,18 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QFont, QIcon
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import QStyleFactory, QToolTip
+
+# Тестирую второй поток на бесконечном цыкле
+class A(threading.Thread):
+    def __init__(self):
+        threading.Thread.__init__(self)
+        i = 0
+        while True:
+            print('Test ' + str(i))
+            i = i + 1
+            time.sleep(0.3)
+
+
 
 class MyWin(QtWidgets.QMainWindow):
 
@@ -297,9 +309,30 @@ class MyWin(QtWidgets.QMainWindow):
         # это гавно надо переписать
         if self.list_state[0] == False:
             self.ui.label_status_port1.setText('OFF')
+            self.ui.pushButton.setStyleSheet("""
+                                   QPushButton {
+                                       background: rgba(255, 92, 16, 100);
+                                   }
+                                   """)
+            self.ui.label_status_port1.setStyleSheet("""
+                                    QLabel {
+                                        background: rgba(255, 92, 16, 30);
+                                    }
+                                    """)
             #GPIO.setup(4, GPIO.IN)
+
         else:
             self.ui.label_status_port1.setText('ON')
+            self.ui.pushButton.setStyleSheet("""
+                       QPushButton {
+                           background: rgba(25, 188, 50, 145);
+                       }
+                       """)
+            self.ui.label_status_port1.setStyleSheet("""
+                        QLabel {
+                            background: rgba(25, 188, 50, 145);
+                        }
+                        """)
             #GPIO.setup(4, GPIO.OUT)
 
         if self.list_state[1] == False:
@@ -344,6 +377,7 @@ class MyWin(QtWidgets.QMainWindow):
 
     def device_logicON(self):
         self.deviceLogic_state = 1
+
         print(self.deviceLogic_state)
 
     def device_logicOFF(self):
@@ -615,6 +649,8 @@ class MyWin(QtWidgets.QMainWindow):
 
 
 if __name__=="__main__":
+    t = threading.Thread(target=A)
+    t.start()
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle(QStyleFactory.create('Oxygen'))
     myapp = MyWin()
