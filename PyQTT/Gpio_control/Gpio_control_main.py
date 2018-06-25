@@ -443,16 +443,6 @@ class MyWin(QtWidgets.QMainWindow):
             else:
                 config.set("Settings", "dev_checkbox_{}".format(chk+1), "0")
 
-
-        '''config.set("Settings", "dev_checkbox_1", "0")
-        config.set("Settings", "dev_checkbox_2", "0")
-        config.set("Settings", "dev_checkbox_3", "0")
-        config.set("Settings", "dev_checkbox_4", "0")
-        config.set("Settings", "dev_checkbox_5", "0")
-        config.set("Settings", "dev_checkbox_6", "0")
-        config.set("Settings", "dev_checkbox_7", "0")
-        config.set("Settings", "dev_checkbox_8", "0")'''
-
         with open(path, "w") as config_file:
             config.write(config_file)
 
@@ -606,7 +596,7 @@ if __name__=="__main__":
     timer.timeout.connect(myapp.check_state)
     timer.start(100)
     timeing = QTimer()
-    #timeing.timeout.connect(myapp.uptime)
+    timeing.timeout.connect(myapp.uptime)
     timeing.timeout.connect(myapp.dateTime)
     timeing.timeout.connect(myapp.switch_light)
     timeing.timeout.connect(myapp.readDevices)
