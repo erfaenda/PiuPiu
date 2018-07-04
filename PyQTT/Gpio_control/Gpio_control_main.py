@@ -20,6 +20,20 @@ class A(threading.Thread):
             print('Test ' + str(i))
             i = i + 1
             time.sleep(0.3)
+            if i == 10:
+                print('finish')
+                break
+    def Opros(self):
+        i = 0
+        while True:
+            print('Test ' + str(i))
+            i = i + 1
+            time.sleep(0.3)
+            if i == 10:
+                print('finish')
+                break
+
+
 
 
 
