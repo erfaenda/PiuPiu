@@ -21,7 +21,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.label_2.setVisible(False)
 
         # получаем списки с пользователями и группами из ldap, добавляем в комплиттер
-        self.LdapGetUsersAndGroup()
+        #self.LdapGetUsersAndGroup()
         self.Compliteer()
 
         # Здесь прописываем событие нажатия на кнопку
