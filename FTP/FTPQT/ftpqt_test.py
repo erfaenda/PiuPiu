@@ -17,12 +17,16 @@ class MyWin(QtWidgets.QMainWindow):
     def connectToFtp(self):
         ftp = FTP('ftp.cse.buffalo.edu')
         ftp.login()  # вошел
+        data = ftp.nlst()
 
         #ftp.cwd('bin')
-        data = ftp.retrlines('LIST')
-        data2 = str(data)
-        self.ui.plainTextEdit.appendPlainText(data2)
-        print(data2)
+        #data = ftp.retrlines('NLST')
+        #stri = ['kuka']
+        '''for dirs in data:
+            fstr = stri.append(dirs)
+        print(fstr)'''
+        self.ui.listWidget.addItems(data)
+        print(data)
 
 
 
