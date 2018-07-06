@@ -12,14 +12,41 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         #action
         self.ui.pushButton.clicked.connect(self.connectToFtp)
+        #self.ui.listWidget.itemActivated.connect(self.test)
+        self.ui.listWidget.itemDoubleClicked.connect(self.move_to_dir)
 
+
+    currentTextDir = ''
 
     def connectToFtp(self):
         ftp = FTP('ftp.cse.buffalo.edu')
         ftp.login()  # вошел
+        self.ui.listWidget.clear()
+        data = ftp.nlst()
+        self.ui.listWidget.addItems(data)
+        #textdir = self.ui.listWidget.currentItem().text()
+        #ftp.cwd(textdir)
+        print(data)
+
+    def move_to_dir(self):
+        ftp = FTP('ftp.cse.buffalo.edu')
+        ftp.login()
+        textdir = self.ui.listWidget.currentItem().text()
+        ftp.cwd(textdir)
         data = ftp.nlst()
         self.ui.listWidget.addItems(data)
         print(data)
+
+
+
+    def test(self):
+        print(self.ui.listWidget.currentRow())
+        print(self.ui.listWidget.currentItem().text())
+        '''if self.ui.listWidget.currentIndex() == 0:
+            self.ui.listWidget.
+            print('clicked')
+        else:
+            print('anather')'''
 
 
 
