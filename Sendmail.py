@@ -34,9 +34,9 @@ class WorkerProcess():
         db.close()
 
     def Sendemail(self):
-        fromaddr = "a.silantev@mfc45.ru"
-        mypass = "a011787b"
-        toaddr = ["m.petrov@mfc45.ru", "a.silantev@mfc45.ru"]
+        fromaddr = "mail"
+        mypass = "password"
+        toaddr = ["mail", "mail"]
         msg = MIMEMultipart()
         msg['From'] = fromaddr
         msg['To'] = ', '.join(toaddr)
