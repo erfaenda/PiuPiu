@@ -12,22 +12,52 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         #action
         self.ui.pushButton.clicked.connect(self.connectToFtp)
+        #self.ui.listWidget.itemActivated.connect(self.test)
+        self.ui.listWidget.itemActivated.connect(self.current_index)
+        self.ui.listWidget.itemDoubleClicked.connect(self.move_to_dir)
 
+
+
+    currentTextDir = ''
+    textdir = ''
+    def current_index(self):
+        self.textdir = ''
+        self.textdir = self.ui.listWidget.currentItem().text()
+        print(self.textdir)
 
     def connectToFtp(self):
-        ftp = FTP('ftp.cse.buffalo.edu')
-        ftp.login()  # вошел
+        self.ui.listWidget.clear()
+        data = ftp.nlst()
+        self.ui.listWidget.addItems(data)
+        #textdir = self.ui.listWidget.currentItem().text()
+        #ftp.cwd(textdir)
+        print(data)
 
-        #ftp.cwd('bin')
-        data = ftp.retrlines('LIST')
-        data2 = str(data)
-        self.ui.plainTextEdit.appendPlainText(data2)
-        print(data2)
+    def move_to_dir(self):
+        self.ui.listWidget.clear()
+        #textdir = self.ui.listWidget.currentItem().text()
+        ftp.cwd(self.textdir)
+        data = ftp.nlst()
+        self.ui.listWidget.addItems(data)
+        print(data)
+
+
+
+    def test(self):
+        print(self.ui.listWidget.currentRow())
+        print(self.ui.listWidget.currentItem().text())
+        '''if self.ui.listWidget.currentIndex() == 0:
+            self.ui.listWidget.
+            print('clicked')
+        else:
+            print('anather')'''
 
 
 
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
     myapp = MyWin()
+    ftp = FTP('ftp.cse.buffalo.edu')
+    ftp.login()  # вошел
     myapp.show()
     sys.exit(app.exec_())
