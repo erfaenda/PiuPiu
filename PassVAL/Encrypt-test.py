@@ -1,26 +1,26 @@
-from Crypto.Cipher import DES
+from cryptography.fernet import Fernet
 
-key = b'abcdefgh'
+#cipher_key = Fernet.generate_key()
 
-def pad(text):
-    while len(text) % 64 != 0:
-        text += b' '
-    return text
+CHIPER_KEY = 'APM1JDVgT8WDGOWBgQv6EIhvxl4vDYvUnVdg-Vjdt0o='
+cipher = Fernet(CHIPER_KEY)
+text = b'Kakoito super puper text 4to takoe'
+encrypted_text = cipher.encrypt(text)
 
-des = DES.new(key, DES.MODE_ECB)
-text = b'Pizdaebanyasushami loh'
-padded_text = pad(text)
+def write_dat(encrypted_text):
+    handle = open("encrypted.bin", "wb")
+    handle.write(encrypted_text)
+    handle.close()
+    print(encrypted_text)
 
-encrypted_text = des.encrypt(padded_text)
-handle = open("encrypted.bin", "wb")
-handle.write(encrypted_text)
-handle.close()
-#print(encrypted_text)
+def read_dat():
+    handle = open("encrypted.bin", "rb")
+    decrypt_data = handle.read()
+    data = cipher.decrypt(decrypt_data).decode('utf8')
+    handle.close()
+    return data
 
-data = des.decrypt(encrypted_text)
-#print(data) # Python rocks!
+write_dat(encrypted_text)
+print(read_dat())
 
-handle = open("encrypted.bin", "rb")
-decrypt_data = handle.read()
-print(des.decrypt(decrypt_data))
-handle.close()
+
