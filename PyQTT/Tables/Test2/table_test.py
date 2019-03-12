@@ -24,7 +24,6 @@ class mywindow(QtWidgets.QMainWindow):
         super(mywindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
         self.ui.tableWidget.setColumnCount(3)
         self.ui.tableWidget.setRowCount(3)
         # action
