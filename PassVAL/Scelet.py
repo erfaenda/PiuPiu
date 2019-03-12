@@ -9,16 +9,18 @@ from PyQt5.QtWidgets import QTableWidgetItem
 
 FILENAME = "test_csv.csv"
 data = []
-'''data.append(('Заполнить', 'QTableWidget', 'Моя игра'))
-data.append(('с данными', 'в Python'))
-'''
+# заполнение данными
 with open(FILENAME, "r", encoding='utf-8', newline="") as file:
-    #читаем файл целиком
+    # читаем файл целиком
     reader = csv.reader(file)
     for row in reader:
         data.append((row[0], row[1], row[2]))
         print(row[0], " - ", row[1], " - ", row[2])
     file.close()
+
+'''data.append(('Заполнить', 'QTableWidget', 'Моя игра'))
+data.append(('с данными', 'в Python'))
+'''
 
 class MyWin(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -41,20 +43,28 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.tableWidget.setColumnCount(len(data[0]))
         #Создание объектов классов
         headers = CsvWorker()
-        headers.write_headers() # создаю заголовки в csv
+
+        #headers.write_headers() # создаю заголовки в csv
         # заполнение данными
+
+    def fill_table(self):
+        # заполнение данными
+        with open(FILENAME, "r", encoding='utf-8', newline="") as file:
+            # читаем файл целиком
+            reader = csv.reader(file)
+            for row in reader:
+                data.append((row[0], row[1], row[2]))
+                print(row[0], " - ", row[1], " - ", row[2])
+            file.close()
+
         row = 0
         for tup in data:
             col = 0
-
             for item in tup:
                 cellinfo = QTableWidgetItem(item)
                 self.ui.tableWidget.setItem(row, col, cellinfo)
                 col += 1
-
             row += 1
-
-
 # при нажатии на кнопку
     def login(self):
         md5 = PasswdManipulation()
