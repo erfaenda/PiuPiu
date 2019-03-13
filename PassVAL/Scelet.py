@@ -36,6 +36,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton.clicked.connect(self.login)
         self.ui.pushButton_2.clicked.connect(self.add_to_csv_table)
         self.ui.pushButton_3.clicked.connect(self.add_empty_table_field)
+        self.ui.pushButton_4.clicked.connect(self.save_data_in_csv)
         # Кол-во рядов меняется в зависимости от значений в data.
         #self.ui.tableWidget.setRowCount(len(data))
         # заголовки
@@ -67,11 +68,18 @@ class MyWin(QtWidgets.QMainWindow):
         last_row = self.ui.tableWidget.rowCount()
         self.ui.tableWidget.insertRow(last_row)
         print(last_row)
-
+    # добавление данных из таблицы в csv базу
     def save_data_in_csv(self):
-        tdata = []
-        allTable = self.ui.tableWidget
-        self.ui.tableWidget.
+         for i in range(self.ui.tableWidget.rowCount()):
+            for a in range(self.ui.tableWidget.columnCount()):
+                t = self.ui.tableWidget.item(i, a).text()
+                print(t)
+            with open(FILENAME, "a", encoding='utf-8', newline="") as file:
+                columns = ['Ресурс:', 'Логин:', 'Пароль:']
+                writer = csv.DictWriter(file, fieldnames=columns)
+                writer.writerow({"Ресурс:": "вк", "Логин:": "петя", "Пароль:": "супер пароль"})
+                file.close()
+
     # Добавление значений в csv и заполнение таблицы из csv
     def add_to_csv_table(self):
         woker = CsvWorker()

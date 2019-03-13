@@ -56,5 +56,6 @@ class CsvWorker():
             row += 1
 
 if __name__ == "__main__":
-    app = CsvWorker
-    app.read_csv()
+    app = CsvWorker()
+    ready_dat = {"Ресурс:": "вк", "Логин:": "петя", "Пароль:": "супер пароль"}
+    app.fill_csv(ready_dat)
