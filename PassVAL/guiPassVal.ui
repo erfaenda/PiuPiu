@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>891</width>
-    <height>655</height>
+    <width>578</width>
+    <height>419</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,7 +50,7 @@
     <item row="0" column="1">
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>Текущий хэш:</string>
+       <string>хэш</string>
       </property>
      </widget>
     </item>
@@ -68,16 +68,13 @@
      </spacer>
     </item>
     <item row="0" column="5">
-     <widget class="QLineEdit" name="lineEdit_3"/>
-    </item>
-    <item row="0" column="7">
      <widget class="QPushButton" name="pushButton_2">
       <property name="text">
-       <string>Добавить</string>
+       <string>Поиск</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="9">
+    <item row="1" column="0" colspan="7">
      <widget class="QTableWidget" name="tableWidget">
       <property name="frameShape">
        <enum>QFrame::Box</enum>
@@ -111,13 +108,6 @@
       </column>
      </widget>
     </item>
-    <item row="0" column="6">
-     <widget class="QLineEdit" name="lineEdit_4">
-      <property name="echoMode">
-       <enum>QLineEdit::Password</enum>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="4">
      <widget class="QLineEdit" name="lineEdit_2"/>
     </item>
@@ -128,6 +118,13 @@
       </property>
      </widget>
     </item>
+    <item row="2" column="5">
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="text">
+       <string>Сохранить</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -135,7 +132,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>891</width>
+     <width>578</width>
      <height>21</height>
     </rect>
    </property>

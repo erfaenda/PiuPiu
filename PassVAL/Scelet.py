@@ -9,14 +9,14 @@ from PyQt5.QtWidgets import QTableWidgetItem
 
 FILENAME = "test_csv.csv"
 data = []
-# заполнение данными
-with open(FILENAME, "r", encoding='utf-8', newline="") as file:
+# заполнение массива данными из файла csv
+'''with open(FILENAME, "r", encoding='utf-8', newline="") as file:
     # читаем файл целиком
     reader = csv.reader(file)
     for row in reader:
         data.append((row[0], row[1], row[2]))
         print(row[0], " - ", row[1], " - ", row[2])
-    file.close()
+    file.close()'''
 
 '''data.append(('Заполнить', 'QTableWidget', 'Моя игра'))
 data.append(('с данными', 'в Python'))
@@ -35,19 +35,19 @@ class MyWin(QtWidgets.QMainWindow):
         #self.ui.actionExit.triggered.connect(self.close)
         self.ui.pushButton.clicked.connect(self.login)
         self.ui.pushButton_2.clicked.connect(self.add_to_csv_table)
+        self.ui.pushButton_3.clicked.connect(self.add_empty_table_field)
         # Кол-во рядов меняется в зависимости от значений в data.
-        self.ui.tableWidget.setRowCount(len(data))
+        #self.ui.tableWidget.setRowCount(len(data))
         # заголовки
         self.ui.tableWidget.setHorizontalHeaderLabels(("Ресурс", "Логин", "Пароль"))
         # Кол-во столбцов меняется в зависимости от data.
-        self.ui.tableWidget.setColumnCount(len(data[0]))
+        #self.ui.tableWidget.setColumnCount(len(data[0]))
         #Создание объектов классов
-        headers = CsvWorker()
-
+        csvworker = CsvWorker()
+        #self.update_table()
         #headers.write_headers() # создаю заголовки в csv
         # заполнение данными
-
-    def fill_table(self):
+    '''def fill_table(self):
         # заполнение данными
         with open(FILENAME, "r", encoding='utf-8', newline="") as file:
             # читаем файл целиком
@@ -55,21 +55,23 @@ class MyWin(QtWidgets.QMainWindow):
             for row in reader:
                 data.append((row[0], row[1], row[2]))
                 print(row[0], " - ", row[1], " - ", row[2])
-            file.close()
+            file.close()'''
 
-        row = 0
-        for tup in data:
-            col = 0
-            for item in tup:
-                cellinfo = QTableWidgetItem(item)
-                self.ui.tableWidget.setItem(row, col, cellinfo)
-                col += 1
-            row += 1
-# при нажатии на кнопку
+    # сравнивание мд5 суммы мастер ключа с фактический введенным паролем
     def login(self):
         md5 = PasswdManipulation()
         text_in_lable = md5.checkPasswd(self.ui.lineEdit.text())
         self.ui.label.setText(text_in_lable)
+    # добавление пустой строки в таблицу
+    def add_empty_table_field(self):
+        last_row = self.ui.tableWidget.rowCount()
+        self.ui.tableWidget.insertRow(last_row)
+        print(last_row)
+
+    def save_data_in_csv(self):
+        tdata = []
+        allTable = self.ui.tableWidget
+        self.ui.tableWidget.
     # Добавление значений в csv и заполнение таблицы из csv
     def add_to_csv_table(self):
         woker = CsvWorker()
