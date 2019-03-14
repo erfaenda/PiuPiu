@@ -16,8 +16,9 @@ with open(FILENAME, "r", encoding='utf-8', newline="") as file:
     reader = csv.reader(file)
     for row in reader:
         data.append((row[0], row[1], row[2]))
-        print(row[0], " - ", row[1], " - ", row[2])
+        #print(row[0], " - ", row[1], " - ", row[2])
     file.close()
+    print(data)
 
 class mywindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -38,12 +39,10 @@ class mywindow(QtWidgets.QMainWindow):
         row = 0
         for tup in data:
             col = 0
-
             for item in tup:
                 cellinfo = QTableWidgetItem(item)
                 self.ui.tableWidget.setItem(row, col, cellinfo)
                 col += 1
-
             row += 1
     # funck
     def clear(self):
