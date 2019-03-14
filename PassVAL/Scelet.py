@@ -74,11 +74,11 @@ class MyWin(QtWidgets.QMainWindow):
             for a in range(self.ui.tableWidget.columnCount()):
                 t = self.ui.tableWidget.item(i, a).text()
                 print(t)
-            with open(FILENAME, "a", encoding='utf-8', newline="") as file:
-                columns = ['Ресурс:', 'Логин:', 'Пароль:']
-                writer = csv.DictWriter(file, fieldnames=columns)
-                writer.writerow({"Ресурс:": "вк", "Логин:": "петя", "Пароль:": "супер пароль"})
-                file.close()
+                with open(FILENAME, "a", encoding='utf-8', newline="") as file:
+                    columns = ['Ресурс:', 'Логин:', 'Пароль:']
+                    writer = csv.DictWriter(file, fieldnames=columns)
+                    writer.writerow({"Ресурс:": self.ui.tableWidget.item(i, a).text(), "Логин:": self.ui.tableWidget.item(i, a).text(), "Пароль:": "супер пароль"})
+                    file.close()
 
     # Добавление значений в csv и заполнение таблицы из csv
     def add_to_csv_table(self):
