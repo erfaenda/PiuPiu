@@ -45,7 +45,7 @@ class mywindow(QtWidgets.QMainWindow):
                 col += 1
             row += 1'''
     # funck
-    # reader
+    # reader 
     def csv_dict_reader(self):
         with open(FILENAME, encoding='utf-8') as file:
             reader = csv.DictReader(file, delimiter=',')
