@@ -6,6 +6,7 @@ from PyQt5.QtGui import QIcon
 from PassVAL.md5 import *
 from PassVAL.Prod.CsvWorker import *
 from PyQt5.QtWidgets import QTableWidgetItem
+from PassVAL.Child_1 import *
 
 FILENAME = "test_csv.csv"
 data = []
@@ -32,7 +33,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.pushButton_3.clicked.connect(self.add_empty_table_field)
         self.ui.pushButton_4.clicked.connect(self.save_data_in_csv)
         self.ui.exit.triggered.connect(self.close)
-
+        self.ui.change_password.triggered.connect(self.open_change_password_dialog)
         # -------------------------------------------------------
         # Кол-во рядов меняется в зависимости от значений в data.
         self.ui.tableWidget.setRowCount(len(data))
@@ -94,9 +95,17 @@ class MyWin(QtWidgets.QMainWindow):
         print(ready_data)
         woker.fill_csv(ready_data)
 
+    # --------------- Дочерние окна -------------------
+    # Открытие окна диалога смены мастер пароля
+    def open_change_password_dialog(self):
+        # child_window.ui.lineEdit.setText(self.ui.label_10.text())
+        change_password_dialog_window_1.show()
+
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     myapp = MyWin()
+    change_password_dialog_window_1 = Child_1()
     myapp.show()
     sys.exit(app.exec_())
