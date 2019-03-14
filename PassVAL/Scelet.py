@@ -94,12 +94,16 @@ class MyWin(QtWidgets.QMainWindow):
         with open(FILENAME, "r", encoding='utf-8', newline="") as file:
             reader = csv.reader(file)
             for i in reader:
-                #data_string.append((i[0], i[1], i[2]))
-                self.ui.tableWidget.setItem(0, 0, QTableWidgetItem(i[0]))
-                self.ui.tableWidget.setItem(0, 1, QTableWidgetItem(i[1]))
-                self.ui.tableWidget.setItem(0, 2, QTableWidgetItem(i[2]))
+                a = 0
+                for a in range(0,2):
+                    #data_string.append((i[0], i[1], i[2]))
+                    self.ui.tableWidget.setItem(a, 0, QTableWidgetItem(i[0]))
+                    self.ui.tableWidget.setItem(a, 1, QTableWidgetItem(i[1]))
+                    self.ui.tableWidget.setItem(a, 2, QTableWidgetItem(i[2]))
+                    a = a + 1
+                    print(a)
 
-                print(data_string)
+                print(reader)
                 #writer.writerow({"Ресурс:": self.ui.tableWidget.item(i, a).text(), "Логин:": self.ui.tableWidget.item(i, a).text(), "Пароль:": "супер пароль"})
             #writer.writerow({"Ресурс:": data_string[0], "Логин:": data_string[1], "Пароль:": data_string[2]})
             #file.close()
