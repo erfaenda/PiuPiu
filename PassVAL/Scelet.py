@@ -88,7 +88,7 @@ class MyWin(QtWidgets.QMainWindow):
             file.close()
     # заполнение таблицы из csv базы
     def test_fill(self):
-        data_string = [] 
+        data_string = []
         self.ui.tableWidget.setRowCount(len(data))
         self.ui.tableWidget.setColumnCount(len(data[0]))
         with open(FILENAME, "r", encoding='utf-8', newline="") as file:
