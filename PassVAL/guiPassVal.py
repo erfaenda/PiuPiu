@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'guiPassVal.ui'
 #
-# Created by: PyQt5 UI code generator 5.11.3
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(578, 419)
+        MainWindow.resize(632, 594)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -69,7 +69,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.pushButton_4, 2, 5, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 578, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 632, 21))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")
@@ -79,6 +79,13 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        self.change_password = QtWidgets.QAction(MainWindow)
+        self.change_password.setObjectName("change_password")
+        self.exit = QtWidgets.QAction(MainWindow)
+        self.exit.setObjectName("exit")
+        self.menu.addAction(self.change_password)
+        self.menu.addSeparator()
+        self.menu.addAction(self.exit)
         self.menubar.addAction(self.menu.menuAction())
         self.menubar.addAction(self.menu_2.menuAction())
 
@@ -102,4 +109,6 @@ class Ui_MainWindow(object):
         self.pushButton_4.setText(_translate("MainWindow", "Сохранить"))
         self.menu.setTitle(_translate("MainWindow", "Меню"))
         self.menu_2.setTitle(_translate("MainWindow", "О программе"))
+        self.change_password.setText(_translate("MainWindow", "Сменить master password"))
+        self.exit.setText(_translate("MainWindow", "Выход"))
 

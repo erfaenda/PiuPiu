@@ -8,14 +8,12 @@ import sys, csv
 FILENAME = "test_csv.csv"
 
 data = []
-'''data.append(('Заполнить', 'QTableWidget', 'Моя игра'))
-data.append(('с данными', 'в Python'))'''
+
 with open(FILENAME, "r", encoding='utf-8', newline="") as file:
     #читаем файл целиком
     reader = csv.reader(file)
     for row in reader:
         data.append((row[0], row[1], row[2]))
-        #print(row[0], " - ", row[1], " - ", row[2])
     file.close()
     print(data)
 
@@ -35,15 +33,15 @@ class mywindow(QtWidgets.QMainWindow):
         # Кол-во столбцов меняется в зависимости от data.
         self.ui.tableWidget.setColumnCount(len(data[0]))
         # заполенение
-        self.csv_dict_reader()
-        '''row = 0
+        #self.csv_dict_reader()
+        row = 0
         for tup in data:
             col = 0
             for item in tup:
                 cellinfo = QTableWidgetItem(item)
                 self.ui.tableWidget.setItem(row, col, cellinfo)
                 col += 1
-            row += 1'''
+            row += 1
     # funck
     # reader 
     def csv_dict_reader(self):
@@ -51,7 +49,7 @@ class mywindow(QtWidgets.QMainWindow):
             reader = csv.DictReader(file, delimiter=',')
             for line in reader:
                 a = 0
-                for a in range(0,2):
+                for a in range(0,3):
                     print(line["Ресурс:"])
                     print(line["nike"])
                     print(line["age"])

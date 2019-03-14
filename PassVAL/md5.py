@@ -1,6 +1,7 @@
 import hashlib
 
 class PasswdManipulation():
+    # Создание md5 на базе введенного пароля
     def makeThisShit(self, newpassword):
         #randomka = randrange(1, 9)
         passwdd = newpassword.encode('utf-8')
@@ -12,6 +13,7 @@ class PasswdManipulation():
         handle.close()
         return p
 
+    # Перевод введенного пароля в md5 и сравнивание его с md5 в файле
     def checkPasswd(self, passwd):
         passwdd = passwd.encode('utf-8')
         hashTruepass = hashlib.md5(passwdd)
@@ -21,7 +23,7 @@ class PasswdManipulation():
         FPass = hashTruepass.hexdigest()
         if FPass == data:
             print("Совпали, входим")
-            return 'Совпадение заходим'
+            return True
         else:
             print("Пароль не верный, дозззвидули")
-            return 'Неверный пароль'
+            return False
