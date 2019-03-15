@@ -15,3 +15,7 @@ for name, address in ab.items():
 ab['Guido'] = 'guido@python.org'
 if 'Guido' in ab:
     print("\nАдрес Guido:", ab['Guido'])
+
+ready_data = [1,2,3]
+my_dict = dict(zip(['one', 'two', 'three'], ready_data))
+print(my_dict)

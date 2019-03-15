@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>578</width>
-    <height>419</height>
+    <width>632</width>
+    <height>594</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -132,7 +132,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>578</width>
+     <width>632</width>
      <height>21</height>
     </rect>
    </property>
@@ -140,6 +140,9 @@
     <property name="title">
      <string>Меню</string>
     </property>
+    <addaction name="change_password"/>
+    <addaction name="separator"/>
+    <addaction name="exit"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -150,6 +153,16 @@
    <addaction name="menu_2"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="change_password">
+   <property name="text">
+    <string>Сменить master password</string>
+   </property>
+  </action>
+  <action name="exit">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

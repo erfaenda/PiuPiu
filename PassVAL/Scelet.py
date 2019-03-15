@@ -6,21 +6,17 @@ from PyQt5.QtGui import QIcon
 from PassVAL.md5 import *
 from PassVAL.Prod.CsvWorker import *
 from PyQt5.QtWidgets import QTableWidgetItem
+from PassVAL.Child_1 import *
 
 FILENAME = "test_csv.csv"
 data = []
-# заполнение массива данными из файла csv
+# заполнение массива данными из файла csv для создания пустых строк таблицы
 with open(FILENAME, "r", encoding='utf-8', newline="") as file:
     # читаем файл целиком
     reader = csv.reader(file)
     for row in reader:
         data.append((row[0], row[1], row[2]))
-        #print(row[0], " - ", row[1], " - ", row[2])
     file.close()
-
-'''data.append(('Заполнить', 'QTableWidget', 'Моя игра'))
-data.append(('с данными', 'в Python'))
-'''
 
 class MyWin(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -31,82 +27,65 @@ class MyWin(QtWidgets.QMainWindow):
         self.setWindowTitle('Icon')
         self.setWindowIcon(QIcon('ic.ico'))
         self.ui.statusbar.showMessage('© Alexey Silantyev, 2019')
-        # Здесь прописываем событие нажатия на кнопку
-        #self.ui.actionExit.triggered.connect(self.close)
+        # ---- BUTTONS BLOCK ----- Здесь прописываем событие нажатия на кнопку
         self.ui.pushButton.clicked.connect(self.login)
         self.ui.pushButton_2.clicked.connect(self.add_to_csv_table)
         self.ui.pushButton_3.clicked.connect(self.add_empty_table_field)
         self.ui.pushButton_4.clicked.connect(self.save_data_in_csv)
+        self.ui.exit.triggered.connect(self.close)
+        self.ui.change_password.triggered.connect(self.open_change_password_dialog)
+        # -------------------------------------------------------
         # Кол-во рядов меняется в зависимости от значений в data.
-        #self.ui.tableWidget.setRowCount(len(data))
+        self.ui.tableWidget.setRowCount(len(data))
         # заголовки
         self.ui.tableWidget.setHorizontalHeaderLabels(("Ресурс", "Логин", "Пароль"))
         # Кол-во столбцов меняется в зависимости от data.
-        #self.ui.tableWidget.setColumnCount(len(data[0]))
-        #Создание объектов классов
-        csvworker = CsvWorker()
-        #self.update_table()
-        #headers.write_headers() # создаю заголовки в csv
-        # заполнение данными
-        self.test_fill()
-        '''row = 0
-        for tup in data:
-            col = 0
-            for item in tup:
-                cellinfo = QTableWidgetItem(item)
-                self.ui.tableWidget.setItem(row, col, cellinfo)
-                col += 1
-            row += 1'''
-
-    def update_table(self):
-        woker = CsvWorker()
-        woker.fill_table(FILENAME, QTableWidgetItem, self.ui.tableWidget, data)
+        self.ui.tableWidget.setColumnCount(len(data[0]))
 
     # сравнивание мд5 суммы мастер ключа с фактический введенным паролем
     def login(self):
         md5 = PasswdManipulation()
-        text_in_lable = md5.checkPasswd(self.ui.lineEdit.text())
-        self.ui.label.setText(text_in_lable)
+        logon = md5.checkPasswd(self.ui.lineEdit.text())
+        if logon is True:
+            self.ui.label.setText('Пароль верный')
+            # заполнение данными
+            self.fill_table_with_csv()
+        else:
+            self.ui.label.setText('Пароль не существует')
     # добавление пустой строки в таблицу
     def add_empty_table_field(self):
         last_row = self.ui.tableWidget.rowCount()
         self.ui.tableWidget.insertRow(last_row)
         print(last_row)
+
     # добавление данных из таблицы в csv базу
     def save_data_in_csv(self):
-        data_string = []
-        with open(FILENAME, "a", encoding='utf-8', newline="") as file:
+        #data = []
+        with open(FILENAME, "w", encoding='utf-8', newline="") as file:
             columns = ['Ресурс:', 'Логин:', 'Пароль:']
             writer = csv.DictWriter(file, fieldnames=columns)
-            for i in range(self.ui.tableWidget.rowCount()):
-                for a in range(self.ui.tableWidget.columnCount()):
-                    t = self.ui.tableWidget.item(i, a).text()
-                    print(t)
-                    data_string.append(t)
-                    #writer.writerow({"Ресурс:": self.ui.tableWidget.item(i, a).text(), "Логин:": self.ui.tableWidget.item(i, a).text(), "Пароль:": "супер пароль"})
-            writer.writerow({"Ресурс:": data_string[0], "Логин:": data_string[1], "Пароль:": data_string[2]})
-            file.close()
-    # заполнение таблицы из csv базы
-    def test_fill(self):
-        data_string = []
-        self.ui.tableWidget.setRowCount(len(data))
-        self.ui.tableWidget.setColumnCount(len(data[0]))
-        with open(FILENAME, "r", encoding='utf-8', newline="") as file:
-            reader = csv.reader(file)
-            for i in reader:
-                a = 0
-                for a in range(0,2):
-                    #data_string.append((i[0], i[1], i[2]))
-                    self.ui.tableWidget.setItem(a, 0, QTableWidgetItem(i[0]))
-                    self.ui.tableWidget.setItem(a, 1, QTableWidgetItem(i[1]))
-                    self.ui.tableWidget.setItem(a, 2, QTableWidgetItem(i[2]))
-                    a = a + 1
-                    print(a)
 
-                print(reader)
-                #writer.writerow({"Ресурс:": self.ui.tableWidget.item(i, a).text(), "Логин:": self.ui.tableWidget.item(i, a).text(), "Пароль:": "супер пароль"})
-            #writer.writerow({"Ресурс:": data_string[0], "Логин:": data_string[1], "Пароль:": data_string[2]})
-            #file.close()
+            row = 0
+            for r in range(0, self.ui.tableWidget.rowCount()):
+                row_list = []
+                for c in range(0, self.ui.tableWidget.columnCount()):
+                    print(self.ui.tableWidget.item(r, c).text())
+                    row_list.append(self.ui.tableWidget.item(r, c).text())
+                string_table = dict(zip(['Ресурс:', 'Логин:', 'Пароль:'], row_list))
+                writer.writerow(string_table)
+
+    # заполнение таблицы из csv базы
+    def fill_table_with_csv(self):
+        row = 0
+        for tup in data:
+            print(tup)
+            col = 0
+            for item in tup:
+                cellinfo = QTableWidgetItem(item)
+                self.ui.tableWidget.setItem(row, col, cellinfo)
+                col += 1
+            row += 1
+
     # Добавление значений в csv и заполнение таблицы из csv
     def add_to_csv_table(self):
         woker = CsvWorker()
@@ -116,9 +95,17 @@ class MyWin(QtWidgets.QMainWindow):
         print(ready_data)
         woker.fill_csv(ready_data)
 
+    # --------------- Дочерние окна -------------------
+    # Открытие окна диалога смены мастер пароля
+    def open_change_password_dialog(self):
+        # child_window.ui.lineEdit.setText(self.ui.label_10.text())
+        change_password_dialog_window_1.show()
+
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     myapp = MyWin()
+    change_password_dialog_window_1 = Child_1()
     myapp.show()
     sys.exit(app.exec_())
