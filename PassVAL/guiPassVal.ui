@@ -114,7 +114,7 @@
     <item row="2" column="0">
      <widget class="QPushButton" name="pushButton_3">
       <property name="text">
-       <string>Обновить</string>
+       <string>Добавить строку</string>
       </property>
      </widget>
     </item>

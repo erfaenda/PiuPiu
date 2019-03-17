@@ -105,7 +105,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Логин"))
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Пароль"))
-        self.pushButton_3.setText(_translate("MainWindow", "Обновить"))
+        self.pushButton_3.setText(_translate("MainWindow", "Добавить строку"))
         self.pushButton_4.setText(_translate("MainWindow", "Сохранить"))
         self.menu.setTitle(_translate("MainWindow", "Меню"))
         self.menu_2.setTitle(_translate("MainWindow", "О программе"))
