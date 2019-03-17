@@ -68,26 +68,30 @@ class MyWin(QtWidgets.QMainWindow):
             columns = ['Ресурс:', 'Логин:', 'Пароль:']
             writer = csv.DictWriter(file, fieldnames=columns)
 
-            row = 0
             for r in range(0, self.ui.tableWidget.rowCount()):
                 row_list = []
                 for c in range(0, self.ui.tableWidget.columnCount()):
-                    text = self.ui.tableWidget.item(r,2).text()
-                    print(text)
-                    encript.encrypt_trans(text)
-                    print(text)
-                    row_list.append(self.ui.tableWidget.item(r, c).text())
+                    text = self.ui.tableWidget.item(r, c).text()
+                    encript_text = encript.encrypt_trans(text)
+                    #row_list.append(self.ui.tableWidget.item(r, 2).text())
+                    row_list.append(encript_text)
                 string_table = dict(zip(['Ресурс:', 'Логин:', 'Пароль:'], row_list))
                 writer.writerow(string_table)
 
     # заполнение таблицы из csv базы
     def fill_table_with_csv(self):
+        encript = Encription()
         row = 0
         for tup in data:
-            print(tup)
+            #print(tup)
             col = 0
             for item in tup:
+                #cellinfo = QTableWidgetItem(encript.decrypt(item))
                 cellinfo = QTableWidgetItem(item)
+                #cellinfob = QTableWidgetItem(bytes(item, 'utf8'))
+
+                print(bytes(item, 'utf8'))
+                print(encript.decrypt(bytes(item, 'utf8')))
                 self.ui.tableWidget.setItem(row, col, cellinfo)
                 col += 1
             row += 1
