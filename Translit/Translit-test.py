@@ -1,5 +1,9 @@
-import transliterate
+from transliterate import detect_language
 
-text = transliterate.translit("нормальненько реализовал ddsdsd свой способ транслита, русские буквы нельзя шифровать, по этому я принимаю фразу на руском програмна превращаю ее в транслит и потом шифрую, рашифровываю и из транслита обратно в русский перевожу", reversed=True)
-print(text)
-print(transliterate.translit(text, 'ru'))
+string = 'Y_!в'
+for i in string:
+    # нельзя определить язык лишь по одному символу по этому i+i
+    if detect_language(i+i) == 'ru':
+        print('ru')
+    else:
+        print('en')

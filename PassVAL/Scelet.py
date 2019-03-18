@@ -7,6 +7,7 @@ from PassVAL.md5 import *
 from PassVAL.Prod.CsvWorker import *
 from PyQt5.QtWidgets import QTableWidgetItem
 from PassVAL.Child_1 import *
+from PassVAL.Encrypt import *
 
 FILENAME = "test_csv.csv"
 data = []
@@ -29,6 +30,7 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.statusbar.showMessage('© Alexey Silantyev, 2019')
         # ---- BUTTONS BLOCK ----- Здесь прописываем событие нажатия на кнопку
         self.ui.pushButton.clicked.connect(self.login)
+        self.ui.lineEdit.returnPressed.connect(self.login)
         self.ui.pushButton_2.clicked.connect(self.add_to_csv_table)
         self.ui.pushButton_3.clicked.connect(self.add_empty_table_field)
         self.ui.pushButton_4.clicked.connect(self.save_data_in_csv)
@@ -61,27 +63,35 @@ class MyWin(QtWidgets.QMainWindow):
     # добавление данных из таблицы в csv базу
     def save_data_in_csv(self):
         #data = []
+        encript = Encription()
         with open(FILENAME, "w", encoding='utf-8', newline="") as file:
             columns = ['Ресурс:', 'Логин:', 'Пароль:']
             writer = csv.DictWriter(file, fieldnames=columns)
 
-            row = 0
             for r in range(0, self.ui.tableWidget.rowCount()):
                 row_list = []
                 for c in range(0, self.ui.tableWidget.columnCount()):
-                    print(self.ui.tableWidget.item(r, c).text())
-                    row_list.append(self.ui.tableWidget.item(r, c).text())
+                    text = self.ui.tableWidget.item(r, c).text()
+                    encript_text = encript.encrypt_trans(text)
+                    #row_list.append(self.ui.tableWidget.item(r, 2).text())
+                    row_list.append(encript_text)
                 string_table = dict(zip(['Ресурс:', 'Логин:', 'Пароль:'], row_list))
                 writer.writerow(string_table)
 
     # заполнение таблицы из csv базы
     def fill_table_with_csv(self):
+        encript = Encription()
         row = 0
         for tup in data:
-            print(tup)
+            #print(tup)
             col = 0
             for item in tup:
+                #cellinfo = QTableWidgetItem(encript.decrypt(item))
                 cellinfo = QTableWidgetItem(item)
+                #cellinfob = QTableWidgetItem(bytes(item, 'utf8'))
+
+                print(bytes(item, 'utf8'))
+                print(encript.decrypt(bytes(item, 'utf8')))
                 self.ui.tableWidget.setItem(row, col, cellinfo)
                 col += 1
             row += 1
