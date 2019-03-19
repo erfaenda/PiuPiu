@@ -48,9 +48,14 @@ class mywindow(QtWidgets.QMainWindow):
         sending_button = self.sender() # определил источник отправки сигнала
         number_btn = sending_button.objectName().replace('button_', 'line_row') # получил его имя отрезал название заменил на название рядом стоящего элемента
         abstract_line = self.findChild(QtCore.QObject, number_btn) # нашел этот элемент по полученному извращеным путем имени
-        abstract_line.setEchoMode(QtWidgets.QLineEdit.Normal) # изменил какие мне надо параметры....пиздец
+        if abstract_line.echoMode() == 2:
+            abstract_line.setEchoMode(QtWidgets.QLineEdit.Normal) # изменил какие мне надо параметры....пиздец
+            sending_button.setText('Скрыть')
+        else:
+            abstract_line.setEchoMode(QtWidgets.QLineEdit.Password)
+            sending_button.setText('Показать')
         print(number_btn)
-        print(str(sending_button.setText('Lol')))
+
 
     def search(self):
         for line in range(0, 3):
