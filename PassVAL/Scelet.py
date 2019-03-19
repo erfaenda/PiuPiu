@@ -64,7 +64,7 @@ class MyWin(QtWidgets.QMainWindow):
     def save_data_in_csv(self):
         #data = []
         encript = Encription()
-        with open(FILENAME, "w", encoding='utf-8', newline="") as file:
+        with open(FILENAME, "wb", encoding='utf-8', newline="") as file:
             columns = ['Ресурс:', 'Логин:', 'Пароль:']
             writer = csv.DictWriter(file, fieldnames=columns)
 
@@ -90,8 +90,9 @@ class MyWin(QtWidgets.QMainWindow):
                 cellinfo = QTableWidgetItem(item)
                 #cellinfob = QTableWidgetItem(bytes(item, 'utf8'))
 
-                print(bytes(item, 'utf8'))
-                print(encript.decrypt(bytes(item, 'utf8')))
+                #print(bytes(item, 'utf8'))
+                print("как есть - " + item)
+                #print("Байты - " + bytes(item))
                 self.ui.tableWidget.setItem(row, col, cellinfo)
                 col += 1
             row += 1
@@ -109,6 +110,8 @@ class MyWin(QtWidgets.QMainWindow):
     # Открытие окна диалога смены мастер пароля
     def open_change_password_dialog(self):
         # child_window.ui.lineEdit.setText(self.ui.label_10.text())
+        #change_password_dialog_window_1 = QtWidgets.QDialog(self, QtCore.Qt.Dialog)
+        change_password_dialog_window_1.setWindowModality(QtCore.Qt.WindowModal)
         change_password_dialog_window_1.show()
 
 

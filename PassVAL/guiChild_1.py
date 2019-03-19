@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'guiChild_1.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,6 +13,7 @@ class Ui_Child_1(object):
         Child_1.setObjectName("Child_1")
         Child_1.setWindowModality(QtCore.Qt.ApplicationModal)
         Child_1.resize(276, 173)
+        Child_1.setWindowFlags(QtCore.Qt.Dialog)
         self.centralwidget = QtWidgets.QWidget(Child_1)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)

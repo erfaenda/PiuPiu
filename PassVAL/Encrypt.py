@@ -6,6 +6,8 @@ from transliterate import detect_language
 #cipher_key = Fernet.generate_key() # это сгенерирует новый ключ
 
 # класс отвечает за перевод рус в транслит, шифроку запись в файл и рашифровку
+# как выяснилось можно шифровать и русские символы, главное перевести в байты
+# часть функции не актуальна
 class Encription():
     FILENAME = "test_csv.csv"
     # ключ которым будет все шифроваться
@@ -13,19 +15,21 @@ class Encription():
     CHIPER = Fernet(CHIPER_KEY)
 
     def encrypt_trans(self, rawtext):
-        #rawtext = 'Короче теперь можно делать все что угодно лалала крутотень'
         for i in rawtext:
             # нельзя определить язык лишь по одному символу по этому i+i
             if detect_language(i + i) == 'ru':
                 print('ru')
-                text = transliterate.translit(rawtext, reversed=True)
-                ntext = bytes(text, 'utf8')
+                #text = transliterate.translit(rawtext, reversed=True)
+                text = rawtext
+                btext = bytes(text, 'utf8')
             else:
                 print('en')
-                ntext = bytes(rawtext, 'utf8')
-            encrypted_text = self.CHIPER.encrypt(ntext)
-            print("это зашифрованый текст " + str(encrypted_text))
-        return encrypted_text
+                btext = bytes(rawtext, 'utf8')
+            encrypted_text_bytes = self.CHIPER.encrypt(btext)
+            encrypted_text_string = encrypted_text_bytes.decode('utf8')
+            print("это зашифрованый текст " + str(encrypted_text_bytes))
+            print("Читый текст тут " + encrypted_text_string)
+        return encrypted_text_bytes
 
     def write_dat(self, encrypted_text):
         handle = open("encrypted.bin", "wb")
@@ -37,10 +41,10 @@ class Encription():
         handle = open("encrypted.bin", "rb")
         decrypt_data = handle.read()
         data = self.CHIPER.decrypt(decrypt_data).decode('utf8')
-        fdata = transliterate.translit(data, 'ru')
-        print(fdata)
+        #fdata = transliterate.translit(data, 'ru')
+        print(data)
         handle.close()
-        return fdata
+        return data
 
     def decrypt(self, encrypt_data):
         decrypt_data = self.CHIPER.decrypt(encrypt_data).decode('utf8')
@@ -52,5 +56,5 @@ class Encription():
 
 if __name__ == "__main__":
     app = Encription()
-    app.write_dat(app.encrypt_trans('sasadfsf'))
+    app.write_dat(app.encrypt_trans('Alex пука по дуге'))
     app.read_dat()
