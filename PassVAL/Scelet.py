@@ -92,8 +92,8 @@ class MyWin(QtWidgets.QMainWindow):
                 line_edit_password = QtWidgets.QLineEdit()
                 #cellinfo = QTableWidgetItem(item)
                 print("как есть - " + item)
-                #self.ui.tableWidget.setItem(row, col, cellinfo)
-                self.ui.tableWidget.setItem(row, 2, line_edit_password)
+                self.ui.tableWidget.setItem(row, col, cellinfo)
+                #self.ui.tableWidget.setItem(row, 2, line_edit_password)
                 col += 1
             row += 1
         #elf.ui.tableWidget.setColumnHidden(2, True)
