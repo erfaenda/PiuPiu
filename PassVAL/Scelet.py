@@ -38,11 +38,11 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.change_password.triggered.connect(self.open_change_password_dialog)
         # -------------------------------------------------------
         # Кол-во рядов меняется в зависимости от значений в data.
-        self.ui.tableWidget.setRowCount(len(data))
+        #self.ui.tableWidget.setRowCount(len(data))
         # заголовки
         self.ui.tableWidget.setHorizontalHeaderLabels(("Ресурс", "Логин", "Пароль"))
         # Кол-во столбцов меняется в зависимости от data.
-        self.ui.tableWidget.setColumnCount(len(data[0]))
+        #self.ui.tableWidget.setColumnCount(len(data[0]))
 
     # сравнивание мд5 суммы мастер ключа с фактический введенным паролем
     def login(self):
@@ -64,7 +64,7 @@ class MyWin(QtWidgets.QMainWindow):
     def save_data_in_csv(self):
         #data = []
         encript = Encription()
-        with open(FILENAME, "wb", encoding='utf-8', newline="") as file:
+        with open(FILENAME, "w", encoding='utf-8', newline="") as file:
             columns = ['Ресурс:', 'Логин:', 'Пароль:']
             writer = csv.DictWriter(file, fieldnames=columns)
 
@@ -80,22 +80,23 @@ class MyWin(QtWidgets.QMainWindow):
 
     # заполнение таблицы из csv базы
     def fill_table_with_csv(self):
+        # считаю сколько будет строк данных что бы создать столько же строк в таблице
+        self.ui.tableWidget.setRowCount(len(data))
+        self.ui.tableWidget.setColumnCount(len(data[0]))
         encript = Encription()
         row = 0
         for tup in data:
-            #print(tup)
             col = 0
             for item in tup:
-                #cellinfo = QTableWidgetItem(encript.decrypt(item))
-                cellinfo = QTableWidgetItem(item)
-                #cellinfob = QTableWidgetItem(bytes(item, 'utf8'))
-
-                #print(bytes(item, 'utf8'))
+                cellinfo = QTableWidgetItem(encript.decrypt(bytes(item, 'utf8')))
+                line_edit_password = QtWidgets.QLineEdit()
+                #cellinfo = QTableWidgetItem(item)
                 print("как есть - " + item)
-                #print("Байты - " + bytes(item))
-                self.ui.tableWidget.setItem(row, col, cellinfo)
+                #self.ui.tableWidget.setItem(row, col, cellinfo)
+                self.ui.tableWidget.setItem(row, 2, line_edit_password)
                 col += 1
             row += 1
+        #elf.ui.tableWidget.setColumnHidden(2, True)
 
     # Добавление значений в csv и заполнение таблицы из csv
     def add_to_csv_table(self):

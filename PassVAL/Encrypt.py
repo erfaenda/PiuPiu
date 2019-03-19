@@ -29,7 +29,7 @@ class Encription():
             encrypted_text_string = encrypted_text_bytes.decode('utf8')
             print("это зашифрованый текст " + str(encrypted_text_bytes))
             print("Читый текст тут " + encrypted_text_string)
-        return encrypted_text_bytes
+        return encrypted_text_string
 
     def write_dat(self, encrypted_text):
         handle = open("encrypted.bin", "wb")
@@ -56,5 +56,5 @@ class Encription():
 
 if __name__ == "__main__":
     app = Encription()
-    app.write_dat(app.encrypt_trans('Alex пука по дуге'))
+    app.write_dat(app.encrypt_trans('A112'))
     app.read_dat()
